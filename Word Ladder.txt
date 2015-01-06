@@ -1,0 +1,95 @@
+public class Solution {
+    public int ladderLength(String start, String end, Set<String> dict) {
+        Queue<String> current = new LinkedList<String>();
+        Queue<String> next = new LinkedList<String>();
+        Set<String> visited = new HashSet<String>();
+        //Set<String> remain = new HashSet<String>();
+        Set<String> remain = new HashSet<String>();        
+        for(String s: dict)
+        {
+            remain.add(s);
+        }
+        
+        int level = 0; // how many levels need to go, when you can arrive at the "end" word.
+        // then, this level+2 will be the length of the shortest transformation.
+        boolean found = false;
+        current.add(start);
+        visited.add(start);
+        
+        while( !current.isEmpty() && !found ) {
+            
+            level ++;
+
+            Set<String> neighborSet = new HashSet<String>();
+            for (String s : current)
+            {
+                neighborSet.addAll(wordNeighbor(s, dict)); // all neighbors of s that are in the dict.
+            }
+            
+            neighborSet.removeAll(visited);
+            visited.addAll(neighborSet);
+            for(String s:neighborSet)
+            {
+                next.add(s);
+            }
+          
+            remain.removeAll(visited);
+            
+            current.clear(); // clear the current queue, to hold the queue in the next level.
+            
+            for(String s: next)
+            {
+                current.add(s);
+                //visited.add(s);
+                if(isAdjacent(s,end))
+                    found = true;
+            }            
+            next.clear(); // update the next queue to empty.
+        }
+        
+        if(found == true) return level +2;
+        else return 0;
+        
+    }
+    
+    
+    public boolean isAdjacent(String word1, String word2){
+        int len1 = word1.length(), len2=word2.length();
+        if(len1 == 0 || len2 ==0)
+            return false;
+        if(len1 != len2)
+            return false;
+        int diffCount = 0;
+        for(int i = 0; i <= len1-1; i++)
+        {
+            if(word1.charAt(i) != word2.charAt(i))
+                diffCount ++;
+        }
+        
+        if(diffCount == 1)
+            return true;
+        else
+            return false;
+        
+    }
+    
+    public static Set<String> wordNeighbor(String word, Set<String> dict) // only need to consider words in the dictionary
+    {
+        Set<String> result = new HashSet<String>();
+        int wLen = word.length();
+        for(int i = 0; i <wLen; i++)
+        {
+            for(char ch = 'a'; ch<='z'; ch++)
+            {
+                if( ch!= word.charAt(i))
+                {
+                    String str = word.substring(0,i) + Character.toString(ch) + word.substring(i+1);
+                    result.add(str);
+                }
+            }
+        }
+        result.retainAll(dict);
+        return result;
+    }
+    
+}

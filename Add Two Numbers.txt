@@ -1,0 +1,80 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;
+ *     }
+ * }
+ */
+public class Solution {
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        
+        int carry = 0;
+        
+        ListNode newList = null;
+        ListNode prev = null;
+        ListNode cur1 = l1;
+        ListNode cur2 = l2;
+        while (cur1 != null && cur2 != null) {
+            int num1 = cur1.val;
+            int num2 = cur2.val;
+            int resultNum = num1 + num2 + carry;
+            carry = resultNum / 10;
+            resultNum = resultNum - carry*10;
+            
+            ListNode newNode = new ListNode(resultNum);
+            
+            if (newList == null) {
+                newList = newNode;
+                prev = newNode;
+            } else {
+                prev.next = newNode;
+                prev = newNode;
+            }
+            
+            cur1 = cur1.next;
+            cur2 = cur2.next;
+        }
+        
+        while (cur1 != null) {
+            int num1 = cur1.val;
+            int resultNum = num1 + carry;
+            carry = resultNum /10;
+            resultNum = resultNum -carry*10;
+            ListNode newNode = new ListNode(resultNum);
+            if (newList == null) {
+                newList = newNode;
+                prev = newNode;
+            } else {
+                prev.next = newNode;
+                prev = newNode;
+            }
+            cur1 = cur1.next;
+        }
+        while (cur2 != null) {
+            int num2 = cur2.val;
+            int resultNum = num2 + carry;
+            carry = resultNum /10;
+            resultNum = resultNum -carry*10;
+            ListNode newNode = new ListNode(resultNum);
+            if (newList == null) {
+                newList = newNode;
+                prev = newNode;
+            } else {
+                prev.next = newNode;
+                prev = newNode;
+            }
+            cur2 = cur2.next;
+        }
+        
+        if (carry != 0) {
+            ListNode newNode = new ListNode(carry);
+            prev.next = newNode;
+        }
+        
+        return newList;
+    }
+}

@@ -1,0 +1,87 @@
+public class LRUCache {
+    // the first is the constructor. no return type.
+    // parameter pased in the capacity.
+    // all contents are the key-value pairs.
+    
+    
+   static class Node{ // in java, the Node and the actual list is almost the same thing.
+                      // it's kind of confusing.
+        Node next;
+        Node prev;
+        int key;
+        int val;
+        Node(){}
+        Node(int key, int val){this.key = key; this.val = val;}
+
+        private void delete(){ //
+                               // which node to delete? Since it's in the definition of Node.
+                               // it means deleting the node itself.
+            prev.next = next;
+            if(next != null)
+                next.prev = prev;
+        }
+
+        private void addAfter(Node preNode){ // add "this" node after the node preNode.
+            next = preNode.next;
+            if(next != null)
+                next.prev = this;
+            preNode.next = this;
+            prev = preNode;
+        }
+    }
+
+    Node head = new Node();
+    Node tail = head; // head and tail refer to the same doubly linked list, but refer to different nodes.
+
+    Map<Integer, Node> cache = new HashMap<Integer, Node>(); // why integer here?
+    int capacity;
+
+    public LRUCache(int capacity) {
+        this.capacity = capacity;
+    }
+
+    public int get(int key) { // not only returns the value, but also update the status of the memory.
+                              // the newest used pair changed to <key, value>
+        Node n = cache.get(key);
+        if(n == null)
+            return -1;
+        moveToTail(n); // the newest
+        return n.val;
+    }
+
+    public void set(int key, int value) {
+        Node n = cache.get(key); // if the key is already in the memory,
+                                // we should be able to set the key with a different value.
+                                // than, it is also set as the newest used pair.
+        if(n != null){
+            n.val = value;
+            moveToTail(n); // the newest
+            return;
+        }
+
+        n = new Node(key, value);
+        cache.put(key, n);  // the key of the HashMap is also the key of the Node???
+                            // is this a redundant design??
+        addToTail(n);
+
+        if(cache.size() > capacity){
+            n = head.next;
+            cache.remove(n.key);
+            n.delete();
+        }
+    }
+
+    private void moveToTail(Node n){
+        if(n == tail)
+            return;
+        n.delete();
+        addToTail(n);
+    }
+
+    private void addToTail(Node n){
+        n.addAfter(tail);
+        tail = n;       
+    }
+    
+    
+}

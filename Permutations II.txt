@@ -1,0 +1,83 @@
+public class Solution {
+    public List<List<Integer>> permuteUnique(int[] num) {
+        int[] first = num.clone();
+        Arrays.sort(first);
+        List<Integer> firstResult = new ArrayList<Integer>();
+        for(int anum : first) {
+            firstResult.add(anum);
+        }
+        List<List<Integer>> result = new ArrayList<List<Integer>>();
+        result.add(firstResult);
+        
+        int[] cur = first.clone();
+        do {
+            int[] next = nextPermutation(cur);
+            List<Integer> nextResult = new ArrayList<Integer>();
+            for (int i = 0; i < num.length; i ++) {
+                nextResult.add(next[i]);
+                cur[i] = next[i]; // update the current permutation.
+            }
+            result.add(nextResult);
+            
+        } while (!isEqual(cur, first));
+        
+        int n = result.size();
+        result.remove(n-1);
+        return result;
+        
+    }
+    public boolean isEqual(int[] firstArray, int[] secondArray) {
+        boolean isEq = true;
+        for(int i = 0; i < firstArray.length; i++)
+        {
+            if (firstArray[i] != secondArray[i]) {
+                isEq = false;
+                break;
+            }
+        }
+        return isEq;
+    }
+
+    public int[] nextPermutation(int[] num) {
+        int[] newNum = num.clone();
+        if (newNum.length == 0 || newNum.length == 1)
+            return newNum;
+        boolean highest = true;
+        int switchPos = -1;
+        for (int i = newNum.length - 1; i >= 1; i --) {
+            if (newNum[i-1] < newNum[i]) {
+                highest = false;
+                switchPos = i-1;
+                break;
+            }
+        }
+        
+        if(highest == true) {
+            reverse(newNum, 0, newNum.length-1);
+            return newNum;
+        }
+        
+        int secondSwitchPos = -1;
+        Arrays.sort(newNum, switchPos + 1, newNum.length); // the end index exclusive !!!!!!!!
+        for (int j = switchPos + 1; j <= newNum.length- 1; j ++) {
+            if (newNum[switchPos] < newNum[j]) {
+                secondSwitchPos = j;
+                break;
+            }
+        }
+        
+        int temp = newNum[switchPos];
+        newNum[switchPos] = newNum[secondSwitchPos];
+        newNum[secondSwitchPos] = temp;
+        
+        return newNum;
+        
+    }
+    public void reverse(int[] num, int start, int end) {
+        for (int i = start; i < (start + end+1)/2; i ++) {
+            int temp = num[i];
+            num[i] = num[start+end - i];  // swap, don't destroy anything! you need the temp;
+            num[num.length - 1 - i] = temp;
+        }
+    }
+}

@@ -1,0 +1,92 @@
+/**
+ * Definition for singly-linked list with a random pointer.
+ * class RandomListNode {
+ *     int label;
+ *     RandomListNode next, random;
+ *     RandomListNode(int x) { this.label = x; }
+ * };
+ */
+public class Solution {
+    public RandomListNode copyRandomList(RandomListNode head) {
+        RandomListNode newHead = null;
+        HashMap<RandomListNode, RandomListNode> hsMap = new HashMap<RandomListNode, RandomListNode>();
+        if (head == null)
+            return newHead;
+        RandomListNode cur = head;
+        RandomListNode prev = null;
+        while (cur!= null) {
+            if (prev == null) // the newHead has not been initialized.
+            {
+                newHead = new RandomListNode(cur.label);
+                hsMap.put(cur, newHead);
+                
+                if (cur.next == null)
+                    newHead.next = null;
+                else {
+                    RandomListNode newNode = new RandomListNode(cur.next.label);
+                    hsMap.put(cur.next, newNode);
+                    newHead.next = newNode;                    
+                }
+                
+                if (cur.random == null) {
+                    newHead.random = null;
+                } else {
+                    if (hsMap.containsKey(cur.random)) {
+                        newHead.random = hsMap.get(cur.random);
+                    } else {
+                        RandomListNode newNode = new RandomListNode(cur.random.label);
+                        hsMap.put(cur.random, newNode);
+                        newHead.random = newNode;
+                    }
+                }
+                prev = newHead;
+                cur = cur.next;
+                
+            } else { // prev != null
+                
+                // taking care of the current pointer
+                if  (hsMap.containsKey(cur)) // already allocated
+                    ;
+                else {
+                    RandomListNode newCur = new RandomListNode(cur.label);
+                    hsMap.put(cur, newCur);
+                }
+                
+                RandomListNode newCur = hsMap.get(cur);
+                prev.next = newCur;
+                // taking care of the next
+                if (cur.next == null) 
+                    newCur.next = null;
+                else {
+                    if (hsMap.containsKey(cur.next) )
+                        ;
+                    else {
+                        RandomListNode newCurNext = new RandomListNode(cur.next.label);
+                        hsMap.put(cur.next, newCurNext);
+                    }
+                    newCur.next = hsMap.get(cur.next);
+                }
+                
+                // taking care of the random
+                if (cur.random == null)
+                    newCur.random = null;
+                else {
+                    if (hsMap.containsKey(cur.random))
+                        ;
+                    else {
+                        RandomListNode newCurRandom = new RandomListNode(cur.random.label);
+                        hsMap.put(cur.random, newCurRandom);
+                    }
+                    newCur.random = hsMap.get(cur.random);
+                }
+                
+
+                prev = prev.next;
+                cur = cur.next;
+            }
+        }
+        
+        return newHead;
+        
+    }
+}
