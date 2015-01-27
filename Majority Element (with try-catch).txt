@@ -1,0 +1,43 @@
+public class Solution {
+    public int majorityElement(int[] num) {
+		try {
+			if (num == null || num.length == 0) {
+				throw new Exception();
+			}
+			boolean found = false;
+			HashMap<Integer, Integer> hsMap = new HashMap<Integer, Integer>();
+			int result = -1;
+			for (int i = 0; i < num.length; i ++) {
+				if (!hsMap.containsKey(num[i]) ) {
+					hsMap.put(num[i], 1);
+					if (1>num.length/2) {
+						result = num[i];
+						found = true;
+						break;
+					}
+				}
+				else { // hsMap.containsKey(num[i])
+					hsMap.put(num[i], hsMap.get(num[i]) + 1);
+					if (hsMap.get(num[i]) > num.length/2) {
+						result = num[i];
+						found = true;
+						break;
+					}
+				}
+			}
+			
+			if (found == false) {
+				throw new Exception();
+			}
+			else { // found == true;
+				return result;
+			}
+			
+		}
+		catch(Exception e) {
+			System.out.println("Illegal Input!");
+		}
+		
+		return -1;
+    }
+}

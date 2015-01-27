@@ -1,0 +1,58 @@
+public class Solution {
+    public int minCut(String s) {
+        /*int sLen = s.length();
+        if (s==null ||sLen <= 1)
+            return 0;
+        int[][] minCut = new int[sLen][sLen]; // minCut[i][j] is the minCut from i to j (inclusive).
+        
+        for (int i = 0; i <sLen; i++) {
+            minCut[i][i] = 0;
+        }
+        for (int j = 1; j<= sLen -1; j++) { // j+1 is the length of the substring that is been considered.
+            for (int i = 0; i <= sLen - 1 - j; i++) { // considering the substring starting from i, and ending at i+j, inclusive.
+                if (isPalindrome(s, i, i+j) ){
+                    minCut[i][i+j] = 0;
+                } 
+                else {
+                    minCut[i][i+j] = Integer.MAX_VALUE;
+                    for (int k = 1; k <= j; k++) {
+                        if (minCut[i][i+k-1] + minCut[i+k][i+j] + 1 < minCut[i][i+j]) {
+                            minCut[i][i+j] = minCut[i][i+k-1] + minCut[i+k][i+j] + 1;
+                        }
+                    }
+                }
+            }
+        }
+        return minCut[0][sLen-1];
+    }
+    private boolean isPalindrome(String s, int start, int end) {
+        boolean isP = true;
+        for (int i = start; i < (start+end)/2; i ++) {
+            if (s.charAt(i) != s.charAt(end-(i-start)) ) {
+                isP = false;
+                break;
+            }
+        }
+        return isP;
+        */
+        // the above solution has time limit exceeded
+        int sLen = s.length();
+        if (s==null ||sLen <= 1)
+            return 0;
+        int[] minCut = new int[sLen+1];
+        for (int i = 0; i <= sLen; i ++) {
+            minCut[i] = i-1; // the worst case is to cut at every position.
+        }
+        for (int i = 0; i <sLen; i ++) {
+            for (int j = 0; i-j>=0 && i+j <= sLen -1 && s.charAt(i-j)==s.charAt(i+j); j ++) {
+                minCut[i+j+1] = Math.min(minCut[i+j+1], 1+minCut[i-j]);
+            }
+            for (int j = 1; i-j+1>=0 && i+j <= sLen -1 && s.charAt(i-j+1) == s.charAt(i+j); j ++ ) {
+                minCut[i+j+1] = Math.min(minCut[i+j+1], 1+ minCut[i-j+1]);
+            }
+            
+        }
+        
+        return minCut[sLen];
+    }
+}
