@@ -1,0 +1,102 @@
+/**
+ * @see <a href="https://leetcode.com/problems/closest-binary-search-tree-value-ii/">Closest Binary Search Tree Value II</a>
+ */
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+public class Solution {
+    public List<Integer> closestKValues(TreeNode root, double target, int k) {
+        Stack<Integer> upperStk = new Stack<>();
+        Stack<Integer> lowerStk = new Stack<>();
+        TreeNode cur = root;
+        while (cur != null) {
+            // empty stack exception
+            // [2,1]
+            // 4.142857
+            // 2
+            /*
+            if (cur.val < target) {
+                lowerStk.push(cur.val);
+                if (cur.right != null) {
+                cur = cur.right;
+            }
+            else {
+                upperStk.push(cur.val);
+                cur = cur.left;
+            }
+            */
+            if (cur.val < target) {
+                // when a node is added to an lower stack.
+                // this node, and all nodes in its left subtree have values less than the target !!!!!!!
+                // thus, we need to store the node, then reconstruct all integers; 
+                // or add the integers here directly.
+                List<Integer> list = inOrder(cur.left);
+                for (int i = 0; i < list.size(); ++i) {
+                    lowerStk.push(list.get(i));
+                }
+                lowerStk.push(cur.val);
+                cur = cur.right;
+            }
+            else { // target < cur.val;
+                // when a node is added to an upper stack.
+                // this node, and all nodes in its right subtree have values greater than the target !!!!
+                List<Integer> list = inOrder(cur.right);
+                for (int i = list.size() - 1; i >= 0; --i) {
+                    upperStk.push(list.get(i));
+                }
+                upperStk.push(cur.val);
+                cur = cur.left;
+            }
+        }
+        
+        // System.out.println(lowerStk.size());
+        List<Integer> res = new ArrayList<>();
+        int i = 0;
+        while (i < k) {
+            if (lowerStk.isEmpty()) {
+                res.add(upperStk.pop());
+            }
+            else if (upperStk.isEmpty()) {
+                res.add(lowerStk.pop());
+            }
+            else { // both not empty.
+                int lower = lowerStk.peek();
+                int upper = upperStk.peek();
+                if (target - lower < upper - target) {
+                    res.add(lower);
+                    lowerStk.pop();
+                }
+                else {
+                    res.add(upper);
+                    upperStk.pop();
+                }
+            }
+            ++i;
+        }
+        return res;
+    }
+    public List<Integer> inOrder(TreeNode root) {
+        List<Integer> list = new ArrayList<>();
+        if (root == null) return list;
+        TreeNode cur = root;
+        Stack<TreeNode> stk = new Stack<TreeNode>();
+        while (true) {
+            while (cur != null) {
+                stk.push(cur);
+                cur = cur.left;
+            }
+            if (stk.isEmpty()) break;
+            cur = stk.pop();
+            list.add(cur.val);
+            cur = cur.right;
+        }
+        return list;
+    }
+}

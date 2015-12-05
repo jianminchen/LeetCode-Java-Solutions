@@ -1,0 +1,24 @@
+/**
+ * @see <a href="https://leetcode.com/problems/move-zeroes/">Move Zeroes</a>
+ */
+
+public class Solution {
+    public void moveZeroes(int[] nums) {
+        if (nums == null || nums.length == 0) return;
+        int pZero = 0, j = 0;
+        while (j < nums.length) {
+            if (nums[j] != 0) {
+                nums[pZero] = nums[j];
+                // previously, use nums[j] = 0, wrong !!!!!!!!!!!!!!!!!!!!!
+                // nums[j] = 0;
+                // 
+                if (j != pZero) nums[j] = 0;
+                j ++;
+                pZero ++;
+            }
+            else {
+                j ++;
+            }
+        }
+    }
+}
