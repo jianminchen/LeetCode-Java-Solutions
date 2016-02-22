@@ -1,6 +1,6 @@
 public class Solution {
     public List<Integer> spiralOrder(int[][] matrix) {
-        List<Integer> result = new ArrayList<Integer>(); // previously written as List<Integer> result = null; 
+        List<Integer> result = new ArrayList<Integer>();
         // Wrong Answer: Input: [], output: null, expected: [];
         if (matrix == null) {
             return result;
@@ -27,13 +27,13 @@ public class Solution {
             
             // the lower row: the nRow - 1 - i   th row
             for (int j = nColumn - 2 -i; j >= i; j --) {
-                if (nRow - 1 - i == i) break; // the same row has already been taken care of. !!!!!!!!!!!!!!!!!!!!!!!
+                if (nRow - 1 - i == i) break;
                 result.add(matrix[nRow - 1 - i][j]);
             }
             
             // the leftmost column: the  ith column
             for (int j = nRow - 2 - i; j >= i+1; j --) {
-                if (nColumn - 1 -i == i) break; // the same column has alread been taken care of. !!!!!!!!!!!!!!!!!!!!
+                if (nColumn - 1 -i == i) break;
                 result.add(matrix[j][i]);
             }
         }

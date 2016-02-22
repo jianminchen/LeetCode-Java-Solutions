@@ -12,20 +12,6 @@
  */
 public class Solution {
     public ListNode deleteDuplicates(ListNode head) {
-        /* wrong logic!!! it is not keeping any of the duplicate nodes !!!
-        if (head == null || head.next == null) return head;
-        ListNode cur = head;
-        while (cur != null) {
-            ListNode keep = cur;
-            ListNode end = keep;
-            while (end.next != null && end.next.val == keep.val) {
-                end = end.next;
-            }
-            keep.next = end.next;
-            cur = end.next;
-        }
-        return head;
-        */
         ListNode dummy = new ListNode(0);
         dummy.next = head;
         ListNode prev = dummy;

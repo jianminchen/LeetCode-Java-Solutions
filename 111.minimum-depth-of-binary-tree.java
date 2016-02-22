@@ -13,10 +13,6 @@
  */
 public class Solution {
     public int minDepth(TreeNode root) {
-        /* the following solution is wrong, for input [1, 2], it outputs 1, but 2 is expected.
-        if (root == null) return 0;
-        else return 1 + Math.min(minDepth(root.left), minDepth(root.right));
-        */
         if (root == null) return 0;
         if (root.left == null)
             return 1 + minDepth(root.right);

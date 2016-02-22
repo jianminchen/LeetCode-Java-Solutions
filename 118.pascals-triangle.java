@@ -6,16 +6,7 @@ public class Solution {
     public List<List<Integer>> generate(int numRows) {
         List<List<Integer>> res = new ArrayList<List<Integer>>();
         
-        if (0 >= numRows) return res; // is numRows == 1, or numRows == 2 are all speciall cases?
-        /*if (1 == numRows) {
-            List<Integer> aList = new ArrayList<Integer>();
-            aList.add(1);
-            res.add(aList);
-        }
-        if (2 == numRows) {
-            List
-        }
-        */
+        if (0 >= numRows) return res;
         if ( 2 >= numRows) {
             List<Integer> aList = new ArrayList<Integer>();
             aList.add(1);
@@ -23,7 +14,6 @@ public class Solution {
             if (2 == numRows) {
                 List<Integer> sList = new ArrayList<Integer>();
                 sList.add(1); sList.add(1);
-                // how can you forget this !!!!!!!!!!!!!!!!!!!!!!!!!!!
                 res.add(sList);
             }
             return res;

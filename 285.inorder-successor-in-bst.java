@@ -35,6 +35,3 @@ public class Solution {
         return pNext;
     }
 }
-// test cases:
-// root = null; p = null;
-//

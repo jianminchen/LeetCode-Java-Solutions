@@ -15,7 +15,6 @@ public class Solution {
         
         while (true) {
             List<Integer> next = new ArrayList<Integer>();
-            // find the index where we should go to the next number/list.
             int i = newNums.length - 1;
             while (i >= 1 && newNums[i - 1] >= newNums[i]) --i;
             if (i == 0) break; // we've got all numbers.

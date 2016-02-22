@@ -3,47 +3,6 @@
  */
 
 class MyStack {
-    /* the following logic is wrong !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    // Push element x onto stack.
-    Queue<Integer> pushQ = new LinkedList<Integer>();
-    Queue<Integer> popQ = new LinkedList<Integer>();
-    public void push(int x) {
-        pushQ.add(x);
-    }
-
-    // Removes the element on top of the stack.
-    public void pop() {
-        if (popQ.isEmpty()) {
-            ArrayList<Integer> al = new ArrayList<Integer>();
-            while (!pushQ.isEmpty()) {
-                al.add(pushQ.remove());
-            }
-            for (int i = al.size() - 1; i >= 0; i --) {
-                popQ.add(al.get(i));
-            }
-        }
-        popQ.remove();
-    }
-
-    // Get the top element.
-    public int top() {
-        if (popQ.isEmpty()) {
-            ArrayList<Integer> al = new ArrayList<Integer>();
-            while (!pushQ.isEmpty()) {
-                al.add(pushQ.remove());
-            }
-            for (int i = al.size() - 1; i >= 0; i --) {
-                popQ.add(al.get(i));
-            }
-        }
-        return popQ.peek();
-    }
-
-    // Return whether the stack is empty.
-    public boolean empty() {
-        return pushQ.isEmpty() && popQ.isEmpty();
-    }
-    */
     
     Queue<Integer> q = new LinkedList<Integer>();
     public void push(int x) {

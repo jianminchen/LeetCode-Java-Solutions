@@ -9,7 +9,6 @@ public class Solution {
         // i from 0, to s.length() - 1.
         List<String> res = new ArrayList<>();
         
-        // how to fail fast????
         Set<Character> charSet = new HashSet<>();
         for (String str : wordDict) {
             for (int i = 0; i < str.length(); ++i) {
@@ -29,8 +28,6 @@ public class Solution {
         if (wordDict.contains(s.substring(s.length() - 1))) {
             List<List<String>> last = new ArrayList<>();
             List<String> newList = new LinkedList<>();
-            // don't forget this line!!!!!!!!!!!!!
-            // index out of bound caused: "a", ["a"];
             newList.add(s.substring(s.length() - 1));
             last.add(newList);
             table.set(s.length() - 1, last);

@@ -22,8 +22,6 @@ public class BSTIterator {
             stk.push(cur);
             cur = cur.left;
         }
-        // if (stk.isEmpty()) cur = null;
-        // else cur = stk.peek();
     }
 
     /** @return whether we have a next smallest number */
@@ -33,12 +31,6 @@ public class BSTIterator {
 
     /** @return the next smallest number */
     public int next() {
-
-        /* the following is wrong !!!!!!!1
-        do {
-            cur = stk.pop();
-        } while (!stk.isEmpty() && (stk.peek().right == null || stk.peek().right == cur));
-        */
         TreeNode cur = stk.pop();
         int returnValue = cur.val;
         if (cur.right != null) {
@@ -51,7 +43,6 @@ public class BSTIterator {
         else {
             ;
         }
-        // if (!stk.isEmpty()) cur = stk.peek();
         return returnValue;
     }
 }

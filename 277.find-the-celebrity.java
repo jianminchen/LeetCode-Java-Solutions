@@ -26,15 +26,9 @@ public class Solution extends Relation {
             }
             candidate = newCand;
         }
-        // System.out.print(candidate.get(0));
-        
-        // checking consists of two parts!!!!!!!!!!!!!!!!!!!!!!
         for (int i = 0; i < n; ++i) {
-            // should exclude itself in the checking !!!!!!!!!!!!!!!!!!!!!!!!!
-            // if (knows(candidate.get(0), i)) return -1;
             if (i != candidate.get(0) && knows(candidate.get(0), i)) return -1;
         }
-        // checking consists of two parts!!!!!!!!!!!!!!!!!!!!!!
         for (int i = 0; i < n; ++i) {
             if (i != candidate.get(0) && !knows(i, candidate.get(0))) return -1;
         }

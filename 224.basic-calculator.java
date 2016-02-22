@@ -31,10 +31,8 @@ public class Solution {
                 if (s.charAt(i) == '+' || s.charAt(i) == '-' || s.charAt(i) == '(') {
                     operatorStk.push(s.charAt(i));
                 }
-                else { // s.charAt(i) == ')'
-                    // operatorStk.pop(); // the last char must be '(', wrong !!!!!!!!!!
+                else {
                     while (operatorStk.peek() != '(') calculate(operatorStk, numStk);
-                    // wrong answer: "(7)-(0)+(4)", output 3, exptected 11;
                     operatorStk.pop();
                     while (!operatorStk.isEmpty() && (operatorStk.peek() == '+' || operatorStk.peek() == '-')) {
                         calculate(operatorStk, numStk);

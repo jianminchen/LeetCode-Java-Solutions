@@ -13,11 +13,6 @@
  */
 public class Solution {
     public int countUnivalSubtrees(TreeNode root) {
-        // if root.left == null && root.right == null.
-        // what should be returned? test case shows 1.
-        // if all nodes have the same value, does itself count one?
-        // clarify things first!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
         if (root == null) return 0;
         if (root.left == null && root.right == null) return 1;
         int count = 0;

@@ -14,8 +14,6 @@ public class Solution {
         int jmid = ja + ((jb - ja)>>1);
         if (target == matrix[imid][jmid]) return true;
         else if (target < matrix[imid][jmid]) {
-            // wrong answer!!! it is not this simple.
-            // return searchMatrix(matrix, target, ia, ja, imid, jmid);
             return searchMatrix(matrix, target, ia, ja, imid - 1, jb) ||
                    searchMatrix(matrix, target, imid, ja, ib, jmid - 1);
         }

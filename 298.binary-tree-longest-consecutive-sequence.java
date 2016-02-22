@@ -20,14 +20,12 @@ public class Solution {
         int maxLen = 0;
         while (true) {
             while (cur != null) {
-                // only modify len when pushing is not enough.
                 if (stk.isEmpty() || cur.val != stk.peek().val + 1) {
                     len = 1;
                 }
-                else { // !stk.isEmpty() && cur.val = stk.peek().val + 1
+                else {
                     len = lenStk.peek() + 1;
                 }
-                // how can you forget this line??????????????!!!!!!!!!!!!!!!!!
                 stk.push(cur);
                 lenStk.push(len);
                 maxLen = Math.max(maxLen, len);

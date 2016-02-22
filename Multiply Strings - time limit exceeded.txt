@@ -17,14 +17,7 @@ public class Solution {
             for (int j = 1; j <= i; j ++)
                 products[i] = products[i] + "0";
         }
-        /*result = "0";
-        for (int i = 0; i <= len2 - 1; i ++)
-        {
-            result = add(result, products[i]);
-        }
-        return result; // this have time limit exceeded. thus, designed a recursive method: addAll(String[] ); divide and conquer approach.
-        // but still time limit exceeded.
-        */
+
         result = addAll(products);
         return result;
     }

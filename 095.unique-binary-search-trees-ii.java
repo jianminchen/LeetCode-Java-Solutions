@@ -14,11 +14,7 @@
 public class Solution {
     public List<TreeNode> generateTrees(int n) {
         List<TreeNode> res = new ArrayList<>();
-        if (n <= 0) { 
-            // wrong answer for input n = 0.
-            // output : []
-            // expected: [[]] ????????????
-            // return res;
+        if (n <= 0) {
             TreeNode root = null;
             res.add(root);
             return res;

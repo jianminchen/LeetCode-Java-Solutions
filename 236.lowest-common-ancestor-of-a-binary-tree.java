@@ -33,7 +33,6 @@ public class Solution {
                 cur = cur.left;
             }
             if (stk.size() == 0) break;
-            // ArrayList does not have removeLast, getLast methods!!!!!!!!!!!
             if (stk.get(stk.size() - 1).right != null) {
                 cur = stk.get(stk.size() - 1).right;
             }

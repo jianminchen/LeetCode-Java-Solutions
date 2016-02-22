@@ -8,7 +8,7 @@ public class Solution {
         if (sLen == 0) {
             return newString;
         }
-        if (nRows == 1) { //////////////// this is a special case!!!!
+        if (nRows == 1) {
             newString = new String(s);
             return newString;
         }
@@ -26,7 +26,7 @@ public class Solution {
                 for (int pos = i; pos <= sLen - 1; pos = pos + 2*nRows - 2) {
                     newString = newString + Character.toString(s.charAt(pos));
                     int secondPos = pos + 2*(nRows -i - 1);
-                    if (secondPos <= sLen-1) { // every time, make sure the position you are trying to access is valid!!!!
+                    if (secondPos <= sLen-1) {
                         newString = newString + Character.toString(s.charAt(secondPos) );
                     }
                 }                

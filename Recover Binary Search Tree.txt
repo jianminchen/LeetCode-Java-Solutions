@@ -13,16 +13,6 @@ public class Solution {
     public TreeNode prev = new TreeNode(Integer.MIN_VALUE);
     
     public void recoverTree(TreeNode root) {
-        /*
-        TreeNode prev = null;
-        TreeNode cur = null;
-        TreeNode traversal = root;
-        if (root == null)
-            return;
-        if (root.left == null && root.right == null)
-            return;
-        while (traversal != null)
-        */ // using a stack for inorder traversal will be O(n) space.
         
         inorderTraversal(root);
         if (root == null)

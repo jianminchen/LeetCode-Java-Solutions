@@ -8,8 +8,6 @@ public class Vector2D {
     public Vector2D(List<List<Integer>> vec2d) {
         totalList = new ArrayList<Integer>();
         for (List<Integer> aList : vec2d) {
-            // previously written as alist, error: not variable named alist found!!!!!!!!!!!!!!!!!!
-            // use consistent naming conventions.
             for (Integer i : aList) {
                 totalList.add(i);
             }

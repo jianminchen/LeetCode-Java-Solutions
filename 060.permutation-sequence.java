@@ -21,7 +21,6 @@ public class Solution {
         boolean[] usedDigits = new boolean[n];
         for (int i = 0; i < n; ++i) {
             int dg = 1;
-            // if digits[i] == 1, realDigits[i] will be 2, wrong !!!!!!!
             for (int j = 1; j < digits[i]; ++j) {
                 while (usedDigits[dg - 1] == true) ++dg;
                 ++dg;

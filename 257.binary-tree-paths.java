@@ -43,8 +43,6 @@ public class Solution {
     }
     
     public String getString(Stack<TreeNode> stk) {
-        // error: no suitable constructor found for String(int)
-        // if (stk.size() == 1) return new String(stk.peek().val);
         if (stk.size() == 1) return (new Integer(stk.peek().val)).toString();
         ArrayList<TreeNode> al = new ArrayList<TreeNode>();
         while (!stk.isEmpty()) {

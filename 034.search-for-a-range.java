@@ -18,7 +18,6 @@ public class Solution {
                 res[1] = rightbound;
                 break;
             }
-            // both high = mid and high = mid - 1 works!!!!!!!!!
             else high = mid - 1;
         }
         return res;

@@ -11,12 +11,11 @@ public class Solution {
             if (s.length() == iPlus) break;
             int iMinus = iPlus;
             
-            // wrong answer caused by using s.charAt(iPlus) == '+' in the following line. !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
             while (iMinus < s.length() && s.charAt(iMinus) == '+') iMinus ++;
             
-            // generate the list given iPlus, and iMinus.
+
             if (iMinus == iPlus + 1) {
-                ; // no possible strings
+                ;
             }
             else {
                 for (int i = iPlus; i <= iMinus - 2; i++) {

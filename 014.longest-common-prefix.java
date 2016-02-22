@@ -4,9 +4,9 @@
 
 public class Solution {
     public String longestCommonPrefix(String[] strs) {
-        if (strs == null || strs.length == 0) return ""; // why do we need to return "", instead of null ????!!!!!!!!!!!!!!!!
+        if (strs == null || strs.length == 0) return ""; 
         for (int i = 0; i < strs.length; i ++) {
-            if (strs[i] == null) return "";// why do we need to return "", instead of null ????!!!!!!!!!!!!!
+            if (strs[i] == null) return "";
         }
         for (int i = 0; ; i++) {
             for (int j = 0; j < strs.length; j++) {

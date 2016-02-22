@@ -65,7 +65,6 @@ public class Solution {
         }
         return res;
     }
-    // error: cannot find symbol: method calcuate(int,Integer,Character) ?????    
     public int calculate(int num1, int num2, char op) {
         int num = 0;
         switch(op) {

@@ -4,15 +4,11 @@
 
 public class Solution {
     public int minCostII(int[][] costs) {
-        // array index out of bound for the following line:
-        // int[] minCost = new int[costs[0].length];
-        // need to check array length zero or not !!!!!!!!!!!!
         if (costs.length == 0 || costs[0].length == 0) return 0;
         int[] minCost = new int[costs[0].length];
         for (int k = 0; k < costs[0].length; ++k) {
             minCost[k] = costs[0][k];
         }
-        // minCost[k] is the min cost of painting previous houses that ends with color k.
         for (int i = 1; i < costs.length; ++i) {
             int newMinCost[] = new int[costs[0].length];
             for (int k = 0; k < costs[0].length; ++k) {

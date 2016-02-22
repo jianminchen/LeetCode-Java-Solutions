@@ -18,7 +18,6 @@ public class Solution {
             Set<List<Integer>> nextSet = new HashSet<>();
             nextSet.addAll(curSet);
             for (List<Integer> aRes : curSet) {
-                // need to create new list, otherwise, the old result will be repeatedly included.
                 List<Integer> newRes = new ArrayList<>();
                 newRes.addAll(aRes);
                 newRes.add(nums[i]);

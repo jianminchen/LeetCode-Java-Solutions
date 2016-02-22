@@ -4,7 +4,7 @@
 
 public class Solution {
     public boolean isPalindrome(int x) {
-        if (x < 0) return false; // don't forget this case, the problem doesn't say it is a non-negative integer!!!!!!!!!!!!
+        if (x < 0) return false;
         int tempX = x;
         int numDigit = 0;
         while (tempX > 0) {

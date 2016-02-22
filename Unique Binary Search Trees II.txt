@@ -17,15 +17,7 @@ public class Solution {
             TreeNode aResult = null;
             results.add(aResult);
             return results;
-        } // if not add "TreeNode aResult = null; results.add(aResult)", it will have runtime error.
-        // input : 0
-        // output: []
-        // expected: [{}]
-        // it means, we can generate a null tree from the given input??????????????????????!!!!!!!!!!!!!!!!!!!!!!!!!!
-        // how to understand: the results, is a list of treenodes. 
-        // so the content should be some treenode, whether it is null or not.
-        // also, you can't do " TreeNode aResult = new TreeNode(); results.add(aResult) "
-        // because, you don't have a TreeNode() constructor.
+        }
         
         results = generateTrees(start, end);
         return results;

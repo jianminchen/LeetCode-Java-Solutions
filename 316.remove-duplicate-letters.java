@@ -15,9 +15,6 @@ public class Solution {
             char c = s.charAt(i);
             --count[c - 'a'];
             if (visited[c - 'a']) continue;
-            
-            // if c is less than the last char of the sb, and the last char will 
-            // appear later, we should remove the last char.
             while (sb.length() > 0 && c < sb.charAt(sb.length() - 1) 
                    && count[sb.charAt(sb.length() - 1) - 'a'] > 0) {
                 visited[sb.charAt(sb.length() - 1) - 'a'] = false;

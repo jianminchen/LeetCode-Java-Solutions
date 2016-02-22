@@ -7,15 +7,6 @@ public class Solution {
         if (s == null || s.equals("")) return true;
         int i = 0, j = s.length() - 1;
         while (i < j) {
-            /* the characters can be alphabets and digits !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            if (!Character.isAlphabetic(s.charAt(i))) i ++;
-            else if (!Character.isAlphabetic(s.charAt(j))) j --;
-            else {
-                if (Character.toLowerCase(s.charAt(i)) != Character.toLowerCase(s.charAt(j)))
-                    return false;
-                i ++; j --;
-            }
-            */
             if (!Character.isAlphabetic(s.charAt(i)) && !Character.isDigit(s.charAt(i)) ) i ++;
             else if  (!Character.isAlphabetic(s.charAt(j)) && !Character.isDigit(s.charAt(j))) j --;
             else {

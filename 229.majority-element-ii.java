@@ -47,7 +47,6 @@ public class Solution {
             if (second == nums[i]) ++secondCount;
         }
         if (firstCount > nums.length / 3) res.add(first);
-        // we don't want duplicates! the duplicates can be due to initializations!!!!!!!!!!!!
         if (first != second && secondCount > nums.length / 3) res.add(second);
         return res;
     }

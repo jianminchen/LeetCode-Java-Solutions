@@ -11,11 +11,9 @@ public class Solution {
             for (int[] nb : getNeighbors(m, n, pos[0], pos[1])) {
                 int neighbor = nb[0] * n + nb[1];
                 if (parents[neighbor] != -1) {
-                    int neighborRoot = find(parents, neighbor); // find the root of the neighbor
-                    if (neighborRoot != cur) { // if the neighbor's root is not the same as new root. merge them.
+                    int neighborRoot = find(parents, neighbor);
+                    if (neighborRoot != cur) {
                         --count;
-                        // wrong !!! we should change the parent of the root, not the neighbor itself.
-                        // parents[neighbor] = cur;
                         parents[neighborRoot] = cur; 
                     }
                 }
@@ -28,8 +26,6 @@ public class Solution {
     public int find(int[] parents, int i) {
         if (parents[i] == i) return i;
         i = parents[i];
-        // without return, error.
-        // find(parents, i);
         return find(parents, i);
     }
     

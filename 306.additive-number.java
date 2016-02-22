@@ -37,22 +37,14 @@ public class Solution {
         int i = s1.length() - 1, j = s2.length() - 1;
         int cIn = 0;
         while ( i >= 0 || j >= 0) {
-            // why not use some simple variables ????????????????
-            // previously used digit1, digit2
-            // int digit1 = 0;
-            // int digit2 = 0;
             int dgt1 = 0;
             int dgt2 = 0;
-            // wrong answer reported when used s1.charAt(j) - '0'.
-            // can you just be careful???
             if (i >= 0) dgt1 = s1.charAt(i) - '0';
             if (j >= 0) dgt2 = s2.charAt(j) - '0';
             int sum = cIn + dgt1 + dgt2;
             int dgt = sum % 10;
             cIn = sum / 10;
-            // StringBuilder does not support plus with integers????!!!!!!!!
             s = dgt + s;
-            // don't forget update i and j.
             --i;
             --j;
         }

@@ -11,18 +11,13 @@ public class Solution {
         }
         if (lower < nums[0]) {
             res.add(getRange(lower, nums[0] - 1));
-            // why do you have return here ?????????????????????!!!!!!!!!!!!!!!!!!!!!!!
-            // return res;
         }
         for (int i = 1; i < nums.length; ++i) {
             if (nums[i] != nums[i - 1] + 1) {
                 res.add(getRange(nums[i - 1] + 1, nums[i] - 1));
             }
         }
-        System.out.println(upper);
-        System.out.println(nums[nums.length - 1]);
         if (upper > nums[nums.length - 1]) {
-            System.out.println("What the hell?");
             res.add(getRange(nums[nums.length - 1] + 1, upper));
         }
         return res;

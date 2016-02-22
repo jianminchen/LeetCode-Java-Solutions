@@ -9,10 +9,8 @@ public class Solution {
 
         List<List<String>> first = new ArrayList<>();
         List<String> firstP = new ArrayList<>();
-        // firstP.add("");
         first.add(firstP);
         results.add(first);
-        // results.get(0);
             
         for (int i = 1; i <= s.length(); ++i) {
             List<List<String>> cur = new ArrayList<>();
@@ -25,12 +23,10 @@ public class Solution {
                         List<String> curP = new ArrayList<>();
                         curP.addAll(prev);
                         curP.add(s.substring(j, i));
-                        // withou this line, result empty !!!!!!!!!!!
                         cur.add(curP);
                     }
                 }
             }
-            // without this line, array index outof bound.
             results.add(cur);
         }
         return results.get(s.length());

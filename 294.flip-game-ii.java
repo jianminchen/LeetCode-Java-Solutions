@@ -4,27 +4,6 @@
 
 public class Solution {
     public boolean canWin(String s) {
-        // analysis:
-        // if the minimum remaining steps is odd, the initial mover can win
-        // for a sequence of k continuous "+", the min step is (k + 1)/3.
-        // unfortunatly, the analysis is wrong.
-        // ++++++, ++, ++.
-        // if the first move is :++--++, ++, ++.
-        // the first mover wins.
-        // if the first move is :--++++, ++, ++.
-        // the second mover wins.
-        
-        
-        // how about recursive solution: 
-        // consider all possible moves, if one way can way then, the first move can win.
-        // the basic case: no possible moves, must fail.
-        // time complexity: exponential.
-        
-        // first generatl all possible situations after a move.
-        // if no move can be done, return an empty list.
-        
-        // if the return list is empty, return false.
-        // else go through all possible moves, if in one case, second mover cannot win, we can win.
         List<String> list = generateAll(s);
         if (list.isEmpty()) return false;
         boolean canW = false;

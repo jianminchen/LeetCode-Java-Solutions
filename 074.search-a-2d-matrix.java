@@ -10,13 +10,7 @@ public class Solution {
         int rCand = -1;
         while (true) {
             if (low > high) return false;
-            /* this seems not necessary ?
-            if (low == high) {
-                if (target < matrix[low][0] || target > matrix[low][matrix[0].length - 1]) return false;
-                rCand = low;
-                break;
-            }
-            */
+
             int mid = low + ((high - low)>>1);
             if (target < matrix[mid][0]) high = mid - 1;
             else if (target >= matrix[mid][0] && target <= matrix[mid][matrix[0].length - 1]) {

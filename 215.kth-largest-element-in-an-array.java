@@ -4,14 +4,7 @@
 
 public class Solution {
     public int findKthLargest(int[] nums, int k) {
-        /*
-        int newNum[] = new int[nums.length];
-        for (int i = 0; i < newNum.length; ++i) {
-            newNum[i] = nums[i];
-        }
-        Arrays.sort(newNum);
-        return newNum[newNum.length - k];
-        */
+	// could use quickselect algorithm to make it O(n).
         PriorityQueue<Integer> pq = new PriorityQueue<>();
         for (int i = 0; i < k; ++i) {
             pq.add(nums[i]);

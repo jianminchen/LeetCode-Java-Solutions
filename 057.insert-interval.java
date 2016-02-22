@@ -13,20 +13,7 @@
  */
 public class Solution {
     public List<Interval> insert(List<Interval> intervals, Interval newInterval) {
-        /*
-        if (newInterval.end < intervals.get(0).start) {
-            intervals.add(0, newInterval); return intervals;
-        }
-        if (newInterval.start > intervals.get(intervals.size() - 1).end) {
-            intervals.add(newInterval); return intervals;
-        }
-        int i = intervals.length - 1;
-        while (i >= 0 && newInterval.start < intervals.get(i).start) --i;
-        int startAfter = i;
-        i = 0;
-        while (i <= intervals.length - 1 && newInterval.end > intervals.get(i).end) ++i;
-        int endBefore = i;
-        */
+
         Iterator<Interval> iter = intervals.iterator();
         List<Interval> newInts = new ArrayList<>();
         
@@ -35,7 +22,7 @@ public class Solution {
             return newInts;
         }
         
-        Interval cur = null; // initialization required !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        Interval cur = null;
         while (iter.hasNext()) {
             cur = iter.next();
             if (newInterval.start > cur.end) {
@@ -43,8 +30,6 @@ public class Solution {
             }
             else break;
         }
-        // wrong answer for input [1, 5], [6, 8].
-        // wrong answer for input [[1,5]] [2,3]
         if (!iter.hasNext()) {
             if (newInterval.end < cur.start) {
                 newInts.add(newInterval);
@@ -62,13 +47,6 @@ public class Solution {
             }
             else { // newInterval.end > cur.end;
                 if (newInterval.start > cur.end) {
-                    // wrong answer for: [[1,5], [6,8]]
-                    // Output:
-                    // [[1,5],[1,5],[6,8]]
-                    // Expected:
-                    // [[1,5],[6,8]]
-
-                    // newInts.add(cur);
                     newInts.add(newInterval);
                     return newInts;
                 }
@@ -93,11 +71,6 @@ public class Solution {
             }
         } while (iter.hasNext());
         
-        /*if (!iter.hasNext()) {
-            newInts.add(new Interval(newStart, Math.max(cur.end, newInterval.end)));
-            return newInts;
-        }
-        */
         if (newInterval.end < cur.start) {
             newEnd = newInterval.end;
             newInts.add(new Interval(newStart, newEnd));

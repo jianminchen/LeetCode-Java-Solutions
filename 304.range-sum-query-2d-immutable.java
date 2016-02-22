@@ -5,33 +5,15 @@
 public class NumMatrix {
     int[][] sumMatrix;
     public NumMatrix(int[][] matrix) {
-        // run time error!!!!!
-        // last executed input: [] ??????????????
-        /*
-        if (matrix == null) {
-            sumMatrix = null;
-            return;
-        }
-        */
         if (matrix == null || matrix.length == 0 || 
             matrix[0] == null || matrix[0].length == 0) return;
         int m = matrix.length;
         int n = matrix[0].length;
         sumMatrix = new int[m + 1][n + 1];
-        // sumMatrix[i][j] will be the sum of numbers with ii <= i - 1, 
-        // and jj <= j - 1.
+
         for (int i = 0; i <= n; ++i) sumMatrix[0][i] = 0;
         for (int i = 0; i <= m; ++i) sumMatrix[i][0] = 0;
-        
-        // the following logic is wrong !!!!!!!!!!
-        /*
-        for (int i = 1; i <= m; ++i) {
-            for (int j = 1; j <= n; ++j) {
-                sum += matrix[i - 1][j - 1];
-                sumMatrix[i][j] = sum;
-            }
-        }
-        */
+
         for (int i = 1; i <= m; ++i) {
             int sum = 0;
             for (int j = 1; j <= n; ++j) {

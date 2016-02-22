@@ -17,8 +17,7 @@ public class Solution {
         // method 2: inorder traversal, then, binary search to find the closest value.
         if (root.left == null && root.right == null) return root.val;
         else if (root.left == null && root.right != null || 
-                 root.right != null && target >= root.val) { // in these cases, only consider the right subtree and the root.
-                     // what should be the clean and clear conditions????????
+                 root.right != null && target >= root.val) {
             if (target <= root.val) return root.val;
             else {
                 int smallest = getSmallest(root.right);

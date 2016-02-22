@@ -19,7 +19,6 @@ public class Solution {
         while (true) {
             // not valid: backtrack:
             if (stk.peek() > n) backtrack(stk, n, k);
-            // valid: go forward (the next may or may not be valid)
             else {
                 // get a result
                 List<Integer> al = generateResultGivenStack(stk);
@@ -46,7 +45,6 @@ public class Solution {
     public void backtrack(Stack<Integer> stk, int n, int k) {
         // the input is a result where the top of the stack is >  n.
         int popCount = 0;
-        // don't forget the empty checking !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         while (!stk.isEmpty() && stk.peek() + (k - stk.size()) >= n) {
             stk.pop();
             ++popCount;

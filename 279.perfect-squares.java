@@ -15,7 +15,7 @@ public class Solution {
             int j = 1;
             for (; j < i / j; ++j) {
                 num[i-1] = Math.min(num[i - j * j - 1] + 1, num[i - 1]);
-            } // if you want to use j outside of for, define it outside !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            }
             if (i == j * j) num[i - 1] = 1;
         }
         return num[n - 1];

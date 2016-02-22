@@ -13,7 +13,6 @@
 public class Solution {
     public ListNode reverseKGroup(ListNode head, int k) {
         ListNode dummy = new ListNode(0);
-        // how can you forget this line ???????????????
         dummy.next = head;
         ListNode prev = dummy;
         ListNode cur = prev.next;
@@ -33,16 +32,11 @@ public class Solution {
                 while (rCur.next != cur) {
                     ListNode rNext = rCur.next;
                     rCur.next = rNext.next;
-                    // previously written as rNext = rCur!!!!!!!!!
-                    // this will delete a node !!!!!!!!!!!!!!!!!!!
-                    // draw some pictures to see it clearly!!!!!!!
-                    // run some more cases, with at least 3 nodes, to verify the code !!!!!!!!!!
-                    rNext.next = prev.next; // rNext will always be the prev's next !!!!!!!!!!!!
+                    rNext.next = prev.next;
                     prev.next = rNext;
                 }
-                
+                // after this, update prev, and cur.                
                 prev = rCur;
-                // after this, update prev, and cur.
             }
         }
         return dummy.next;

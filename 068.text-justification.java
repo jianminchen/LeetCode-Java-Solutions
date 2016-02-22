@@ -8,7 +8,6 @@ public class Solution {
         List<Integer> length = new ArrayList<>();
         
         List<String> first = new ArrayList<>();
-        // don't forget this line!!!!!!!!!!!!!!!!!!
         lists.add(first);
         length.add(0);
         for (int i = 0; i < words.length; ++i) {
@@ -50,21 +49,6 @@ public class Solution {
             }
             else {
                 int num = n - 1;
-                /* this "special" case can be included into the general case ???!!!
-                if (nSpace % num == 0) {
-                    // evenly distributed.
-                    int each = nSpace / num;
-                    StringBuilder sb = new StringBuilder();
-                    for(int k = 0; k < lists.get(i).size() - 1; ++k) {
-                        sb.append(lists.get(i).get(k));
-                        for (int j = 0; j < each; ++j) {
-                            sb.append(" ");
-                        }
-                    }
-                    sb.append(lists.get(i).get(lists.get(i).size() - 1));
-                    res.add(new String(sb));
-                }
-                */
                 int each = nSpace / num;
                 int remainder = nSpace % num;
                 StringBuilder sb = new StringBuilder();

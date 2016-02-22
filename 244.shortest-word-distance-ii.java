@@ -24,7 +24,6 @@ public class WordDistance {
         int min = Integer.MAX_VALUE;
         for (int i = 0; i < list1.size(); ++i) {
             for (int j = 0; j < list2.size(); ++j) {
-                // previously written as Math.abs(i - j), wrong !!!!!!!!!!!!!!!!!!!!!!
                 min = Math.min(min, Math.abs(list1.get(i) - list2.get(j)));
             }
         }

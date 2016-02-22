@@ -16,7 +16,7 @@ public class Solution {
         ListNode prev = null;
         ListNode cur = head;
         ListNode end = cur;
-        while (cur != null) {  // previously, written as while (true) , error!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        while (cur != null) {
             while (end.next != null && end.next.val == cur.val) {
                 end = end.next; // go to the last duplicate value;
             }

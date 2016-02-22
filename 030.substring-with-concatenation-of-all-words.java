@@ -14,13 +14,10 @@ public class Solution {
                 }
                 for (int j = i + wL; j + dictL <= s.length(); j = j + wL) {
                     // update the map
-                    // System.out.print(j + " ");
                     String prev = s.substring(j - wL, j);
                     curMap.put(prev, curMap.get(prev) - 1);
                     if (curMap.get(prev) == 0) curMap.remove(prev);
                     String last = s.substring(j + dictL - wL, j + dictL);
-                    // previously written as curMap.containsKey(last) ? 0 : curMap.get(last) + 1;
-                    // what the hell???!!!
                     curMap.put(last, !curMap.containsKey(last) ? 1 : curMap.get(last) + 1);
                     // check the map
                     if (dictMap.equals(curMap)) res.add(j);

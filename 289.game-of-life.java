@@ -23,8 +23,6 @@ public class Solution {
         
         for (int i = 0; i < board.length; ++i) {
             for (int j = 0; j < board[0].length; ++j) {
-                // previously written as board[i][j] >> 1.
-                // not a statement !!!!!!! need to assign the value, it is not assiging to itself by default!!!!
                 board[i][j] = board[i][j] >> 1;
             }
         }

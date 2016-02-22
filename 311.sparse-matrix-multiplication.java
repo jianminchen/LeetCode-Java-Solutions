@@ -29,8 +29,6 @@ public class Solution {
             for (int j = 0; j < res[0].length; ++j) {
                 if (rowZero[i] || columnZero[j]) res[i][j] = 0;
                 else {
-                    // res[i][j] = 0; the initiazlization is not necessary, and if 
-                    // you want to do so, do put it in the following following for loop.
                     for (int k = 0; k < A[0].length; ++k) {
                         if (A[i][k] != 0 && B[k][j] != 0) {
                             res[i][j] += A[i][k] * B[k][j];

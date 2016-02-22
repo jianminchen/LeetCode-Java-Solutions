@@ -15,14 +15,11 @@ public class Solution {
         TreeLinkNode layerHead = root;
         while (layerHead != null) {
             TreeLinkNode nextLayerHead = null;
-            TreeLinkNode layerCur = layerHead; // traverse in the current layer
-            // tends to write LinkNOde, instead of LinkNode, why ????!!!!!!!!!!!!!!!!!!!!!!!!!!
+            TreeLinkNode layerCur = layerHead;
             TreeLinkNode nextLayerPrev = null; // modify in the next layer
             while (layerCur != null) {
                 if (layerCur.left == null && layerCur.right == null) ; // go to the next node in this layer
                 else {
-                    // at least one node is not null.
-                    // left not null
                     if (layerCur.left != null && layerCur.right == null) {
                         if (nextLayerHead == null) {
                             nextLayerHead = layerCur.left;
@@ -30,7 +27,7 @@ public class Solution {
                         else {
                             nextLayerPrev.next = layerCur.left;
                         }
-                        nextLayerPrev = layerCur.left; // this is the common operation for the two cases, can simplify!!!
+                        nextLayerPrev = layerCur.left;
                     }
                     // right not null
                     else if (layerCur.left == null && layerCur.right != null)  {
@@ -40,7 +37,7 @@ public class Solution {
                         else {
                             nextLayerPrev.next = layerCur.right;
                         }
-                        nextLayerPrev = layerCur.right; // this is the common operation for the two cases, can simplify!!!
+                        nextLayerPrev = layerCur.right;
                     }
                     // both not null
                     else {// layerCur.left != null and layerCur.right != null
@@ -50,8 +47,8 @@ public class Solution {
                         else {
                             nextLayerPrev.next = layerCur.left;
                         }
-                        layerCur.left.next = layerCur.right; // this is the common operation for the two cases, can simplify!!!
-                        nextLayerPrev = layerCur.right; // this is the common operation for the two cases, can simplify!!!
+                        layerCur.left.next = layerCur.right;
+                        nextLayerPrev = layerCur.right;
                     }
                 }
                 layerCur = layerCur.next;

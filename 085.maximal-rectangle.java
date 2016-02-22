@@ -10,12 +10,11 @@ public class Solution {
             int k = 0;
             while (k < matrix.length && matrix[k][j] == '1') {
                 ++height[j];
-                ++k; // don't forget this line, otherwise, time limit exceeded!!!!!!!!!
+                ++k;
             }
         }
         int maxArea = largestRectangleArea(height);
         for (int i = 1; i < matrix.length; ++i) {
-            // iterate from the second row;
             int[] nextHeight = new int[matrix[0].length];
             for (int j = 0; j < matrix[0].length; ++j) {
                 if (height[j] >= 2) nextHeight[j] = height[j] - 1;
@@ -23,7 +22,7 @@ public class Solution {
                     int k = i;
                     while (k < matrix.length && matrix[k][j] == '1') {
                         ++nextHeight[j];
-                        ++k; // don't forget this line, otherwise, time limit exceeded!!!!!!!!!
+                        ++k;
                     }
                 }
             }

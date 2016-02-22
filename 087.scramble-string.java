@@ -10,7 +10,6 @@ public class Solution {
         Map<Character, Integer> hm1 = new HashMap<>();
         Map<Character, Integer> hm2 = new HashMap<>(); // help to return false quickly.
         for (int i = 0; i < s1.length(); ++i) {
-            // containsKey for HashMap !!!!!!!!!!!!!!!
             if (hm1.containsKey(s1.charAt(i))) {
                 hm1.put(s1.charAt(i), hm1.get(s1.charAt(i)) + 1);
             }

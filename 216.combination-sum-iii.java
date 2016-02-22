@@ -9,7 +9,7 @@ public class Solution {
     public int k;
     public List<List<Integer>> combinationSum3(int k, int n) {
         List<List<Integer>> res = new ArrayList<List<Integer>>();
-        stk = new Stack<Integer>(); // you must do this before you can use the stack!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        stk = new Stack<Integer>();
         this.n = n;
         this.k = k;
         if (k > 9) return res;
@@ -21,27 +21,6 @@ public class Solution {
 
         // we use a stack that has k - 1 values, to represent a solution, the last number will be n - sum
         while (true) {
-            // organize the following code
-            /*
-            // all numbers less than or equal to 9, thus, if the second last number is 9, we backtrack.
-            if (stk.peek() >= 9) backtrack();
-            else if (sum + 9 < n) { // the maximum sum is less than n, we do not bactrack, we go forward one step!!!!!!!
-                stk.push(stk.pop() + 1);
-                sum += 1;
-            }
-            // if the minimum sum will be greater than n, we backtrack.
-            else if (sum + stk.peek() + 1 > n) backtrack(); 
-            else { // sum + 9 >= max, sum + stk.peek() + 1 <= n. we have some solution here:
-                // this is the case where are are assured to find a combination.
-                // thus, we find a solution, and then, go forward one step.
-                List<Integer> list = getResultGivenStack(); 
-                res.add(list);
-                stk.push(stk.pop() + 1);
-                sum = sum + 1;
-            }
-            if (stk.isEmpty()) break;
-            */
-            // organize the above code.
             int last = n - sum;
             if (last > 9) {
                 stk.push(stk.pop() + 1);
@@ -86,14 +65,10 @@ public class Solution {
             stk.push(stk.pop() + 1);
             sum = sum + 1;
             minN = sum; 
-            // if a variable is defined in the do loop, the conditions in while loop will not see it !!!!!!!!!!!
-            // and will have compile error: cannot find symbol: variable minN
             for (int i = 0; i < k - stk.size(); ++i) {
                 minN += stk.peek() + 1 + i;
             }
         } while (!stk.isEmpty() && (stk.peek() >= 9 || minN > n));
-        
-        // if (stk.isEmpty()) return;
         
         for (int i = 0; i < popCount; ++i) {
             sum += stk.peek() + 1;

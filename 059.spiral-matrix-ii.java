@@ -6,7 +6,6 @@ public class Solution {
     public int[][] generateMatrix(int n) {
         // fill int the array from the outmost circle to the innermost circle.
         // for each circle, fill in the first upper row, right column, lower row, left column, one by one.
-        // what if n < 0????
         n = Math.abs(n);
         int layers = n >> 1;
         int num = 1;

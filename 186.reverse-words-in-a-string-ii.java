@@ -15,12 +15,6 @@ public class Solution {
     }
     public void reverse(char[] s, int from, int to) {
         for (int i = 0; i <= (to - from)>>1; ++i) {
-            // swap from + i, and to - i;
-            /* error: incompatible types: possible lossy conversion from int to char
-            s[from + i] = s[from + i] ^ s[to - i];
-            s[to-i] = s[from + i] ^ s[to - i];
-            s[from + i] = s[from + i] ^ s[to - i];
-            */
             char temp = s[from + i];
             s[from + i] = s[to - i];
             s[to - i] = temp;

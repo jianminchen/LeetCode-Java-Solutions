@@ -35,7 +35,7 @@ public class Solution {
         secondHead = reverse(secondHead);
         ListNode cur1 = head;
         ListNode cur2 = secondHead;
-        boolean result = true; // must initialize !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        boolean result = true; // must initialize !
         while (cur2 != null) {
             if (cur1.val != cur2.val) {
                 result = false;

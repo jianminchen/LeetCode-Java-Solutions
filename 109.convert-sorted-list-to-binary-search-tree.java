@@ -32,15 +32,6 @@ public class Solution {
     }
     public TreeNode toBST(List<Integer> list, int low, int high) {
         if (high < low) return null;
-        
-        /* the case of high == low can be included by the general code
-        // although considering it as a special case can reduce the recursive depth.
-        // it will not reduce the execution time.
-        if (high == low) {
-            TreeNode root = new TreeNode(list.get(low));
-            return root;
-        }
-        */
         int mid = low + ((high - low)>>1);
         TreeNode root = new TreeNode(list.get(mid));
         root.left = toBST(list, low, mid - 1);

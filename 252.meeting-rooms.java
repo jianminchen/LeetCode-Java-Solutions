@@ -12,7 +12,6 @@
  * }
  */
 public class Solution {
-    // no dots between  extends Interval and implements Comparable<MyInterval> !!!!!!!!!!!!!!!!
     public class MyInterval extends Interval implements Comparable<MyInterval> {
         public MyInterval(int s, int e) {
             start = s;
@@ -26,7 +25,6 @@ public class Solution {
         }
     }
     public boolean canAttendMeetings(Interval[] intervals) {
-        // how should I sort the intervals if the Interval does not have the Comparable method?????????????
         MyInterval[] mis = new MyInterval[intervals.length];
         for (int i = 0; i < intervals.length; i ++) {
             mis[i] = new MyInterval(intervals[i].start, intervals[i].end);

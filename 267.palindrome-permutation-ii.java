@@ -37,7 +37,6 @@ public class Solution {
             res.add(s);
         }
         else if (hm.size() == 1) {
-            // must initialize !!!!!!!!!!! cannot initialize as '' !!!!????
             char someChar = 'a';
             for (char c : hm.keySet()) someChar = c;
             StringBuilder sb = new StringBuilder();
@@ -46,8 +45,7 @@ public class Solution {
             }
             res.add(new String(sb));
         }
-        else { // multiple keys.
-            // must initialize !!!!!!!!!!!
+        else {
             char someChar = 'a';
             for (char c : hm.keySet()) {
                 if (hm.get(c) % 2 == 0) {

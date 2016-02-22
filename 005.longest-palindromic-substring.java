@@ -13,7 +13,6 @@ public class Solution {
         }
         for (int k = 1; k < s.length(); ++k) {
             for (int i = 0; i < s.length() - k; ++i) {
-                // use isPalindrome[i + 1][i + k - 1]: instead of isPalindrome[i + 1][k - 1] !!!!!!!!!!!
                 if ((s.charAt(i) == s.charAt(i + k) && k == 1) || 
                 (s.charAt(i) == s.charAt(i + k) && isPalindrome[i + 1][i + k - 1])) {
                     isPalindrome[i][i + k] = true;

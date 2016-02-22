@@ -44,7 +44,6 @@ public class Solution {
                     cur.next = cur2;
                     cur2 = cur2.next;
                 }
-                // don't forget this !!!!!!!!!!!!!!1
                 cur = cur.next;
             }
         }

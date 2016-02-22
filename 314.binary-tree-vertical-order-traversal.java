@@ -46,14 +46,11 @@ public class Solution {
                 if (cur.right != null) q.add(cur.right);
             }
             else { // cur == null
-                // this if condition is a must, otherwise, time limit exceeded! endless while loop!
                 if (!q.isEmpty()) q.add(null);
             }
         }
         return 2 * nLevels - 1;
     }
-    // given the column number of the root, do a level order traversal and add nodes to
-    // corresponding location.
     public void helper(TreeNode root, int c) {
         if (root == null) return;
         Queue<TreeNode> q = new LinkedList<>();
@@ -76,7 +73,6 @@ public class Solution {
                 }
             }
             else {
-                // cur == null
                 if (!q.isEmpty()) {
                     q.add(null);
                 }

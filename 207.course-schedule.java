@@ -22,7 +22,7 @@ public class Solution {
                 }
             }
             if (toTake == 0) return false;
-            taken += toTake; // need to update, otherwise, will continue when taken == numCourses, will return false;
+            taken += toTake;
         }
         return true;
         

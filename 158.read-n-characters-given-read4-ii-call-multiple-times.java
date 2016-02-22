@@ -11,7 +11,6 @@ public class Solution extends Reader4 {
      * @param n   Maximum number of characters to read
      * @return    The number of characters read
      */
-     // not int, it is char !!!!!!!!!!!!!!!!!!!
     public char[] remain = new char[0];
     public int read(char[] buf, int n) {
         // notice that, the buf variable is not created within the function,
@@ -20,14 +19,10 @@ public class Solution extends Reader4 {
         if (n <=  remain.length) {
             int i = 0;
             int j = 0;
-            // buf = Arrays.copyOf(remain, n); // copy into a new array, can we use like this????
-            // after this, what will be the length of buf? buf is not a new array, it is provided by the outside caller?
-            // can we modify it????
-            // Don't modify buf !!!!!!!!!!!!
             for (; j < n; ++j, ++i) {
                 buf[i] = remain[j];
             }
-            remain = Arrays.copyOfRange(remain, n, remain.length); // this is OK, because we have total control over remain.
+            remain = Arrays.copyOfRange(remain, n, remain.length); 
             return n;
         }
         else {// n > remain.length
@@ -41,13 +36,8 @@ public class Solution extends Reader4 {
                     buf[bufi] = remain[remaini];
                     ++bufi;
                 }
-                // buf = Arrays.copyOf(remain, remain.length); // this will be a problem,
-                // because, we will reset the length of buf !!!!
-                // however, without this, we can assume that buf has a length greater than or equal to n!!!!
-                n = n - remain.length;
+		n = n - remain.length;
                 totalCount += remain.length;
-                // do this after the total count has changed.
-                // thus, update remain to consists of nothing!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                 remain = new char[0];
             }
             

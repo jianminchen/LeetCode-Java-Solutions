@@ -11,17 +11,7 @@ public class Solution {
             extra = remain[(i + 1) % gas.length];
         }
         if (remain[0] < 0) return -1;
-        /*
-        int maxIndex = 0;
-        int maxRemain = remain[0];
-        for (int i = 1; i < gas.length; ++i) {
-            if (remain[i] > maxRemain) {
-                maxIndex = i;
-                maxRemain = remain[i];
-            }
-        }
-        return (maxIndex + gas.length - 1) % gas.length;
-        */
+
         int minIndex = 0;
         int minRemain = remain[0];
         for (int i = 1; i < gas.length; ++i) {

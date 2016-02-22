@@ -20,13 +20,10 @@ public class Solution {
                 stkH.push(hList.get(i));
                 stkI.push(i);
             }
-            // else if (hList.get(i) == stkH.peek()) ;
-            else { // hList.get(i) < stkH.peek();
+            else {
                 while (hList.get(i) < stkH.peek()) {
                     int area = 0;
                     int high = stkH.pop();
-                    // wrong !! for input: 2 1 2
-                    // int index = stkI.pop();
                     stkI.pop();
                     int index = stkI.peek() + 1;
                     area = high * (i - index);

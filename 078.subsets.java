@@ -12,7 +12,6 @@ public class Solution {
             lists.add(list);
         }
         
-        // without this initialization, the output will be empty!!!!!!!!!!!!!!!!!!!!!!!!!
         List<Integer> firstList = new ArrayList<>();
         lists.add(firstList);
         
@@ -28,26 +27,7 @@ public class Solution {
             }
             lists = newLists;
         }
-        
-        
-        /*
-        for (int i = 0; i < nums.length; ++i) {
-            List<List<Integer>> newLists = new ArrayList<>();
-            // newLists.addAll(lists); // this is wrong !!!!
-            for (List<Integer> someList : lists) {
-                List<Integer> newList = new ArrayList<>();
-                List<Integer> newList2 = new ArrayList<>();
-                
-                newList.addAll(someList);
-                newList2.addAll(someList);
-                newList2.add(nums[i]);
-                newLists.add(newList);
-                newLists.add(newList2);
-            }
-            lists = newLists;
-        }
-        */
-        
+      
         return lists;
     }
 }

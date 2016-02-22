@@ -25,8 +25,7 @@ public class Solution {
                             fdIndex = i; // only update the index.
                         }
                     }
-                    // newFound not equal to fdWord.
-                    else { // word1 and word2 must not be equal, otherwise, newFound and fdWord will be equal
+                    else {
                         minDist = Math.min(minDist, i - fdIndex);
                         fdWord = newFound; // update the found word
                         fdIndex = i; // update the index for the found word.

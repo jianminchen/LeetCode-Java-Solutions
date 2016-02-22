@@ -33,8 +33,6 @@ public class Solution {
             sb.append(list.get(i).val);
         }
         
-        // wrong answer: "00" for 0, 0.
-        
         String res = new String(sb);
         boolean allZero = true;
         for (int i = 0; i < res.length(); ++i) {

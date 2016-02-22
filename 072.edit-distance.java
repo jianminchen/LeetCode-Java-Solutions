@@ -14,7 +14,6 @@ public class Solution {
             for (int j = 1; j <= len2; ++j) {
                 if (word1.charAt(i - 1) == word2.charAt(j - 1)) minDist[i][j] = minDist[i - 1][j - 1];
                 else {
-                    // add or delete,
                     minDist[i][j] = Math.min(minDist[i - 1][j] + 1, minDist[i][j - 1] + 1);
                     // replace:
                     minDist[i][j] = Math.min(minDist[i][j], minDist[i - 1][j - 1] + 1);

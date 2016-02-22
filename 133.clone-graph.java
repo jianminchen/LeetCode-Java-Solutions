@@ -17,9 +17,6 @@ public class Solution {
         // the hashMap means the mapping from nodes in the old graph, to the 
         // nodes in the new graph.
         Map<UndirectedGraphNode, UndirectedGraphNode> hm = new HashMap<>();
-        // UndirectedGraphNode newNode = new UndirectedGraphNode(node.label);
-        // hm.put(node, newNode); 
-        // either use newNode, or use hm.get(node) is OK!!!!!!!!
         Queue<UndirectedGraphNode> q = new LinkedList<>();
         q.add(node);
         

@@ -4,28 +4,7 @@
 
 public class Solution {
     public void rotate(int[] nums, int k) {
-        /* the following solution has time limit exceeded.
-        int kRight = k % nums.length;
-        int kLeft = nums.length - kRight;
-        if (kRight < kLeft) {
-            for (int i = 0; i < kRight; i ++) {
-                int temp = nums[nums.length - 1];
-                for(int j = nums.length - 2; j >= 0; j --) {
-                    nums[j + 1] = nums[j];
-                }
-                nums[0] = temp;
-            }
-        }
-        else {
-            for (int i = 0; i < kLeft; i ++) {
-                int temp = nums[0];
-                for(int j = 0; j <= nums.length - 2; j++) {
-                    nums[j] = nums[j+1];
-                }
-                nums[nums.length - 1] = temp;
-            } 
-        }
-        */
+
         k = k % nums.length;
         int secondHalf[] = new int[k];
         int n = nums.length;

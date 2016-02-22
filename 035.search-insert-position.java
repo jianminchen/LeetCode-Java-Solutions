@@ -22,7 +22,5 @@ public class Solution {
             }
         }
         return -1;
-        // missing return statement again ?????? why??????
-        // why do we need the return at the end, if a return is guaranteed withint the loop????
     }
 }

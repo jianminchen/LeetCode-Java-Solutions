@@ -78,11 +78,8 @@ public class Solution {
     		List<String> list = new ArrayList<String>();
     		list.addAll(stk);
     		ladders.add(list);
-    		// can't return here, we still need to restore the visited, and stk!!
-    		//return;
     	}
-    	// can't return directly here either.
-    	else if (dist == 0 || hm.get(word) > dist) /*return*/;
+    	else if (dist == 0 || hm.get(word) > dist) ;
     	else {
 			char[] cArr = word.toCharArray();
     		for (int i = 0; i < word.length(); ++i) {

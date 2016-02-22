@@ -6,12 +6,9 @@ public class Solution {
     public int removeDuplicates(int[] nums) {
         if (nums.length <= 2) return nums.length;
         int i = 0; // traverse index
-        int ri = 0; // write index.
-        // previously initialized these values as i, and ri, but failed too many times !!!!!!!
-        // how to think the most easy way to program ??????!!!!!!!
+        int ri = 0;
         while (i < nums.length) {
             int start = i;
-            // must have this line!!!!!!!
             ++i;
             while (i < nums.length && nums[i] == nums[i - 1]) {
                 ++i;

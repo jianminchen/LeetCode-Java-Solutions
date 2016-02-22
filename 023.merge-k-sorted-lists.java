@@ -27,8 +27,6 @@ public class Solution {
     }
     
     public ListNode mergeKLists(ListNode[] lists) {
-        // O(nk) or O(nlogk);
-        // how to record which list is being removed????
         ListNode dummy = new ListNode(0);
         ListNode prev = dummy;
         PriorityQueue<MyItem> pq = new PriorityQueue<MyItem>();
@@ -47,7 +45,6 @@ public class Solution {
             prev = prev.next;
             
             if (lists[r.i] != null) {
-                // if previously removed item is from this list, then add the next item in this list.
                 pq.add(new MyItem(lists[r.i].val, r.i));
             }
         }

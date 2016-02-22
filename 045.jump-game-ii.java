@@ -17,10 +17,6 @@ public class Solution {
             }
             max = newMax;
         }
-        /*
-        if (max < nums.length - 1) return false;
-        else return true;
-        */
         return minJump[nums.length - 1];
     }
 }

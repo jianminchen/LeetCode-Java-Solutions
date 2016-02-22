@@ -17,13 +17,12 @@ public class Solution {
         list2.add("11"); list2.add("88"); list2.add("69"); list2.add("96");
         lists.add(list2); // get(1)
         for (int i = 3; i <= n; ++i) {
-            int count = (i - 1) / 2; // from i - 2, i - 4, to 1, or 2. how many times we need to go.
+            int count = (i - 1) / 2;
             int start = 1;
             if (i % 2 == 0) start = 2; // start from 1, or 2.
             int zeros = count - 1;
             List<String> listi = new ArrayList<>();
             for (int j = 0; j < count; ++j) {
-                // get start - 1; start = start + 2;
                 for (String s : lists.get(start - 1)) {
                     for (int ci = 0; ci < chart.length; ++ci) {
                         StringBuilder sb = new StringBuilder();

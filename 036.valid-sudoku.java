@@ -10,8 +10,6 @@ public class Solution {
         // status[1][i]: the status of ith column.
         // status[2][i]: the status of ith grid.
         // status[i][j][k]: means whether the kth digit has already appeared.
-        // status[i][j][0]: for 1.
-        // status[i][j][1]: for 2. etc.
         for (int i = 0; i < len; i ++) {
             for (int j = 0; j < len; j++) {
                 if (board[i][j] == '.') ;

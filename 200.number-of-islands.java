@@ -27,24 +27,18 @@ public class Solution {
             visited[ci][cj] = true;
             if (ci - 1 >= 0 && grid[ci - 1][cj] == '1' && visited[ci - 1][cj] == false) {
                 q.add(new int[]{ci - 1, cj});
-                // without the following line, time limit exceeded !!!!!!!!!
-                // with the following line, passed !!!!!!!!!!!!!!!!!!!!!!!!!
-                // this can reduce the time complexity of breadth first search !!!!!!!!!!!
                 visited[ci - 1][cj] = true;
             }
             if (cj + 1 <= grid[0].length - 1 && grid[ci][cj + 1] == '1' && visited[ci][cj + 1] == false) {
                 q.add(new int[]{ci, cj + 1});
-                // this can reduce the time complexity of breadth first search !!!!!!!!!!!
                 visited[ci][cj + 1] = true;
             }
             if (ci + 1 <= grid.length - 1 && grid[ci + 1][cj] == '1' && visited[ci + 1][cj] == false) {
                 q.add(new int[]{ci + 1, cj});
-                // this can reduce the time complexity of breadth first search !!!!!!!!!!!
                 visited[ci + 1][cj] = true;
             }
             if (cj - 1 >= 0 && grid[ci][cj - 1] == '1' && visited[ci][cj - 1] == false) {
                 q.add(new int[]{ci, cj - 1});
-                // this can reduce the time complexity of breadth first search !!!!!!!!!!!
                 visited[ci][cj - 1] = true;
             }
         }

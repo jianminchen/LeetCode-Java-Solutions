@@ -27,7 +27,6 @@ public class Solution {
                 if (cur.left == null && cur.right == null && sum == s) {
                     return true;
                 }
-                // how can you forget this line ???????????!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                 cur = cur.left;
             }
             if (stk.isEmpty()) break;

@@ -25,7 +25,6 @@ public class Solution {
                 cur = cur.left;
             }
             if (stk.size() == 0) break;
-            // previously written as cur = cur.right; wrong !!!!!!!!
             if (stk.get(stk.size() - 1).right != null) cur = stk.get(stk.size() - 1).right;
             else {
                 do {
@@ -40,7 +39,6 @@ public class Solution {
     public int getNumber(List<TreeNode> stk) {
         int num = 0;
         for (int i = 0; i < stk.size(); ++i) {
-            // previously, written as num += num * 10 + stk.get(i).val. wrong !!!!!!!!!!!
             num = num * 10 + stk.get(i).val;
         }
         return num;

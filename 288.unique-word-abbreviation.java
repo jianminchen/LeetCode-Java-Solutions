@@ -21,10 +21,6 @@ public class ValidWordAbbr {
 
     public boolean isUnique(String word) {
         String key = getAbbreviation(word);
-        /*
-        if (!hm.containsKey(key)) return true;
-        return hm.get(key) <= 1;
-        */
         if (!hm.containsKey(key)) return true;
         if (hm.get(key).size() == 1 && hm.get(key).contains(word)) return true;
         return false;

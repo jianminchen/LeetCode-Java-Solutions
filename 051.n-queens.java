@@ -15,15 +15,12 @@ public class Solution {
 		List<Integer> stkC = new ArrayList<>();
 		
 		int i = 0;
-		// previously used the following, wrong answer for n = 1.
-		// while (stkC.size() != 0 || (stkC.size() == 0 && backtrack && bValue != n - 1)) {
 		while (true) {
 			// we consider the ith row.
 			int cand = -1;
 			if (backtrack == false) cand = 0;
 			else cand = bValue + 1;
 			while (cand < n && !canPlace(stkC, cand)) ++cand;
-			// System.out.println(i + " " + cand);
 			if (cand >= n) {
 				// backtrack
 				if (stkC.size() == 0) break; // no way to backtrack.
@@ -32,7 +29,6 @@ public class Solution {
 				i = i - 1;
 			}
 			else {
-				// we can place a queen at i, cand.
 				stkC.add(cand);
 				i = i + 1;
 				backtrack = false;
@@ -50,7 +46,6 @@ public class Solution {
 	}
 	
 	public boolean canPlace(List<Integer> stkC, int cand) {
-		// we are placing the stkC.size() th row, and the cand th column.
 		int ti = stkC.size();
 		int tj = cand;
 		for (int i = 0; i < stkC.size(); ++i) {

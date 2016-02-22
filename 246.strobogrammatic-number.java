@@ -4,9 +4,6 @@
 
 public class Solution {
     public boolean isStrobogrammatic(String num) {
-        // previously, used s for s.charAt(...).
-        // the String is now named num, not s !!!!!!!!!!!!!!! are you blind !!!!!!!!!?????????????????????
-        // did not consider zero, 0. !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         if (num == null || num.length() == 0) return true;
         if (num.length() % 2 == 1 && num.charAt(num.length()/2) != '1' 
             && num.charAt(num.length()/2) != '8' && num.charAt(num.length()/2) != '0') return false;

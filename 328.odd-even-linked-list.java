@@ -19,7 +19,7 @@ public class Solution {
             if (cur.next == null) break;
             next.next = cur.next.next;
             
-            cur = cur.next; // update cur!!!
+            cur = cur.next; // update cur
         }
         cur.next = evenHead;
         return head;

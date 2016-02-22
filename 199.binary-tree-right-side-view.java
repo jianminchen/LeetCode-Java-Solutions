@@ -13,8 +13,6 @@
  */
 public class Solution {
     public List<Integer> rightSideView(TreeNode root) {
-        // how can you forget the most special test case ???  root == null ???
-        // special cases first !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         List<Integer> res = new ArrayList<Integer>();
         if (root == null) return res;
         

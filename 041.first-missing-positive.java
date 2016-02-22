@@ -20,13 +20,9 @@ public class Solution {
         
         int i = 0;
         while (i < nums.length && nums[i] == i + 1) ++i;
-        // return i is wrong!!!!
         return i + 1;
     }
-    // don't forget return type!!!!
     private void swap(int[] nums, int i, int j) {
-        // this way of swapping has problem when i == j !!!!!!!!
-        // need to consider the case of i = j separately.
         if (i == j) return;
         nums[i] = nums[i] ^ nums[j];
         nums[j] = nums[i] ^ nums[j];

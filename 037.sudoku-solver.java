@@ -32,15 +32,10 @@ public class Solution {
 			else cand = bValue + 1;
 			int ci = locs.get(i)[0];
 			int cj = locs.get(i)[1];
-			// System.out.print(i + " " + cand + "\n");
-			// a small typo can mean totally different things!
-			// previously, write as exist[1][ci][cand - 1], get wrong answer!!!
 			while (cand < 10 && 
 					(exist[0][ci][cand - 1] || exist[1][cj][cand - 1] ||
 							exist[2][(ci / 3) * 3 + cj / 3][cand - 1]))
 				++cand;
-			// System.out.print(i + " " + ci + " " + cj + " " + cand + "\n");
-			
 			if (cand > 9) {
 				// need to backtrack
 				if (stk.isEmpty()) break; // no way to backtrack
@@ -51,8 +46,6 @@ public class Solution {
 				exist[0][lasti][bValue - 1] = false;
 				exist[1][lastj][bValue - 1] = false;
 				exist[2][(lasti / 3) * 3 + lastj / 3][bValue - 1] = false;
-				// --i is not enough!! we need to go back to consider i - 1.
-				// --i.
 				i = i - 2;
 			}
 			else { // use the currant cand value;

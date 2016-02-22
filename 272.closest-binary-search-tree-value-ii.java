@@ -17,26 +17,7 @@ public class Solution {
         Stack<Integer> lowerStk = new Stack<>();
         TreeNode cur = root;
         while (cur != null) {
-            // empty stack exception
-            // [2,1]
-            // 4.142857
-            // 2
-            /*
             if (cur.val < target) {
-                lowerStk.push(cur.val);
-                if (cur.right != null) {
-                cur = cur.right;
-            }
-            else {
-                upperStk.push(cur.val);
-                cur = cur.left;
-            }
-            */
-            if (cur.val < target) {
-                // when a node is added to an lower stack.
-                // this node, and all nodes in its left subtree have values less than the target !!!!!!!
-                // thus, we need to store the node, then reconstruct all integers; 
-                // or add the integers here directly.
                 List<Integer> list = inOrder(cur.left);
                 for (int i = 0; i < list.size(); ++i) {
                     lowerStk.push(list.get(i));
@@ -44,9 +25,7 @@ public class Solution {
                 lowerStk.push(cur.val);
                 cur = cur.right;
             }
-            else { // target < cur.val;
-                // when a node is added to an upper stack.
-                // this node, and all nodes in its right subtree have values greater than the target !!!!
+            else {
                 List<Integer> list = inOrder(cur.right);
                 for (int i = list.size() - 1; i >= 0; --i) {
                     upperStk.push(list.get(i));
@@ -56,7 +35,6 @@ public class Solution {
             }
         }
         
-        // System.out.println(lowerStk.size());
         List<Integer> res = new ArrayList<>();
         int i = 0;
         while (i < k) {

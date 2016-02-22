@@ -12,7 +12,6 @@ public class Solution {
                 if (Character.isDigit(s.charAt(i))) {
                     int start = i;
                     ++i;
-                    // don't forget to check the boundary!!!!!!!!!!!
                     while (i < s.length() && Character.isDigit(s.charAt(i))) ++i;
                     int num = Integer.parseInt(s.substring(start, i));
                     stkNum.push(num);
@@ -37,7 +36,6 @@ public class Solution {
         // high and low will be operators.
         if (high == '+' || high == '-') return false;
         else {
-            // high == '*' || high == '/'
             if (low == '*' || low == '/') return false;
             else return true;
         }

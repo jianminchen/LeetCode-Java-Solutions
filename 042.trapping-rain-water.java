@@ -7,7 +7,7 @@ public class Solution {
         if (height == null || height.length == 0) return 0;
         int waters[] = new int[height.length];
         waters[0] = 0;
-        // max should not be initialized as 0!!!!
+        // max should not be initialized as 0!
         int max = height[0];
         for (int i = 1; i < height.length; ++i) {
             waters[i] = Math.max(max - height[i], 0);

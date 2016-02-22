@@ -17,13 +17,10 @@ public class Solution {
         Map<RandomListNode, RandomListNode> hm = new HashMap<>();
         // a map from original node to copied node
         while (cur != null) {
-            // containsKey for map !!!!
             if (!hm.containsKey(cur)) {
                 RandomListNode newCur = new RandomListNode(cur.label);
                 hm.put(cur, newCur);
             }
-            
-            // containsKey for map !!!! instead of contains()
             if (cur.next != null && !hm.containsKey(cur.next)) {
                 RandomListNode newNext = new RandomListNode(cur.next.label);
                 hm.put(cur.next, newNext);
@@ -34,8 +31,6 @@ public class Solution {
             }
             if (cur.next != null) hm.get(cur).next = hm.get(cur.next);
             if (cur.random != null) hm.get(cur).random = hm.get(cur.random);
-            
-            // go to the next node !!!!!!!!!!!!!!!!
             cur = cur.next;
         }
         return hm.get(head);

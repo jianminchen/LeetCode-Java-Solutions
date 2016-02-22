@@ -41,7 +41,7 @@ public class NumMatrix {
 		}		
 	}
 	
-    // helper for update, called by update_x, recursively call it self.
+        // helper for update, called by update_x, recursively call it self.
 	private void update_y (int vx, int lx, int rx, int vy, int ly, int ry, int x, int y, int new_val) {
 		if (ly == ry) {
 			if (lx == rx)
@@ -78,7 +78,7 @@ public class NumMatrix {
 		update_x(1, 0, n - 1, row, col, val);
 	}
 
-    // helper for sumRegion
+        // helper for sumRegion
 	private int sum_y (int vx, int vy, int tly, int try_, int ly, int ry) {
 		if (ly > ry)
 			return 0;

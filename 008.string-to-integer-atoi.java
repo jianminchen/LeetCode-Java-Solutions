@@ -4,15 +4,6 @@
 
 public class Solution {
     public int myAtoi(String str) {
-        // possible input:
-        // "   " : no valid conversion
-        // "  +" : invalid
-        // "  +  ": invalid.
-        // "  + 5": invalid.
-        // "  +5abc": valid, return 5.
-        // "  +05": it this valid or invalid?
-        // "  +a" : invalid.
-        
         if (str == null || str.equals("")) return 0; // invalid.
         int i = 0;
         while (i <str.length() && str.charAt(i) == ' ') i ++;
@@ -24,13 +15,7 @@ public class Solution {
         if (first == '-') {
             i ++;
             while (i < str.length() && Character.isDigit(str.charAt(i))) i++;
-            int end = i;
-            /* // the following code will have wrong answer for overflowed negative integers.
-            if (str.substring(start, end).equals("-2147483648")) return Integer.MIN_VALUE;
-            if (start == end - 1) return 0;
-            return -1 * subAtoi(str.substring(start + 1, end));
-            */
-            
+            int end = i;            
             if (str.substring(start, end).equals("-2147483648")) return Integer.MIN_VALUE;
             if (str.substring(start, end).equals("-2147483647")) return Integer.MIN_VALUE + 1;
             if (start == end - 1) return 0;

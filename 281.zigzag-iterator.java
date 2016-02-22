@@ -10,14 +10,6 @@ public class ZigzagIterator {
     public List<Integer> list2;
     public ZigzagIterator(List<Integer> v1, List<Integer> v2) {
         curIndex = 0;
-        
-        // do we need to create new ArrayList for the lists??????
-        // if the v1, and v2 are implemented by LinkedList, 
-        // our iterator method will be more time consuming if we do not create arrayList for them.
-        
-        // we can't reverse the order of the lists!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        // the first is the first, and the second must be the second !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        // how can you make such mistakes????????????????????????????????????????????????????????????????????????????????????
         list1 = new ArrayList<Integer>(v1);
         list2 = new ArrayList<Integer>(v2);
         length = list1.size() + list2.size();

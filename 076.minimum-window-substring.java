@@ -4,8 +4,6 @@
 
 public class Solution {
     public String minWindow(String s, String t) {
-        // if t has 2 As, should the substring of s have 2 A's or just 1 A?
-        // example: does AC contains all characters in AAAC???
         if (s.length() < t.length()) return "";
         Map<Character, Integer> hmt = getHashMap(t);
         Map<Character, Integer> hms = getHashMap(s.substring(0, t.length()));
@@ -14,8 +12,6 @@ public class Solution {
         String res = new String();
         int minLen = s.length() + 1;
         while (true) {
-            // previously written as hms.covers(hmt), wrong!!!!!
-            // covers is not a hashMap method !!!
             if (covers(hms, hmt)) {
                 if (j - i + 1 < minLen) {
                     res = s.substring(i, j + 1);
@@ -26,13 +22,9 @@ public class Solution {
                 ++i;
             }
             else {
-                // hms does not covers t.
                 ++j;
                 if (j >= s.length()) break;
-                // do not need to put s.charAt(j) if j is not in t!!!
                 if (hmt.containsKey(s.charAt(j))) {
-                    // previously written as hms.contains(s.charAt(j))
-                    // wrong!!! containsKey for hashMap, contains for hashSet !!!
                     if (!hms.containsKey(s.charAt(j))) {
                         hms.put(s.charAt(j), 0);
                     }

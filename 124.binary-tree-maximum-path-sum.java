@@ -27,12 +27,7 @@ public class Solution {
         
         max = Math.max(left, max);
         max = Math.max(right, max);
-        /* the following has wrong answer !!!!!!!
-        if (left < 0 && right < 0) max = Math.max(root.val, max);
-        else max = Math.max(root.val + left + right, max);
-        */
-        
-        // Integer overflow, and negativ values.
+ 
         if (left <= 0 && right <= 0) max = Math.max(root.val, max);
         else if (left <= 0 && right > 0) max = Math.max(max, root.val + right);
         else if (left > 0 && right <= 0) max = Math.max(max, root.val + left);

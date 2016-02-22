@@ -22,9 +22,6 @@ public class Solution {
             int sum = iA + iB + carryIn;
             carryIn = sum / 2;
             int num = sum % 2;
-            // notice the difference:
-            // if using sb.insert(0, (char) num + '0'); the result of 0, 0, will be 48 !!!!!!!!!!!!
-            // using the following will have correct answer !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
             sb.insert(0, (char) (num + '0'));
         }
         if (carryIn != 0) sb.insert(0, (char) '1');

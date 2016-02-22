@@ -6,18 +6,13 @@ public class Solution {
     public List<String> findRepeatedDnaSequences(String s) {
 
         List<String> res = new ArrayList<>();
-        // use s.length() for length of string !!!!!!!
-        // use s.length for length of arrays !!!!!!!!!
         if (s == null || s.length() <= 10) return res;
         Map<Integer, Boolean> hm = new HashMap<>();
-        // i <= s.length() - 10 !!!!
+
         for (int i = 0; i <= s.length() - 10; ++i) {
             String sub = s.substring(i, i + 10);
             int num = toNumber(sub);
-            /* the logic is wrong !!! will add duplicate results!!!!!!!!!!!
-            if (set.contains(num)) res.add(sub);
-            else set.add(num);
-            */
+  
             if (hm.containsKey(num)) {
                 if (hm.get(num) == false) {
                     res.add(sub);

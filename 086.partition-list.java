@@ -20,8 +20,6 @@ public class Solution {
         if (greatStart == null) return dummy.next;
         ListNode greatEnd = greatStart;
         while (greatEnd.next != null && greatEnd.next.val >= x) greatEnd = greatEnd.next;
-        // we have smallEnd, greatStart, and greatEnd;
-        // notice that, greatStart will never change afterwards.
         
         ListNode cur = greatEnd.next;
         while (cur != null) {

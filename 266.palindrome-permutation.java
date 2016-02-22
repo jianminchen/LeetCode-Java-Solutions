@@ -4,8 +4,6 @@
 
 public class Solution {
     public boolean canPermutePalindrome(String s) {
-        // if there is some character appears an odd number of times.
-        // there should be at most one of such character.
         if (s == null) return true;
         HashMap<Character, Integer> hm = new HashMap<Character, Integer>();
         for (int i = 0; i < s.length(); i ++) {

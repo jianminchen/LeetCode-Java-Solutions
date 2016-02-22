@@ -15,7 +15,7 @@ public class Solution {
         HashSet<Integer> usedInt = new HashSet<Integer>();
         
         String result = new String("");
-        for (int i = n-1; i >= 1; i--) { // previously written as i ++ !!!!!!!!!!!!!!!!!!!!!! runtime error
+        for (int i = n-1; i >= 1; i--) {
             int digit = 0;
             for (int j = 0; j <= index[i]; j++) {
                 digit = digit + 1;

@@ -9,15 +9,12 @@ public class Solution {
         while (j < nums.length) {
             if (nums[j] != 0) {
                 nums[pZero] = nums[j];
-                // previously, use nums[j] = 0, wrong !!!!!!!!!!!!!!!!!!!!!
-                // nums[j] = 0;
-                // 
                 if (j != pZero) nums[j] = 0;
-                j ++;
-                pZero ++;
+                ++j;
+                ++pZero;
             }
             else {
-                j ++;
+                ++j;
             }
         }
     }

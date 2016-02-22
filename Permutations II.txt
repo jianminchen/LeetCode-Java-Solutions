@@ -58,7 +58,7 @@ public class Solution {
         }
         
         int secondSwitchPos = -1;
-        Arrays.sort(newNum, switchPos + 1, newNum.length); // the end index exclusive !!!!!!!!
+        Arrays.sort(newNum, switchPos + 1, newNum.length);
         for (int j = switchPos + 1; j <= newNum.length- 1; j ++) {
             if (newNum[switchPos] < newNum[j]) {
                 secondSwitchPos = j;

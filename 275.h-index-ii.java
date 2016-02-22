@@ -5,13 +5,7 @@
 public class Solution {
     public int hIndex(int[] citations) {
         if (citations.length == 0) return 0;
-        /* sequential search
-        int i = 0;
-        while (i <= citations.length - 1 && citations[citations.length - 1 - i] >= (i + 1)) {
-            ++i;
-        }
-        */
-        // how about binary search?
+
         int low = 0, high = citations.length - 1;
         while (true) {
             if (low == high) {
@@ -29,6 +23,5 @@ public class Solution {
             }
             
         }
-        // return i;
     }
 }

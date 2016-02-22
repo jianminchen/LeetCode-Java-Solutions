@@ -4,13 +4,6 @@
 
 public class Solution {
     public String fractionToDecimal(int numerator, int denominator) {
-        // return type is String !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        // input cases:
-        // -2, 3
-        // 2, -3,
-        // 2, 3
-        // numerator = -2147483648, denominator = -1??
-        // denominator will never be zero.
         if (denominator == 0) {
             throw new IllegalArgumentException(" denominator can not be zero");
         }
@@ -20,8 +13,6 @@ public class Solution {
     }
     public String myFractionToDecimal(long numerator, long denominator) {
         if (numerator == 0) return "0";
-        // you do need to consider integer overflow !!!!!!!!!!!!!!!!!!!!!!!!!!
-        // can first get the integer part first, whichever case it is.
         if (numerator < 0 && denominator > 0) {
             return new String("-" + myFractionToDecimal(-1 * numerator, denominator));
         }
@@ -52,9 +43,7 @@ public class Solution {
                 hm.put(remainder, fraction.size()); // the digits for this remainder starts here.
                 while (remainder * 10 < denominator) {
                     remainder *= 10;
-                    fraction.add(0l); // if using fraction.add(0): no suitable method found for add(int)!!!!!!!!!!!!!!!!!!
-                    // without the following code: wrong answer: numerator = 1, denominator = 90.
-                    // output: 0.01(1), expected: 0.0(1);
+                    fraction.add(0l);
                     if (!hm.containsKey(remainder)) {
                         hm.put(remainder, fraction.size());
                     }

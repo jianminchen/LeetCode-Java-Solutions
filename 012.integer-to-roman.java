@@ -34,7 +34,6 @@ public class Solution {
                 }
                 else if (digit <= 8) { // digit 6, 7, 8
                     sb.append(chart[whichDigit][1]);
-                    // previously written as i <= 8, wrong !!!!!!!!!!!!!!!!
                     for (int i = 6; i <= digit; ++i) {
                         sb.append(chart[whichDigit][0]);
                     }

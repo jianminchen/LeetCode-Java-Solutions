@@ -9,8 +9,6 @@ public class Solution {
         for (int i = 0; i < s.length(); ++i) {
             isPalin[i][i] = true;
         }
-        // check a substring with length k + 1 is palindrome or not.
-        // from i, to i + k, inclusive.
         for (int k = 1; k < s.length(); ++k) {
             for (int i = 0; i < s.length() - k; ++i) {
                 if (s.charAt(i) == s.charAt(i + k)) {
@@ -21,7 +19,6 @@ public class Solution {
         }
         
         int min[] = new int[s.length() + 1];
-        // min[i] is the minimum cut for s.substring(0, i);
         min[0] = -1;
         for (int i = 1; i <= s.length(); ++i) {
             min[i] = i;

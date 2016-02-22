@@ -13,9 +13,7 @@ public class Solution {
             return; // reach at the end.
         }
         for (int i = pos; i < num.length(); ++i) {
-            if (i != pos && num.charAt(pos) == '0') break; // a greater-than 2-digit number does not start with 0
-            // if we do not consider integer overflow: java.lang.NumberFormatException: For input string: "3456237490"
-            // int cur = Integer.parseInt(num.substring(pos, i + 1));
+            if (i != pos && num.charAt(pos) == '0') break;
             long cur = Long.parseLong(num.substring(pos, i + 1));
             if (pos == 0) {
                 // initialize. such that multed will not be zero.

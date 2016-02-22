@@ -20,7 +20,6 @@ public class Solution {
                     if (first == null) first = prev;
                     second = cur;
                 }
-                // every time, we should update prev.
                 prev = cur;
                 cur = cur.right;
             }
@@ -32,7 +31,6 @@ public class Solution {
                 
                 if (pred.right == null) {
                     pred.right = cur;
-                    // need to set cur = cur.left here!!!!
                     cur = cur.left;
                 }
                 else { // pred.right = cur; visit and then restore the right pointer of pred.

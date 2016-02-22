@@ -27,9 +27,6 @@ public class Solution {
             return null;
         }
         else {
-            // the slow pointer starts at the meeting location.
-            // another pointer starts at the begining.
-            // both with speed one.
             ListNode newBegin = head;
             while (slow != newBegin) {
                 slow = slow.next;

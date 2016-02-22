@@ -12,14 +12,7 @@
  * }
  */
 public class Codec {
-    // Encodes a tree to a single string.
     public String serialize(TreeNode root) {
-        // use an array to store a tree node;
-        // array[0] = value;
-        // array[1] = li, // left child index, if null, -1
-        // array[2] = ri, // right child index, if null, -1
-        // all nodes will be added to an ArrayList of arrays
-        // then, convert the arraylist to a string.
         if (root == null) return new String();
         List<int[]> list = new ArrayList<int[]>();
         Stack<TreeNode> stk = new Stack<TreeNode>();
@@ -44,8 +37,6 @@ public class Codec {
                     else { // cur is the right child of the parent
                         list.get(pi)[2] = ci;
                     }
-                    // previously written as int[] cur = new int[5], wrong !!!!!!!!!!!!11
-                    // error: variable cur is already defined in method serialize(TreeNode);
                     int[] curNode = new int[3];
                     curNode[0] = cur.val;
                     curNode[1] = -1;
@@ -63,10 +54,6 @@ public class Codec {
                 do {
                     cur = stk.pop();
                     iStk.pop();
-                    // previously written as :
-                    // (!stk.isEmpty() && stk.peek().right == null || stk.peek().right == cur)
-                    // wrong !!!!!!!!!!!!!
-                    // the two or conditions should be braced!!!!!!!!!!!!!!!!!!!!!
                 } while (!stk.isEmpty() && (stk.peek().right == null || stk.peek().right == cur));
                 if (stk.isEmpty()) break;
                 else cur = stk.peek().right;

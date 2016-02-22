@@ -6,7 +6,7 @@ public class Solution {
     public double myPow(double x, int n) {
         // what if x < 0; what if n < 0?
         if (n == 0) return 1;
-        if (n < 0) { // consider integer overflow !!!!!!
+        if (n < 0) { // consider integer overflow !
             if (n == Integer.MIN_VALUE) {
                 return 1/myPow(x, Integer.MIN_VALUE + 1)/x;
             }

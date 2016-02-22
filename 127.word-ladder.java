@@ -25,8 +25,6 @@ public class Solution {
             String removed = q.remove();
             length = qLen.remove() + 1;
     
-            /* using the following code, still TLE. If function returns a set of strings. */
-            // but if we are returning List<String> (ArrayList<String>, we will pass).
             List<String> neighbors = wordNeighbor(removed);
             for (String anb : neighbors) {
                 if (words.contains(anb)) { // only considers the remaining words.
@@ -37,65 +35,16 @@ public class Solution {
                 }
             }
             
-
-            // using the following code, finally passed, what's reason for TLE????
-            /*
-            for (int i = 0; i < removed.length(); i++) {
-                char array[] = removed.toCharArray();
-                for (array[i] = 'a'; array[i] <= 'z'; array[i]++) {
-                    String test = new String(array);
-                    if (words.contains(test)) {
-                        // do not use "if (isAdjacent(removed, endWord)) return length + 1;"
-                        // but choose to test whether they equal here.
-                        if (test.equals(endWord)) {
-                            return length + 1;
-                        }                        
-                        q.add(test);
-                        qLen.add(length);
-                        words.remove(test);
-                    }
-                }
-            }
-            */
-            
-
-            // using StringBuilder, TLE !!!!!!!!!!!!!!!!!!!!!!!
-            // when considering time cost, 
-            // it does matter, whether you are using fast array, or slow StringBuilder class !!!!!!!!!!!!
-            /*
-            for (int i = 0; i < removed.length(); ++i) {
-                for (int c = 'a'; c <= 'z'; ++c) {
-                    //if (c != removed.charAt(i)) {
-                        StringBuilder sb = new StringBuilder();
-                        sb.append(removed.substring(0, i));
-                        sb.append((char)c);
-                        sb.append(removed.substring(i + 1));
-                        String test = new String(sb);
-                        if (words.contains(test)) {
-                            if (test.equals(endWord)) return length + 1;
-                            q.add(test);
-                            qLen.add(length);
-                            words.remove(test);
-                        }                        
-                    //}
-                }
-            }
-            */
-        }
-        // if we reach this line, must have not found!!!
         return 0;
     }
     
-    public List<String> wordNeighbor(String word) 
-    {   // using Set<String> as return type will let you TLE !!!!
+    public List<String> wordNeighbor(String word) {
         List<String> result = new ArrayList<String>();
         for (int i = 0; i < word.length(); i++) {
             char array[] = word.toCharArray();
             for (array[i] = 'a'; array[i] <= 'z'; array[i]++) {
-                //if (array[i] != word.charAt(i)) {
-                    String test = new String(array);
-                    result.add(test);
-                //}
+                String test = new String(array);
+                result.add(test);                
             }
         }
         return result;

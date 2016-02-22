@@ -16,7 +16,7 @@ public class Solution {
                     maxArea = Math.max(maxArea, thisArea);
                 }
                 
-                indexStk.push(i); // after poping out previous greater values. need to push the current index!!!!!!!!!!!!!!!!!
+                indexStk.push(i);
             }
         }
         // after this, i = hLen;

@@ -10,8 +10,7 @@ public class Solution {
             remain.add(s);
         }
         
-        int level = 0; // how many levels need to go, when you can arrive at the "end" word.
-        // then, this level+2 will be the length of the shortest transformation.
+        int level = 0;
         boolean found = false;
         current.add(start);
         visited.add(start);
@@ -23,7 +22,7 @@ public class Solution {
             Set<String> neighborSet = new HashSet<String>();
             for (String s : current)
             {
-                neighborSet.addAll(wordNeighbor(s, dict)); // all neighbors of s that are in the dict.
+                neighborSet.addAll(wordNeighbor(s, dict));
             }
             
             neighborSet.removeAll(visited);
@@ -35,7 +34,7 @@ public class Solution {
           
             remain.removeAll(visited);
             
-            current.clear(); // clear the current queue, to hold the queue in the next level.
+            current.clear();
             
             for(String s: next)
             {
@@ -73,7 +72,7 @@ public class Solution {
         
     }
     
-    public static Set<String> wordNeighbor(String word, Set<String> dict) // only need to consider words in the dictionary
+    public static Set<String> wordNeighbor(String word, Set<String> dict)
     {
         Set<String> result = new HashSet<String>();
         int wLen = word.length();

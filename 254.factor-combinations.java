@@ -19,9 +19,7 @@ public class Solution {
     public Set<List<Integer>> getFactors(int n, List<Integer> cands, int start) {
         Set<List<Integer>> set = new HashSet<>();
         if (start >= cands.size()) return set;
-        // if (cands.get(start) > n / cands.get(start)) return set;
         if (cands.get(start) > n) return set;
-        // including start; may include several times.
         int count = 1;
         int factor = cands.get(start);
         while (n % factor == 0) {

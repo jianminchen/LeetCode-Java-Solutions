@@ -4,7 +4,6 @@
 
 public class Solution {
     public boolean verifyPreorder(int[] preorder) {
-        // the tree is not specified yet.
         if (preorder == null || preorder.length == 0) return true;
         return verifyPreorder(preorder, 0, preorder.length - 1);
     }

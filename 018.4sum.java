@@ -5,9 +5,6 @@
 public class Solution {
     public List<List<Integer>> fourSum(int[] nums, int target) {
         int[] newNums = nums.clone();
-        // previously, all following code use nums.
-        // if you defined newNums, and don't want to change nums. 
-        // then, keep to newNums !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         Arrays.sort(newNums);
         List<List<Integer>> lists = new ArrayList<List<Integer>>();
         Set<List<Integer>> setList = new HashSet<List<Integer>>();
@@ -27,15 +24,10 @@ public class Solution {
                         aRes.add(newNums[i]); aRes.add(newNums[j]);
                         aRes.add(newNums[low]); aRes.add(newNums[high]);
                         setList.add(aRes); // avoids duplicates
-                        
-                        // after that, should do something !!!!!!!!!!!!!!!!!!
-                        // otherwise time limit exceeded, because we will not exit the while loop!!!!!!!!!!!!!
                         --high;
                         ++low;
-                        
                     }
                     else {
-                        // <
                         ++low;
                     }
                 }

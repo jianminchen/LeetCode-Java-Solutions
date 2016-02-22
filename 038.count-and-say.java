@@ -15,15 +15,11 @@ public class Solution {
                 for (; j < cur.length() && cur.charAt(j) == cur.charAt(j - 1); j ++) {
                     count ++;
                 }
-                // don't need to convert count into char manually, can append int directly.
-                // char num = (char) (count + '0';
                 sbNext.append(count);
                 sbNext.append(cur.charAt(i));
                 i = j;
             }
             cur = new String(sbNext);
-            // better to write a subfunction or just write the code within the outer loop????
-            // cur = getNext(cur); 
         }
         return cur;
     }

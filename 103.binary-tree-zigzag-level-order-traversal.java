@@ -17,8 +17,6 @@ public class Solution {
         if (root == null) return res;
         Queue<TreeNode> q = new LinkedList<>();
         List<Integer> firstList = new ArrayList<>();
-        // can't add this here : firstList.add(root.val);
-        // don't forget this line!!!!!!!!!
         res.add(firstList);
         q.add(root);
         q.add(null);
@@ -29,7 +27,6 @@ public class Solution {
                 if (n == null) {
                     List<Integer> newList = new ArrayList<>();
                     res.add(newList);
-                    // need to add a null in this case !!!!!!!!!!!!!
                     q.add(null);
                 }
                 else { // n is a node

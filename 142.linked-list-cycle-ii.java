@@ -21,7 +21,6 @@ public class Solution {
         boolean hasCycle = false;
         while (slow.next != null && fast.next != null && fast.next.next != null) {
             slow = slow.next;
-            // previously written as fast = fast.next. what the hell are you doing?????
             fast = fast.next.next; 
             if (slow == fast) {
                 hasCycle = true;
@@ -30,16 +29,6 @@ public class Solution {
         }
         if (!hasCycle) return null;
         fast = head;
-        /* the following code has error, why ???????????
-        // not the reason here, reason as above: fast = fast.next; what the hell????
-        // time limit exceeded: [1,2], tail connects to node index 0.
-        while (true) {
-            if (fast == slow) return slow;
-            slow = slow.next;
-            fast = fast.next;
-        }*/
-        System.out.println(slow.val);
-        System.out.println(fast.val);
         while (true) {
             if (fast == slow) return slow;
             slow = slow.next;

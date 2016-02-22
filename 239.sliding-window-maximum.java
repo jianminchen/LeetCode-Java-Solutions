@@ -5,8 +5,6 @@
 public class Solution {
     public int[] maxSlidingWindow(int[] nums, int k) {
         int[] res = new int[0];
-        // java.util.NoSuchElementException: [].
-        // wrong answer for input: [], 0; expected: [], output: [0]
         if (nums == null || nums.length == 0 || k == 0) return res;
         res = res = new int[nums.length - k + 1];
         Deque<Integer> list = new LinkedList<>();

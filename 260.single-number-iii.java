@@ -20,8 +20,6 @@ public class Solution {
         res[0] = 0;
         res[1] = 0;
         for (int j = 0; j < nums.length; ++j) {
-            // previously written as (nums[j] >> 1) == 1. wrong answer
-            // we are consider the ith bit !!!!!!!!!!!!!!!!!!!!!!!!!!
             if (((nums[j] >> i) & 1) == 1) {
                 res[0] ^= nums[j];
             }

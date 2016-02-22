@@ -4,9 +4,6 @@
 
 public class Solution {
     public String convert(String s, int numRows) {
-        // this special case needs to be considered!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        // run some test cases to detect errors. give some extreme cases, special cases,
-        //  such that they can really detect errors!!!!!!!!!!
         if (numRows == 1) return new String(s);
         // the case of numRows == 2 is included in the general code.
         // the first row

@@ -14,9 +14,6 @@ public class Solution {
             for (int i = 0; i < nums.length; ++i) {
                 if (nums[i] > mid) ++count;
             }
-            // wrong logic !!!!!!!!!!!!!
-            // if (count > (n + 1) / 2) low = mid + 1;
-            // else high = mid;
             
             if (count >= n + 1 - mid) low = mid + 1;
             else high = mid;

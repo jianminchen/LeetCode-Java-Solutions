@@ -55,8 +55,6 @@ public class Solution {
                 ++storeIndex;
             }
         }
-        // here we should not use pIndex, we should use storeIndex;
-        // swap(nums, pIndex, ei);
         swap(nums, storeIndex, ei);
         if (storeIndex - si + 1 == k) return nums[storeIndex];
         else if (storeIndex - si + 1 < k) {

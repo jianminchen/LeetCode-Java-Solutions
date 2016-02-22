@@ -46,34 +46,15 @@ public class WordDictionary {
     public boolean search(String word) {
         if (word.length() == 0) return root.isWord;
         // use minLen and maxLen to check whether we need to do the recursive search first.
-        // this can reduce time complexity, can avoid time limit exceeded errors !!!!
+        // this can reduce time complexity, can avoid time limit exceeded
         if (word.length() < minLen || word.length() > maxLen) return false;
         return search(word, root);
     }
     
-    public boolean search(String word, TrieNode node) {
-        // consider isWord !!!!!!!!!!!!!!!!!!!?????????????????
-        
+    public boolean search(String word, TrieNode node) {        
         if (word.length() == 0) return node.isWord;
         
         if (node.hm.isEmpty()) return false;
-        
-        // the case of word.length() == 1, can be combined into general cases.
-        /*
-        if (word.length() == 1) {
-            if (word.charAt(0) != '.') {
-                if (!node.hm.containsKey(word.charAt(0))) return false;
-                else return node.hm.get(word.charAt(0)).isWord;
-            }
-            else {// == '.'
-                Set<Character> set = node.hm.keySet();
-                for (char c : set) {
-                    if (node.hm.get(c).isWord) return true;
-                }
-                return false;
-            }
-        }
-        */
         
         if (word.charAt(0) == '.') {
             boolean found = false;
@@ -87,7 +68,6 @@ public class WordDictionary {
             return found;
         }
         else {
-            //  hashMap containsKey !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             if (!node.hm.containsKey(word.charAt(0))) return false;
             else {
                 return search(word.substring(1), node.hm.get(word.charAt(0)));

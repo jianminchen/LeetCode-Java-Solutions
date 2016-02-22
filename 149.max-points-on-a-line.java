@@ -24,8 +24,6 @@ public class Solution {
             }
             else hm.put(myPoint, 1);
         }
-        // without the following if case, wrong answer for [[0, 0], [0, 0]].
-        // output 1, expected 2.
         if (hm.size() == 1) {
             for (List<Integer> p : hm.keySet()) {
                 return hm.get(p);

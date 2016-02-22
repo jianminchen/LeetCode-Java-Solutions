@@ -6,11 +6,9 @@ class TrieNode {
     // Initialize your data structure here.
     public boolean isWord;
     public char c;
-    public Map<Character, TrieNode> hm; // use a hashMap to quickly find the node with specified char.
+    public Map<Character, TrieNode> hm;
     public TrieNode() {
         isWord = false;
-        // the following line has error: empty character literal??????
-        // c = '';
         hm = new HashMap<>();
     }
 }
@@ -46,7 +44,6 @@ public class Trie {
             cur = cur.hm.get(word.charAt(i));
             if (i == word.length() - 1) return cur.isWord;
         }
-        // missing return statement!!!!!!??????
         return true;
     }
 

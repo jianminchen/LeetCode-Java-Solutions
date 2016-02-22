@@ -10,17 +10,10 @@ public class Solution {
         int high = nums1.length;
         while (low <= high) {
             int pos1 = low + ((high - low)>>1); // the cut position in nums1
-            // for example, if  [/ 1 2 3], pos1 = 0; if [1 / 2 3], pos1 = 1.
-            // if [1 2 3 /], pos1 = 3.
-            
-            // calculate the cut position in nums2, let the left two halves have (m+n)/2 numbers,
-            // and the right two halves have m+n - (m+n)/2 numbers.
-            // notice that m+n - (m+n)/2 may or may not be equal to (m+n)/2 !!!
             int pos2 = nums1.length + ((nums2.length - nums1.length)>>1) - pos1;
             
             int lower1 = (pos1 == 0)? Integer.MIN_VALUE : nums1[pos1 - 1];
             int upper1 = (pos1 == nums1.length)? Integer.MAX_VALUE : nums1[pos1];
-            // int lower2 = (pos2 <= 0 || pos2 > nums2.length)? Integer.MIN_VALUE : nums2[pos2 - 1];
             int lower2 = (pos2 <= 0)? Integer.MIN_VALUE : nums2[pos2 - 1];
             int upper2 = (pos2 >= nums2.length)? Integer.MAX_VALUE : nums2[pos2];
             

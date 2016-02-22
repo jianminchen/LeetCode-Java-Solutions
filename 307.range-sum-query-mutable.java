@@ -13,7 +13,6 @@ public class NumArray {
     public void update(int i, int val) {
         int updateVal = val - array[i];
         int index = i + 1;
-        // using index < array.length will have wrong answer!!!!!!!!!!!!!!!!!!!!
         while (index <= array.length) {
             BIT[index] += updateVal;
             index += index & (-index);

@@ -40,8 +40,7 @@ public class Solution {
             newNums[count[which] - 1] = nums[k];
             --count[which];
         }
-        nums = newNums; // this does not change nums ????????
-        // if we do not return nums explicitly, nums will not be changed !!!!!!!!!!???????????
+        nums = newNums;
         return nums;
     }
 }

@@ -10,7 +10,6 @@ public class Solution {
     String[] chart3 = new String[]{"", "Thousand", "Million", "Billion"};
     public String numberToWords(int num) {
         if (num == 0) return "Zero";
-        // don't forget the spaces!!!!
         if (num < 1000) { // num will not be zero
             if (num % 100 == 0) {
                 return chart1[num/100] + " " + "Hundred";
@@ -44,9 +43,6 @@ public class Solution {
                 int smallNum = num % 1000;
                 if (smallNum != 0) {
                     String news = " " + numberToWords(smallNum);
-                    // don't forget the spaces !!!!!!!!!!!
-                    // and don't add extra spaces !!!!!!!!
-                    // if c3i == 0. will not append thousand, million, billion, etc. thus, no space needed.
                     if (c3i > 0) news = news + " " + chart3[c3i];
                     res = news + res;
                 }

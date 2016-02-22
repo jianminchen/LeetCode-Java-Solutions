@@ -9,9 +9,7 @@
  */
 public class Solution {
     public List<Interval> merge(List<Interval> intervals) {
-        if (intervals == null || intervals.size() == 0 || intervals.size() == 1)
-        { // previously, written as if (intervals == null || intervals.size() == 1) . 
-          //line 18 will have index out of bound error!!!!!!!!!!!!!!!
+        if (intervals == null || intervals.size() == 0 || intervals.size() == 1) {
             return intervals;
         }
         

@@ -16,12 +16,9 @@ public class Solution {
         ListNode cur = head;
         while (cur != null) {
             ListNode temp = cur;
-            // cur should be updated before temp.next is updated !!!!!!!!!!!!!!!!
             cur = cur.next;
             temp.next = newHead;
             newHead = temp;
-            // cur should be updated before temp.next is updated !!!!!!!!!!!!!!!!
-            // cur = cur.next;
         }
         return newHead;
     }

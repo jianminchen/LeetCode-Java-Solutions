@@ -13,17 +13,5 @@ public class Solution {
             i ++;
         }
         return w;
-        
-        // previously written as follows, has time limit exceeded!!!!!!!!!!!!
-        // seems the n != 0 check is more time consuming than i < 32!!!!!!!!!!!!!!!!
-        /*
-        int w = 0;
-        while (n != 0) {
-            w += (n&1);
-            n = n>>1;
-            i ++;
-        }
-        return w;
-        */
     }
 }

@@ -16,7 +16,7 @@ public class Solution {
                 hm.put(nums[i], al);
             }
         }
-        // pay attention to the angular brackets, make sure they are correct !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
         Set<Map.Entry<Integer, ArrayList<Integer>>> set = hm.entrySet();
         for (Map.Entry<Integer, ArrayList<Integer>> entry : set) {
             Collections.sort(entry.getValue());

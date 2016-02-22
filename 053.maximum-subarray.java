@@ -4,18 +4,6 @@
 
 public class Solution {
     public int maxSubArray(int[] nums) {
-        /*
-        // the array has at least one element.
-        int maxi = nums[0];
-        int max = maxi;
-        for (int i = 1; i < nums.length; ++i) {
-            maxi = Math.max(maxi + nums[i], nums[i]); // max at i means the max that exactly ends with i.
-            max = Math.max(max, maxi);
-        }
-        return max;
-        */
-        
-        // the divide and conquer solution?
         int low = 0;
         int high = nums.length - 1;
         return maxSum(nums, low, high);

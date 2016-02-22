@@ -10,14 +10,7 @@ public class Solution {
         // let nums[i][j] be the number of t.substring(0,j) in s.substring(0, i)
         for (int i = 0; i < sLen; ++i) nums[i][0] = 1;
         for (int j = 1; j < tLen + 1; ++j) {
-            int i = 1;
-            // the following 5 lines of code can be omitted!!!!
-            //while (i < sLen + 1 && nums[i - 1][j - 1] == 0) ++i;
-            //while (i < sLen + 1 && nums[i - 1][j - 1] != 0 && s.charAt(i - 1) != t.charAt(j - 1)) ++i;
-            //if (i == sLen + 1) break;
-            //nums[i][j] = nums[i - 1][j - 1];
-            //++i;
-            
+            int i = 1;            
             while (i < sLen + 1) {
                 if (s.charAt(i - 1) != t.charAt(j - 1)) {
                     // cannot use this char.
