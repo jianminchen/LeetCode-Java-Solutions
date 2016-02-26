@@ -3,48 +3,59 @@
  */
 
 public class Solution {
-    public int[] searchRange(int[] nums, int target) {
-        if (nums == null || nums.length == 0) return new int[]{-1, -1};
-        int low = 0; int high = nums.length - 1;
-        int[] res = new int[]{-1, -1};
-        while (low <= high) {
-            if (target < nums[low] || target > nums[high]) break;
-            int mid = low + ((high - low)>>1);
-            if (target > nums[mid]) low = mid + 1;
-            else if (target == nums[mid]) {
-                int leftbound = getLeftBound(nums, target, mid);
-                int rightbound = getRightBound(nums,target, mid);
-                res[0] = leftbound;
-                res[1] = rightbound;
-                break;
-            }
-            else high = mid - 1;
-        }
-        return res;
+  public int[] searchRange(int[] nums, int target) {
+    if (nums == null) {
+      throw new NullPointerException();
     }
-    public int getLeftBound(int[] nums, int target, int mid) {
-        int low = 0;
-        int high = mid;
-        while (low <= high) {
-            mid = low + ((high - low)>>1);
-            if (low == high) break;
-            if (nums[mid] == target) high = mid;
-            else if (nums[mid] < target) low = mid + 1;
-        }
-        return low;
+    int low = 0, high = nums.length - 1;
+    int[] res = {-1, -1};
+    while (low <= high) {
+      if (target < nums[low] || target > nums[high]) {
+        break;
+      }
+      	int mid = low + ((high - low) >> 1);
+      if (target > nums[mid]) {
+        low = mid + 1;
+      } else if (target == nums[mid]) {
+        res[0] = getLeftBound(nums, target, mid);
+        res[1] = getRightBound(nums,target, mid);
+        break;
+      } else {
+        high = mid - 1; // target < nums[mid]
+      }
     }
-    public int getRightBound(int[] nums, int target, int mid) {
-        int low = mid; int high = nums.length - 1;
-        while (low <= high) {
-            mid = low + ((high - low)>>1);
-            if (low == high) break;
-            if (low == high - 1) {
-                if (nums[high] > target) return low;
-                else if (nums[high] == target) return high;
-            }
-            if (nums[mid] == target) low = mid; // can't use low = mid + 1.
-            else if (nums[mid] > target) high = mid - 1;
-        }
-        return high;
+    return res;
+  }
+
+  private int getLeftBound(int[] nums, int target, int mid) {
+    int low = 0, high = mid;
+    while (low <= high) {
+      if (low == high) {
+        break;
+      }
+      mid = low + ((high - low) >> 1);
+      if (nums[mid] == target) {
+        high = mid;
+      } else if (nums[mid] < target) {
+        low = mid + 1;
+      }
     }
+    return low;
+  }
+
+  private int getRightBound(int[] nums, int target, int mid) {
+    int low = mid, high = nums.length - 1;
+    while (low <= high) {
+      if (low == high) {
+        break;
+      }
+      mid = low + ((high - low) >> 1) + 1;
+      if (nums[mid] == target) {
+        low = mid;
+      } else if (nums[mid] > target) {
+        high = mid - 1;
+      }
+    }
+    return low;
+  }
 }
