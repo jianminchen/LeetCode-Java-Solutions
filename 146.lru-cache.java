@@ -3,77 +3,72 @@
  */
 
 public class LRUCache {
-    class MyNode {
-        MyNode prev;
-        MyNode next;
-        int key;
-        int value;
-        MyNode(int k, int v) {
-            key = k;
-            value = v;
-        }
+  class ListNode {
+    int key, val;
+    ListNode prev, next;
+    ListNode(int k, int v) {
+      key = k;
+      val = v; 
+      prev = null;
+      next = null;
     }
-    
-    MyNode head;
-    MyNode tail;
-    Map<Integer, MyNode> hm;
-    int capacity;
-    public LRUCache(int capacity) {
-        this.capacity = capacity;
-        head = null;
-        tail = null;
-        hm = new HashMap<>();
+  }
+
+  private int capacity, size;
+  private ListNode dummyHead, dummyTail;
+  private Map<Integer, ListNode> map;
+  
+  public LRUCache(int capacity) {
+    if (capacity <= 0) {
+      throw new IllegalArgumentException("Positive capacity required.");
     }
-    
-    // both get and set are considered one usage of the cache.
-    public int get(int key) {
-        if (hm.containsKey(key)) {
-            MyNode n = hm.get(key);
-            moveNodeToTail(n);
-            // if n == tail, it is the last used, no need to update
-            return n.value;
-        }
-        else return -1;
+    this.capacity = capacity;
+    size = 0;
+    dummyHead = new ListNode(0, 0);
+    dummyTail = new ListNode(0, 0);
+    dummyTail.prev = dummyHead;
+    dummyHead.next = dummyTail;
+    map = new HashMap<Integer, ListNode>();
+  }
+
+  public int get(int key) {
+    if (!map.containsKey(key)) {
+      return -1;
     }
-    
-    public void moveNodeToTail(MyNode n) {
-        if (n != tail) {
-            if (n == head) {
-                head = head.next;
-            }
-            else {
-                n.prev.next = n.next;
-                n.next.prev = n.prev;
-            }
-            n.prev = tail;
-            n.next = null;
-            tail.next = n;
-            tail = tail.next;
-        }
+    ListNode target = map.get(key);
+    remove(target);
+    addToLast(target);
+    return target.val;
+  }
+
+  public void set(int key, int value) {
+    if (map.containsKey(key)) { // update old value of the key
+      ListNode target = map.get(key);
+      target.val = value;
+      remove(target);
+      addToLast(target);
+    } else { // insert new key value pair, need to check current size
+      if (size == capacity) {
+        map.remove(dummyHead.next.key);
+        remove(dummyHead.next);
+        --size;
+      }
+      ListNode newNode = new ListNode(key, value);
+      map.put(key, newNode);
+      addToLast(newNode);
+      ++size;
     }
-    
-    public void set(int key, int value) {
-        if (head == null && hm.size() < capacity) {
-            head = new MyNode(key, value);
-            hm.put(key, head);
-            tail = head;
-        }
-        // existing key.
-        if (hm.containsKey(key)) { // update.
-            hm.get(key).value = value;
-            moveNodeToTail(hm.get(key));
-        }
-        // new key, may need to remove old key.
-        else {
-            if (hm.size() == capacity) {
-                hm.remove(head.key);
-                head = head.next;
-            }
-            MyNode newNode = new MyNode(key, value);
-            tail.next = newNode;
-            newNode.prev = tail;
-            tail = tail.next;
-            hm.put(key, newNode);
-        }
-    }
+  }
+
+  private void addToLast(ListNode target) {
+    target.next = dummyTail;
+    target.prev = dummyTail.prev;
+    dummyTail.prev.next = target;
+    dummyTail.prev = target;
+  }
+
+  private void remove(ListNode target) {
+    target.next.prev = target.prev;
+    target.prev.next = target.next;
+  }
 }
