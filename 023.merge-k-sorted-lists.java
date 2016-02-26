@@ -5,49 +5,39 @@
 /**
  * Definition for singly-linked list.
  * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode(int x) { val = x; }
+ *   int val;
+ *   ListNode next;
+ *   ListNode(int x) { val = x; }
  * }
  */
 public class Solution {
-    public class MyItem implements Comparable<MyItem> {
-        public int val;
-        public int i;
-        public MyItem(int v, int whichList) {
-            val = v;
-            i = whichList;
-        }
-        @Override
-        public int compareTo(MyItem t) {
-            if (val < t.val) return -1;
-            else if (val == t.val) return 0;
-            else return 1;
-        }
+  private class ListNodeComparator implements Comparator<ListNode> {
+    @Override
+    public int compare(ListNode n1, ListNode n2) {
+      return n1.val - n2.val;
     }
-    
-    public ListNode mergeKLists(ListNode[] lists) {
-        ListNode dummy = new ListNode(0);
-        ListNode prev = dummy;
-        PriorityQueue<MyItem> pq = new PriorityQueue<MyItem>();
-        for (int i = 0; i < lists.length; ++i) {
-            if (lists[i] != null) {
-                MyItem it = new MyItem(lists[i].val, i);
-                pq.add(it);
-            }
-        }
-        
-        while (true) {
-            if (pq.isEmpty()) break;
-            MyItem r = pq.remove();
-            prev.next = lists[r.i];
-            lists[r.i] = lists[r.i].next;
-            prev = prev.next;
-            
-            if (lists[r.i] != null) {
-                pq.add(new MyItem(lists[r.i].val, r.i));
-            }
-        }
-        return dummy.next;
+  }
+
+  public ListNode mergeKLists(ListNode[] lists) {
+    if (lists == null) {
+      throw new NullPointerException();
     }
+    Queue<ListNode> pq = new PriorityQueue<>(new ListNodeComparator());
+    for (int i = 0; i < lists.length; ++i) {
+      if (lists[i] != null) {
+        pq.add(lists[i]);
+      }
+    }
+    ListNode dummy = new ListNode(0);
+    ListNode prev = dummy;
+    while (!pq.isEmpty()) {
+      ListNode next = pq.remove();
+      prev.next = next;
+      prev = prev.next;
+      if (next.next != null) {
+        pq.add(next.next);
+      }
+    }
+    return dummy.next;
+  }
 }
