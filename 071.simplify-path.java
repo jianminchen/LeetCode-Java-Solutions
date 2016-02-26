@@ -3,38 +3,36 @@
  */
 
 public class Solution {
-    public String simplifyPath(String path) {
-        if (path.length() == 0 || path.length() == 1) return path;
-        Stack<String> stk = new Stack<String>();
-        int i = 0; // the index for the next '/'
-        while (i < path.length()) {
-            while (i <path.length() && path.charAt(i) == '/') ++i;
-            int start = i - 1;
-            while (i < path.length() && path.charAt(i) != '/') ++i;
-            String subPath = path.substring(start, i);
-            if (!subPath.equals("/.")) {
-                if (subPath.equals("/..")) {
-                    if (stk.isEmpty()) stk.push("/");
-                    else if (stk.size() == 1) {
-                        stk.pop();
-                        stk.push("/");
-                    }
-                    else stk.pop();
-                }
-                else {
-                    if (stk.size() == 1 && stk.peek().equals("/")) stk.pop(); 
-                    stk.push(subPath);
-                }
-            }
-            else {
-                if (stk.isEmpty()) stk.push("/");
-            }
-        }
-        if (stk.size() > 1 && stk.peek().equals("/")) stk.pop();
-        String res = new String();
-        while (!stk.isEmpty()) {
-            res = stk.pop() + res;
-        }
-        return res;
+  public String simplifyPath(String path) {
+    if (path == null) {
+      throw new NullPointerException();
     }
+    List<String> stk = new ArrayList<>();
+    int idx = 0;
+    while (idx < path.length()) {
+      int start = idx;
+      while (idx < path.length() && path.charAt(idx) != '/') {
+        ++idx;
+      }
+      String token = path.substring(start, idx);
+      if (token.equals("") || token.equals(".")) {}
+      else if (token.equals("..")) {
+        if (stk.size() != 0) {
+          stk.remove(stk.size() - 1);
+        }
+      } else {
+        stk.add(token);
+      }
+      ++idx;
+    }
+    if (stk.size() == 0) {
+      return "/";
+    }
+    StringBuilder sb = new StringBuilder();
+    for (int i = 0; i < stk.size(); ++i) {
+      sb.append("/");
+      sb.append(stk.get(i));
+    }
+    return new String(sb);
+  }
 }
