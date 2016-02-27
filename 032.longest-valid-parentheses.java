@@ -12,13 +12,11 @@ public class Solution {
             if (s.charAt(i) == '(') {
                 stk.push('(');
                 stkIndex.push(i);
-            }
-            else { // s.charAt(i) == ')'
+            } else { // s.charAt(i) == ')'
                 if (stk.isEmpty() || stk.peek() == ')') {
                     stk.push(')');
                     stkIndex.push(i);
-                }
-                else { // stk not empty, and stk.peek() == '('
+                } else { // stk not empty, and stk.peek() == '('
                     stk.pop();
                     stkIndex.pop();
                     maxLen = Math.max(maxLen, i - stkIndex.peek());
