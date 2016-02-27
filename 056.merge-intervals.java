@@ -14,6 +14,7 @@
 public class Solution {
     // don't forget the class identifier.
     public class MyComparator implements Comparator<Interval> {
+        @Override
         public int compare(Interval it1, Interval it2) {
             return it1.start - it2.start;
         }
@@ -27,8 +28,7 @@ public class Solution {
             Interval cur = iter.next();
             if (cur.start > res.get(res.size() - 1).end) {
                 res.add(cur);
-            }
-            else { // cur.start <= res.get(res.size() - 1).end
+            } else { // cur.start <= res.get(res.size() - 1).end
                 int newEnd = Math.max(res.get(res.size() - 1).end, cur.end);
                 res.get(res.size() - 1).end = newEnd;
             }
