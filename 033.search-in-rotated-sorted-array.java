@@ -16,7 +16,7 @@ public class Solution {
                 else if (target == nums[high]) return high;
                 else return -1;
             }
-            int mid = low + ((high - low)>>1);
+            int mid = low + ((high - low) >> 1);
             
             if (target > nums[low]) {
                 // the first part.
@@ -24,19 +24,17 @@ public class Solution {
                     if (target < nums[mid]) high = mid -1;
                     else if (target == nums[mid]) return mid;
                     else low = mid + 1;
-                }
-                else {// since mid != low, we have nums[mid] != nums[low]
+                } else {// since mid != low, we have nums[mid] != nums[low]
                     // nums[mid] < nums[low]
                     high = mid - 1;
                 }
-            }
-            else if (target == nums[low]) return low;
-            else {
+            } else if (target == nums[low]) {
+                return low;
+            } else {
                 // target < nums[low], the second part ? 
                 if (nums[mid] > nums[low]) {
                     low = mid + 1;
-                }
-                else {
+                } else {
                     // nums[mid] < nums[low]
                     if (target > nums[mid]) low = mid + 1;
                     else if (target == nums[mid]) return mid;
