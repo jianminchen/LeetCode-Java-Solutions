@@ -24,24 +24,21 @@ public class Solution {
                     goDown = true;
                     --rightBound;
                 }
-            }
-            else if (goDown) {
+            } else if (goDown) {
                 ++i;
                 if (i == lowerBound) {
                     goDown = false;
                     goLeft = true;
                     --lowerBound;
                 }
-            }
-            else if (goLeft) {
+            } else if (goLeft) {
                 --j;
                 if (j == leftBound) {
                     goLeft = false;
                     goUp = true;
                     ++leftBound; // don't forget semicolon.
                 }
-            }
-            else { // goUp
+            } else { // goUp
                 --i;
                 if (i == upperBound) {
                     goUp = false;
