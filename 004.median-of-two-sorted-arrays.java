@@ -9,8 +9,8 @@ public class Solution {
         int low = 0;
         int high = nums1.length;
         while (low <= high) {
-            int pos1 = low + ((high - low)>>1); // the cut position in nums1
-            int pos2 = nums1.length + ((nums2.length - nums1.length)>>1) - pos1;
+            int pos1 = low + ((high - low) >> 1); // the cut position in nums1
+            int pos2 = nums1.length + ((nums2.length - nums1.length) >> 1) - pos1;
             
             int lower1 = (pos1 == 0)? Integer.MIN_VALUE : nums1[pos1 - 1];
             int upper1 = (pos1 == nums1.length)? Integer.MAX_VALUE : nums1[pos1];
@@ -29,9 +29,11 @@ public class Solution {
                 else { // the right two halves have one more number than the left two halves.
                     return (double) Math.min(upper1, upper2);
                 }
+            } else if (lower1 > upper2) {
+                high = pos1;
+            } else {
+                low = pos1 + 1;
             }
-            else if (lower1 > upper2) high = pos1;
-            else low = pos1 + 1;
         }
         return -1;
     }
