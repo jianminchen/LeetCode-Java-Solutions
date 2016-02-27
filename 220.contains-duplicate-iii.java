@@ -14,7 +14,7 @@ public class Solution {
             Integer ceil = ts.ceiling(nums[i]);
 
             if ((floor != null && (nums[i] - floor >= 0 && nums[i] - floor <= t)) 
-            || (ceil != null && (ceil - nums[i] >= 0 && ceil - nums[i] <= t))) {
+                    || (ceil != null && (ceil - nums[i] >= 0 && ceil - nums[i] <= t))) {
                 return true;
             }
             ts.add(nums[i]);
