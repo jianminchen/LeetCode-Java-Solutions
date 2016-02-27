@@ -6,7 +6,7 @@ public class Solution {
     public List<List<Integer>> fourSum(int[] nums, int target) {
         if (nums == null) throw new NullPointerException();
         if (nums.length < 4) return new ArrayList<List<Integer>>();
-        int[] newNums = nums.clone();
+        int[] newNums = nums.clone(); // if we are not allowed to alter the input, we can make a copy of the input.
         Arrays.sort(newNums);
         int n = nums.length;
         
