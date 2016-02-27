@@ -13,10 +13,7 @@ public class Solution {
             for (int j = 0; j < nums.length / 2; ++j) {
                 swap(nums, j, nums.length - 1 - j);
             }
-        }
-        else {
-            // wrong logic. need to swap i - 1 with a number that is the closest to it and greater than it.
-            // swap(nums, i - 1, nums.length - 1);
+        } else {
             int j = nums.length - 1;
             for (; ; --j) {
                 if (nums[j] > nums[i - 1]) break;
