@@ -14,5 +14,3 @@ Part of the solutions for the LeetCode problems in Java:
 File names that start with a three digit number are solutions in my second session. The three digit number is the problem number in LeetCode. 
 
 The solutions serve as a self record. Various optimizations can be done in terms of time complexity, space complexity, and code cleanness.
-
-Other files are solutions in my first session, which were done before the early 2015. Rest of the solutions in the first session were not uploaded.
