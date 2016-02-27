@@ -11,11 +11,9 @@ public class Solution {
         while (i < j) {
             if (height[i] >= height[j]) {
                 --j;
-            }
-            else {
+            } else {
                 ++i;
             }
-            
             max = Math.max(max, (j - i) * Math.min(height[i], height[j]));
         }
         return max;
