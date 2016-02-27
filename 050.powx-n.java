@@ -16,8 +16,7 @@ public class Solution {
         if (n % 2 == 0) {
             double half = myPow(x, n/2);
             return half * half;
-        }
-        else {
+        } else {
             double half = myPow(x, n/2);
             return half * half * x;
         }
