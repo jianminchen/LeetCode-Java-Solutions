@@ -28,8 +28,9 @@ public class Solution {
                     lists.add(aRes);
                     ++low;
                     --high;
+                } else {
+                    ++low;
                 }
-                else ++low;
             }
         }
         return lists;
