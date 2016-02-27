@@ -9,12 +9,12 @@ public class Solution {
         int pFill = 0;
         int i = 1; // the first element will not change.
         while (i < nums.length) {
-            if (nums[i] == nums[pFill]) i++;
+            if (nums[i] == nums[pFill]) {}
             else {
-                pFill ++;
+                ++pFill;
                 nums[pFill] = nums[i]; 
-                i ++;
             }
+            ++i;
         }
         return pFill + 1;
     }
