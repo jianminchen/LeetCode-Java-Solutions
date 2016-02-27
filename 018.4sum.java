@@ -4,38 +4,47 @@
 
 public class Solution {
     public List<List<Integer>> fourSum(int[] nums, int target) {
+        if (nums == null) throw new NullPointerException();
+        if (nums.length < 4) return new ArrayList<List<Integer>>();
         int[] newNums = nums.clone();
         Arrays.sort(newNums);
-        List<List<Integer>> lists = new ArrayList<List<Integer>>();
-        Set<List<Integer>> setList = new HashSet<List<Integer>>();
-        int sum = 0;
-        if (newNums.length < 4) return lists;
-        for (int i = 0; i <= newNums.length - 4; ++i) {
-            for (int j = i + 1; j <= newNums.length - 3; ++j) {
+        int n = nums.length;
+        
+        List<List<Integer>> res = new ArrayList<>();
+        for (int i = 0; i <= n - 4; ++i) {
+            if (i > 0 && newNums[i] == newNums[i - 1]) continue;
+            for (int j = i + 1; j <= n - 3; ++j) {
+                if (j > i + 1 && newNums[j] == newNums[j - 1]) continue;
+                
                 int low = j + 1;
-                int high = newNums.length - 1;
-                sum = newNums[i] + newNums[j]; // every time use new i, j.
+                int high = n - 1;
+                int sum = newNums[i] + newNums[j];
                 while (low < high) {
-                    if (newNums[low] + newNums[high] > target - sum) {
-                        --high;
-                    }
-                    else if (newNums[low] + newNums[high] == target - sum) {
-                        List<Integer> aRes = new ArrayList<Integer>();
-                        aRes.add(newNums[i]); aRes.add(newNums[j]);
-                        aRes.add(newNums[low]); aRes.add(newNums[high]);
-                        setList.add(aRes); // avoids duplicates
-                        --high;
+                    if (low > j + 1 && newNums[low] == newNums[low - 1]) {
                         ++low;
+                        continue;
                     }
-                    else {
+                    if (high < n - 1 && newNums[high] == newNums[high + 1]) {
+                        --high;
+                        continue;
+                    }
+                    if (sum + newNums[low] + newNums[high] == target) {
+                        List<Integer> aRes = new ArrayList<>();
+                        aRes.add(newNums[i]);
+                        aRes.add(newNums[j]);
+                        aRes.add(newNums[low]);
+                        aRes.add(newNums[high]);
+                        res.add(aRes);
                         ++low;
+                        --high;
+                    } else if (sum + newNums[low] + newNums[high] < target) {
+                        ++low;
+                    } else {
+                        --high;
                     }
                 }
             }
         }
-        for (List<Integer> list : setList) {
-            lists.add(list);
-        }
-        return lists;
+        return res;
     }
 }
