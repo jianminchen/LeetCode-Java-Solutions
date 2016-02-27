@@ -20,14 +20,11 @@ public class Solution {
                 }
                 if (sum > target) {
                     --k;
-                }
-                else {
+                } else {
                     ++j;
                 }
             }
         }
-        
-        
         nums = newNums;
         return res;
     }
