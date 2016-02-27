@@ -16,7 +16,6 @@ public class Solution {
         if ((dividend < 0 && divisor > 0) || (dividend > 0 && divisor < 0)) sign = -1;
 
         long newDvd = Math.abs((long) dividend);
-        System.out.println(newDvd);
         long newDvs = Math.abs((long) divisor);
         int res = 0;
         while (newDvd >= newDvs) {
