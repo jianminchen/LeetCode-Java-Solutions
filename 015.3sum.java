@@ -4,31 +4,34 @@
 
 public class Solution {
     public List<List<Integer>> threeSum(int[] nums) {
-        int[] newNums = nums.clone();
         Arrays.sort(nums);
         List<List<Integer>> lists = new ArrayList<>();
-        Set<List<Integer>> setList = new HashSet<>();
         if (nums.length < 3) return lists;
         for (int i = 0; i < nums.length - 2; ++i) {
+            if (i != 0 && nums[i] == nums[i - 1]) continue;
             int low = i + 1, high = nums.length - 1;
             while (low < high) {
+                if (low != i + 1 && nums[low] == nums[low - 1]) {
+                    ++low;
+                    continue;
+                }
+                if (high != nums.length - 1 && nums[high] == nums[high + 1]) {
+                    --high;
+                    continue;
+                }
                 if (nums[low] + nums[high] > 0 - nums[i]) --high;
                 else if (nums[low] + nums[high] == 0 - nums[i]) {
                     List<Integer> aRes = new ArrayList<Integer>();
                     aRes.add(nums[i]);
                     aRes.add(nums[low]);
                     aRes.add(nums[high]);
-                    setList.add(aRes);
+                    lists.add(aRes);
                     ++low;
                     --high;
                 }
                 else ++low;
             }
         }
-        for (List<Integer> aList : setList) {
-            lists.add(aList);
-        }
-        nums = newNums;
         return lists;
     }
 }
