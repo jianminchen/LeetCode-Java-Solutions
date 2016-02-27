@@ -19,8 +19,9 @@ public class Solution {
                     --high;
                     continue;
                 }
-                if (nums[low] + nums[high] > 0 - nums[i]) --high;
-                else if (nums[low] + nums[high] == 0 - nums[i]) {
+                if (nums[low] + nums[high] > 0 - nums[i]) {
+                    --high;
+                } else if (nums[low] + nums[high] == 0 - num}s[i]) {
                     List<Integer> aRes = new ArrayList<Integer>();
                     aRes.add(nums[i]);
                     aRes.add(nums[low]);
