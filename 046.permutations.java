@@ -3,41 +3,35 @@
  */
 
 public class Solution {
-    public List<List<Integer>> permute(int[] nums) {
-        List<List<Integer>> lists = new ArrayList<List<Integer>>();
-        List<Integer> first = new ArrayList<Integer>();
-        int[] newNums = nums.clone();
-        Arrays.sort(newNums);
-        for (int i = 0; i < newNums.length; ++i) {
-            first.add(newNums[i]);
-        }
-        lists.add(first);
-        
-        while (true) {
-            List<Integer> next = new ArrayList<Integer>();
-            // find the index where we should go to the next number/list.
-            int i = newNums.length - 1;
-            while (i >= 1 && newNums[i - 1] >= newNums[i]) --i;
-            if (i == 0) break; // we've got all numbers.
-            
-            Arrays.sort(newNums, i, newNums.length);
-            int j = i;
-            while (j < newNums.length && newNums[i - 1] >= newNums[j]) ++j;
-            // swap i and j
-            swap(newNums, i - 1, j);
+  public List<List<Integer>> permute(int[] nums) {
+    if (nums == null) {
+      throw new NullPointerException();
+    }
+    List<List<Integer>> results = new ArrayList<>();
+    dfsHelper(0, nums, results);
+    return results;
+  }
 
-            for (int k = 0; k < newNums.length; ++k) {
-                next.add(newNums[k]);
-            }
-            lists.add(next);
-        }
-        
-        return lists;
+  private void dfsHelper(int start, int[] nums, List<List<Integer>> results) {
+    if (start == nums.length) {
+      List<Integer> aRes = new ArrayList<>();
+      for (int n : nums) {
+        aRes.add(n);
+      }
+      results.add(aRes);
+      return;
     }
-    
-    public void swap(int[] newNums, int i, int j) {
-        newNums[i] = newNums[j] ^ newNums[i];
-        newNums[j] = newNums[i] ^ newNums[j];
-        newNums[i] = newNums[i] ^ newNums[j];
+    dfsHelper(start + 1, nums, results); // use number at start as the first
+    for (int i = start + 1; i < nums.length; ++i) {
+      swap(start, i, nums); // use number at i as the first
+      dfsHelper(start + 1, nums, results);
+      swap(start, i, nums); // restore the array
     }
+  }
+
+  private void swap(int i, int j, int[] nums) {
+    nums[i] = nums[i] ^ nums[j];
+    nums[j] = nums[i] ^ nums[j];
+    nums[i] = nums[i] ^ nums[j];
+  }
 }
