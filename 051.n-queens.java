@@ -17,9 +17,7 @@ public class Solution {
 		int i = 0;
 		while (true) {
 			// we consider the ith row.
-			int cand = -1;
-			if (backtrack == false) cand = 0;
-			else cand = bValue + 1;
+			int cand = backtrack ? bValue + 1 : 0;
 			while (cand < n && !canPlace(stkC, cand)) ++cand;
 			if (cand >= n) {
 				// backtrack
@@ -27,8 +25,7 @@ public class Solution {
 				backtrack = true;
 				bValue = stkC.remove(stkC.size() - 1);
 				i = i - 1;
-			}
-			else {
+			} else {
 				stkC.add(cand);
 				i = i + 1;
 				backtrack = false;
@@ -51,8 +48,8 @@ public class Solution {
 		for (int i = 0; i < stkC.size(); ++i) {
 			int ci = i;
 			int cj = stkC.get(i);
-			if (Math.abs(ci - ti) == Math.abs(cj - tj)||
-					ci == ti || cj == tj) return false;
+			if (Math.abs(ci - ti) == Math.abs(cj - tj)
+					|| ci == ti || cj == tj) return false;
 		}
 		return true;
 	}
