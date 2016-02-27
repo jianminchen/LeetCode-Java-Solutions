@@ -21,15 +21,13 @@ public class Solution {
 			if (backtrack == false) cand = 0;
 			else cand = bValue + 1;
 			while (cand < n && !canPlace(stkC, cand)) ++cand;
-			// System.out.println(i + " " + cand);
 			if (cand >= n) {
 				// backtrack
 				if (stkC.size() == 0) break; // no way to backtrack.
 				backtrack = true;
 				bValue = stkC.remove(stkC.size() - 1);
 				i = i - 1;
-			}
-			else {
+			} else {
 				// we can place a queen at i, cand.
 				stkC.add(cand);
 				i = i + 1;
@@ -44,7 +42,6 @@ public class Solution {
 			}
 		}
 		return res;
-
 	}
 	
 	public boolean canPlace(List<Integer> stkC, int cand) {
@@ -54,8 +51,8 @@ public class Solution {
 		for (int i = 0; i < stkC.size(); ++i) {
 			int ci = i;
 			int cj = stkC.get(i);
-			if (Math.abs(ci - ti) == Math.abs(cj - tj)||
-					ci == ti || cj == tj) return false;
+			if (Math.abs(ci - ti) == Math.abs(cj - tj)
+					|| ci == ti || cj == tj) return false;
 		}
 		return true;
 	}
