@@ -23,12 +23,12 @@ public class Solution {
         return res;
     }
     
-    
     public String getRange(int lower, int upper) {
         StringBuilder sb = new StringBuilder();
         sb.append(lower);
-        if (upper == lower) return new String(sb);
-        else {
+        if (upper == lower) {
+            return new String(sb);
+        } else {
             sb.append("->");
             sb.append(upper);
             return new String(sb);
