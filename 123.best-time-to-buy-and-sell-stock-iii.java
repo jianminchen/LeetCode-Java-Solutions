@@ -4,13 +4,16 @@
 
 public class Solution {
     public int maxProfit(int[] prices) {
-        if (prices == null || prices.length <= 1) return 0;
+        if (prices == null) throw new NullPointerException();
+        if (prices.length <= 1) return 0;
+        // forward, get max profit from day 0 up to day i.
         int maxP1[] = new int[prices.length];
         int min = prices[0];
         for (int i = 1; i < prices.length; ++i) {
             if (prices[i] < min) min = prices[i];
             maxP1[i] = Math.max(maxP1[i - 1], prices[i] - min);
         }
+        // backward, get max profit from day prices.length - 1 down to day i
         int maxP2[] = new int[prices.length];
         int max = prices[prices.length - 1];
         for (int i = prices.length - 2; i >= 0; --i) {
