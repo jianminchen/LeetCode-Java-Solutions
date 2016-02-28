@@ -9,7 +9,7 @@ public class Solution {
         int i = 0;
         while (i < nums.length) {
             int start = i;
-            while (i + 1 < nums.length && nums[i] == nums[i+1] - 1) {
+            while (i + 1 < nums.length && nums[i] == nums[i + 1] - 1) {
                 ++i;
             }
             int end = i;
