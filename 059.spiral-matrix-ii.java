@@ -32,7 +32,7 @@ public class Solution {
                 ++num;
             }
         }
-        if (n % 2 == 1) matrix[n/2][n/2] = n*n;
+        if (n % 2 == 1) matrix[n/2][n/2] = n * n;
         return matrix;
     }
 }
