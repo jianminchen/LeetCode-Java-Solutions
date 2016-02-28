@@ -4,31 +4,29 @@
 
 public class Solution {
     public void sortColors(int[] nums) {
-        int nextZero = 0;
-        int i = 0;
-        while (i < nums.length) {
+        int nextZero = 0, i = 0;
+        for (; i < nums.length; ++i) {
             if (nums[i] == 0) {
-                if (i == nextZero) ;
+                if (i == nextZero) {}
                 else {
                     swap(nums, i, nextZero);
                 }
                 ++nextZero;
             }
-            ++i;
         }
-        i = nextZero; // the next index for 1 from new on.
-        while (i < nums.length) {
+        i = nextZero; // the next index for 1 from now on
+        for (; i < nums.length; ++i) {
             if (nums[i] == 1) {
-                if (i == nextZero) ;
+                if (i == nextZero) {}
                 else {
                     swap(nums, i, nextZero);
                 }
                 ++nextZero;
             }
-            ++i;
         }
     }
-    public void swap(int[] nums, int i, int j) {
+    
+    private void swap(int[] nums, int i, int j) {
         nums[i] = nums[i] ^ nums[j];
         nums[j] = nums[i] ^ nums[j];
         nums[i] = nums[i] ^ nums[j];
