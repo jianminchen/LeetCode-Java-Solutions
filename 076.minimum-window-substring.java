@@ -4,6 +4,7 @@
 
 public class Solution {
     public String minWindow(String s, String t) {
+        if (s == null || t == null) throw new NullPointerException();
         if (s.length() < t.length()) return "";
         Map<Character, Integer> hmt = getHashMap(t);
         Map<Character, Integer> hms = getHashMap(s.substring(0, t.length()));
@@ -17,34 +18,29 @@ public class Solution {
                     res = s.substring(i, j + 1);
                     minLen = Math.min(minLen, j - i + 1);
                 }
-                if (hms.containsKey(s.charAt(i)))
+                if (hms.containsKey(s.charAt(i))) {
                     hms.put(s.charAt(i), hms.get(s.charAt(i)) - 1);
+                }
                 ++i;
-            }
-            else {
+            } else {
                 ++j;
                 if (j >= s.length()) break;
                 if (hmt.containsKey(s.charAt(j))) {
-                    if (!hms.containsKey(s.charAt(j))) {
-                        hms.put(s.charAt(j), 0);
-                    }
-                    hms.put(s.charAt(j), hms.get(s.charAt(j)) + 1);
+                    hms.put(s.charAt(j), hms.containsKey(s.charAt(j)) ? hms.get(s.charAt(j)) + 1 : 1);
                 }
             }
         }
         return res;
     }
-    public Map<Character, Integer> getHashMap(String s) {
+    private Map<Character, Integer> getHashMap(String s) {
         Map<Character, Integer> hm = new HashMap<>();
         for (int i = 0; i < s.length(); ++i) {
-            if (!hm.containsKey(s.charAt(i))) hm.put(s.charAt(i), 0);
-            hm.put(s.charAt(i), hm.get(s.charAt(i)) + 1);
+            hm.put(s.charAt(i), hm.containsKey(s.charAt(i)) ? hm.get(s.charAt(i)) + 1 : 1);
         }
         return hm;
     }
-    public boolean covers(Map<Character, Integer> hms, Map<Character, Integer> hmt) {
-        Set<Character> set = hmt.keySet();
-        for (char c : set) {
+    private boolean covers(Map<Character, Integer> hms, Map<Character, Integer> hmt) {
+        for (char c : hmt.keySet()) {
             if (!hms.containsKey(c) || hms.get(c) < hmt.get(c)) return false;
         }
         return true;
