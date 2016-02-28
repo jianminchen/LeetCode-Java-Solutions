@@ -11,10 +11,7 @@ public class Solution {
                 if (am == i) {
                     minCount = 1;
                     break;
-                }
-                else if (am < i) {
-                    ;
-                }
+                } else if (am < i) {}
                 else {
                     if (count[am - i - 1] != -1) {
                         minCount = Math.min(1 + count[am - i - 1], minCount);
