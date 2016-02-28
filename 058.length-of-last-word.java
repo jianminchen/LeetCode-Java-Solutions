@@ -7,10 +7,10 @@ public class Solution {
         // s.length() == 0, can be included into general cases.
         if (s == null /*|| s.length() == 0 */) return 0;
         int iLast = s.length() - 1;
-        while (iLast >= 0 && s.charAt(iLast) == ' ') iLast --;
+        while (iLast >= 0 && s.charAt(iLast) == ' ') --iLast;
         if (iLast < 0) return 0;
         int iFirst = iLast;
-        while (iFirst >= 0 && s.charAt(iFirst) != ' ') iFirst --;
+        while (iFirst >= 0 && s.charAt(iFirst) != ' ') --iFirst;
         return iLast - iFirst;
     }
 }
