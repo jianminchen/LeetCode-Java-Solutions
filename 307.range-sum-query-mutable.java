@@ -1,4 +1,5 @@
 public class NumArray {
+    // the binary index tree solution.
     public int[] array;
     public int[] BIT;
     public NumArray(int[] nums) {
