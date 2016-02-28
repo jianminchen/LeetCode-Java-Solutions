@@ -9,7 +9,7 @@
  */
 public class Solution {
     public int maxPathSum(TreeNode root) {
-        // the value is the maximum sum of the path from this node down to a some node
+        // the value is the maximum sum of the path from this node down to some node
         Map<TreeNode, Integer> sumMap = new HashMap<>();
         sumMap.put(null, 0);
         Stack<TreeNode> stk = new Stack<>();
