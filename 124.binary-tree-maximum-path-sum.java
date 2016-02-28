@@ -8,31 +8,30 @@
  * }
  */
 public class Solution {
-    int max = Integer.MIN_VALUE;
     public int maxPathSum(TreeNode root) {
-        //if (root == null) return 0;
-        helper(root);
+        // the value is the maximum sum of the path from this node down to a some node
+        Map<TreeNode, Integer> sumMap = new HashMap<>();
+        sumMap.put(null, 0);
+        Stack<TreeNode> stk = new Stack<>();
+        int max = Integer.MIN_VALUE;
+        TreeNode cur = root;
+        int left = 0, right = 0;
+        while (true) {
+            while (cur != null) {
+                stk.push(cur);
+                cur = cur.left;
+            }
+            while (!stk.isEmpty() && (stk.peek().right == null || stk.peek().right == cur)) {
+                cur = stk.pop();
+                left = sumMap.get(cur.left);
+                right = sumMap.get(cur.right);
+                max = Math.max(max, Math.max(left, 0) + cur.val + Math.max(right, 0));
+                // if both branch are negative, we do not use them.
+                sumMap.put(cur, cur.val + Math.max(0, Math.max(left, right)));
+            }
+            if (stk.isEmpty()) break;
+            else cur = stk.peek().right;
+        }
         return max;
-    }
-    
-    // the return value of this helper function is the maximum sum of the path that starts with root.
-    // meanwhile, it updates the max value.
-    public int helper(TreeNode root) {
-        if (root == null) return Integer.MIN_VALUE;
-        int left = helper(root.left);
-        int right = helper(root.right);
-        int locMax = root.val;
-        if (left > 0) locMax = left + root.val;
-        if (right > 0) locMax = Math.max(locMax, right + root.val);
-        
-        max = Math.max(left, max);
-        max = Math.max(right, max);
- 
-        if (left <= 0 && right <= 0) max = Math.max(root.val, max);
-        else if (left <= 0 && right > 0) max = Math.max(max, root.val + right);
-        else if (left > 0 && right <= 0) max = Math.max(max, root.val + left);
-        else if (left > 0 && right > 0) max = Math.max(max, root.val + right + left);
-        
-        return locMax;
     }
 }
