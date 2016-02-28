@@ -14,7 +14,7 @@ public class Solution {
         reverse(s, 0, s.length - 1);
     }
     public void reverse(char[] s, int from, int to) {
-        for (int i = 0; i <= (to - from)>>1; ++i) {
+        for (int i = 0; i <= (to - from) >> 1; ++i) {
             char temp = s[from + i];
             s[from + i] = s[to - i];
             s[to - i] = temp;
