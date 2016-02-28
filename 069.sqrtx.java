@@ -9,19 +9,17 @@ public class Solution {
         int mid = 0;
 
         while (true) {
-
             if (low == high) return low;
             if (low == high - 1) {
                 if (high > x / high) return low;
                 else return high;
             }
-            
-            mid = low + ((high - low)>>1);
+            mid = low + ((high - low) >> 1);
             if (mid < x / mid) {
                 low = mid; // mid can still be the possible answer !!
-            }
-            else if (mid == x / mid) return mid;
-            else {
+            } else if (mid == x / mid) {
+                return mid;
+            } else {
                 high = mid - 1;
             }
         }
