@@ -1,9 +1,9 @@
 public class Solution {
     class BSTNode {
-        public int val;
-        public int lessCount, dupCount;
-        public BSTNode left, right;
-        public BSTNode(int value) {
+        int val;
+        int lessCount, dupCount;
+        BSTNode left, right;
+        BSTNode(int value) {
             left = null;
             right = null;
             val = value;
@@ -20,21 +20,18 @@ public class Solution {
         for (int i = 0; i < nums.length; ++i) finalRes.add(res[i]);
         return finalRes;
     }
-    public BSTNode insert(BSTNode node, int value, int i, int[] res, int prevLess) {
+    private BSTNode insert(BSTNode node, int value, int i, int[] res, int prevLess) {
         if (node == null) {
             BSTNode newNode = new BSTNode(value);
             node = newNode;
             res[i] = prevLess;
-        }
-        else if (node.val == value) {
+        } else if (node.val == value) {
             ++node.dupCount;
             res[i] = prevLess + node.lessCount;
-        }
-        else if (value < node.val) {
+        } else if (value < node.val) {
             ++node.lessCount;
             node.left = insert(node.left, value, i, res, prevLess);
-        }
-        else {
+        } else {
             prevLess += node.lessCount + node.dupCount;
             node.right = insert(node.right, value, i, res, prevLess);
         }
