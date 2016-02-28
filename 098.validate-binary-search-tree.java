@@ -26,10 +26,10 @@ public class Solution {
             TreeNode pop = stk.pop();
             if (prev == null) {
                 prev = pop;
-            }
-            else {
-                if (pop.val <= prev.val) return false;
-                else {
+            } else {
+                if (pop.val <= prev.val) {
+                    return false;
+                } else {
                     prev = pop;
                 }
             }
