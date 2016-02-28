@@ -12,19 +12,17 @@ public class Solution {
         ways[s.length()] = 1;
         if (s.charAt(s.length() - 1) == '0') {
             ways[s.length() - 1] = 0;
-        }
-        else ways[s.length() - 1] = 1;
-        
+        } else {
+            ways[s.length() - 1] = 1;
+        }        
         for (int i = s.length() - 2; i >= 0; --i) {
             if (s.charAt(i) == '0') {
                 ways[i] = 0;
-            }
-            else {
+            } else {
                 int num = Integer.parseInt(s.substring(i, i + 2));
                 if (num > 26) {
                     ways[i] = ways[i + 1];
-                }
-                else {
+                } else {
                     ways[i] = ways[i + 1] + ways[i + 2];
                 }
             }
