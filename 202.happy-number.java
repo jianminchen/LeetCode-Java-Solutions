@@ -13,12 +13,14 @@ public class Solution {
                 next += (n % 10)* (n % 10);
                 n = n / 10;
             }
-            if (next == 1) return true;
-            else {
-                if (hs.contains(next))
+            if (next == 1) {
+                return true;
+            } else {
+                if (hs.contains(next)) {
                     return false;
-                else
+                } else {
                     hs.add(next);
+                }
             }
             n = next;
         }
