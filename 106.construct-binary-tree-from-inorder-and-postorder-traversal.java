@@ -21,7 +21,6 @@ public class Solution {
         if (ifrom == ito) {
             return new TreeNode(inorder[ifrom]);
         }
-        TreeNode root = new TreeNode(postorder[pto]);
         int i = ifrom;
         for (; i <= ito; ++i) {
             if (inorder[i] == postorder[pto]) break;
