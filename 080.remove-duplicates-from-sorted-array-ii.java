@@ -19,8 +19,7 @@ public class Solution {
                 nums[ri] = nums[i - 1];
                 nums[ri + 1] = nums[i - 1];
                 ri += 2;
-            }
-            else {
+            } else {
                 nums[ri] = nums[i - 1];
                 ri += 1;
             }
