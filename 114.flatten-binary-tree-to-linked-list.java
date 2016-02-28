@@ -14,11 +14,14 @@
 public class Solution {
     public void flatten(TreeNode root) {
         if (root == null || (root.left == null && root.right == null)) return;
-        if (root.left == null) flatten(root.right);
-        else {
+        if (root.left == null) {
+            flatten(root.right);
+        } else {
             flatten(root.left);
             TreeNode cur = root.left;
-            while(cur.right != null) cur = cur.right;
+            while (cur.right != null) {
+                cur = cur.right;
+            }
             flatten(root.right);
             TreeNode temp = root.right;
             root.right = root.left;
