@@ -3,9 +3,7 @@
  */
 
 public class Solution {
-    // public Stack<Integer> stk;
-    public int n;
-    public int k;
+    // iterative backtrack solution
     public List<List<Integer>> combine(int n, int k) {
         List<List<Integer>> lists = new ArrayList<List<Integer>>();
         Stack<Integer> stk = new Stack<Integer>();
@@ -17,21 +15,21 @@ public class Solution {
             return lists;
         }
         while (true) {
-            // not valid: backtrack:
-            if (stk.peek() > n) backtrack(stk, n, k);
-            else {
+            if (stk.peek() > n) { // not valid: backtrack:
+                backtrack(stk, n, k);
+            } else { // valid: go forward (the next may or may not be valid)
                 // get a result
                 List<Integer> al = generateResultGivenStack(stk);
                 lists.add(al);
                 // go to next.
                 stk.push(stk.pop() + 1);
             }
-            
             if (stk.isEmpty()) break;
         }
         return lists;
     }
-    public List<Integer> generateResultGivenStack(Stack<Integer> stk) {
+    
+    private List<Integer> generateResultGivenStack(Stack<Integer> stk) {
         List<Integer> list = new ArrayList<Integer>();
         while (!stk.isEmpty()) {
             list.add(stk.pop());
@@ -42,8 +40,8 @@ public class Solution {
         Collections.reverse(list);
         return list;
     }
-    public void backtrack(Stack<Integer> stk, int n, int k) {
-        // the input is a result where the top of the stack is >  n.
+    
+    private void backtrack(Stack<Integer> stk, int n, int k) {
         int popCount = 0;
         while (!stk.isEmpty() && stk.peek() + (k - stk.size()) >= n) {
             stk.pop();
