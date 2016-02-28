@@ -27,8 +27,7 @@ public class Solution {
                 if (q.peek() == null) {
                     res.add(node.val); // it is the last one in this level.
                 }
-            }
-            else { // the removed node is null, we are finishing the traversal of the current level
+            } else { // the removed node is null, we are finishing the traversal of the current level
                 if (q.isEmpty()) break;
                 else q.add(null);
             }
