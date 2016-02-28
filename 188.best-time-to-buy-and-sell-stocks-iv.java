@@ -1,5 +1,6 @@
 public class Solution {
     public int maxProfit(int k, int[] prices) {
+        if (prices == null) throw new NullPointerException();
         if (prices.length <= 1) return 0;
         int n = prices.length;
         if (k >= n / 2) {
