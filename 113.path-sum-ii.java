@@ -28,18 +28,13 @@ public class Solution {
                 }
                 cur = cur.left;
             }
+            while (stk.size() != 0 && (stk.get(stk.size() - 1).right == null 
+                    || cur == stk.get(stk.size() - 1).right)) { // simplified.
+                cur = stk.remove(stk.size() - 1);
+                pSum -= cur.val;
+            }
             if (stk.size() == 0) break;
-            if (stk.get(stk.size() - 1).right != null) {
-                cur = stk.get(stk.size() - 1).right;
-            }
-            else {
-                do {
-                    cur = stk.remove(stk.size() - 1);
-                    pSum = pSum - cur.val;
-                } while (stk.size() != 0 && (stk.get(stk.size() - 1).right == null || cur == stk.get(stk.size() - 1).right));
-                if (stk.size() == 0) break;
-                else cur = stk.get(stk.size() - 1).right;
-            }
+            else cur = stk.get(stk.size() - 1).right;
         }
         return res;
     }
