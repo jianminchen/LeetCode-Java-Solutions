@@ -17,7 +17,7 @@ public class Solution {
         if (root == null) return lli;
         Queue<TreeNode> q = new LinkedList<TreeNode>();
         q.add(root);
-        q.add(null);
+        q.add(null); // indicate the end of a level
         List<Integer> first = new ArrayList<Integer>();
         lli.add(first);
         while (!q.isEmpty()) {
@@ -26,17 +26,14 @@ public class Solution {
                 lli.get(lli.size() - 1).add(cur.val);
                 if (cur.left != null) q.add(cur.left);
                 if (cur.right != null) q.add(cur.right);
-            }
-            else { // cur == null
+            } else { // cur == null
                 if (!q.isEmpty()) {
                     List<Integer> next = new ArrayList<Integer>();
                     lli.add(next);
                     q.add(null); // use the null to separate the levels.
                 }
-                else ; // finished traversing, do nothing.
             }
         }
         return lli;
-        
     }
 }
