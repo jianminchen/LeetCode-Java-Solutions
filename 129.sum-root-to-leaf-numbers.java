@@ -24,15 +24,12 @@ public class Solution {
                 }
                 cur = cur.left;
             }
-            if (stk.size() == 0) break;
-            if (stk.get(stk.size() - 1).right != null) cur = stk.get(stk.size() - 1).right;
-            else {
-                do {
-                    cur = stk.remove(stk.size() - 1);
-                } while (stk.size() != 0 && (stk.get(stk.size() - 1).right == null || stk.get(stk.size() - 1).right == cur));
-                if (stk.size() == 0) break;
-                else cur = stk.get(stk.size() - 1).right;
+            while (stk.size() != 0 && (stk.get(stk.size() - 1).right == null 
+                    || stk.get(stk.size() - 1).right == cur))  {
+                cur = stk.remove(stk.size() - 1);    
             }
+            if (stk.size() == 0) break;
+            else cur = stk.get(stk.size() - 1).right;
         }
         return sum;
     }
