@@ -10,8 +10,7 @@ public class Solution {
             if (remain == 0) {
                 s = 'Z' + s;
                 n = (n - 26)/26;
-            }
-            else { // some remainder
+            } else { // some remainder
                 s = (new Character((char)('A' + remain - 1))).toString() + s;
                 n = (n - remain)/26;
             }
