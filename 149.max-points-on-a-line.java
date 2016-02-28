@@ -14,6 +14,7 @@
 public class Solution {
     public int maxPoints(Point[] points) {
         if (points == null || points.length == 0) return 0;
+        // key is the point, and value is the count of the point.
         Map<List<Integer>, Integer> hm = new HashMap<>();
         for (int i = 0; i < points.length; ++i) {
             List<Integer> myPoint = new ArrayList<>();
@@ -21,8 +22,9 @@ public class Solution {
             myPoint.add(points[i].y);
             if (hm.containsKey(myPoint)) {
                 hm.put(myPoint, hm.get(myPoint) + 1);
+            } else {
+                hm.put(myPoint, 1);
             }
-            else hm.put(myPoint, 1);
         }
         if (hm.size() == 1) {
             for (List<Integer> p : hm.keySet()) {
