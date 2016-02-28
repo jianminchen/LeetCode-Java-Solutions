@@ -13,8 +13,7 @@ public class Solution {
             if (Character.isDigit(s.charAt(s.length() - 1))) {
                 int num = Integer.parseInt(s);
                 stk.push(num);
-            }
-            else {
+            } else {
                 char c = s.charAt(0);
                 int num2 = stk.pop();
                 int num1 = stk.pop();
