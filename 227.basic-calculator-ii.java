@@ -15,10 +15,10 @@ public class Solution {
                     while (i < s.length() && Character.isDigit(s.charAt(i))) ++i;
                     int num = Integer.parseInt(s.substring(start, i));
                     stkNum.push(num);
-                }
-                else {
-                    if (stkOp.isEmpty()) stkOp.push(s.charAt(i));
-                    else {
+                } else {
+                    if (stkOp.isEmpty()) {
+                        stkOp.push(s.charAt(i));
+                    } else {
                         while (!stkOp.isEmpty() && !higher(s.charAt(i), stkOp.peek())) {
                             calculate(stkNum, stkOp);
                         }
@@ -26,21 +26,23 @@ public class Solution {
                     }
                     ++i;
                 }
+            } else {
+                ++i;
             }
-            else ++i;
         }
         while (!stkOp.isEmpty()) calculate(stkNum, stkOp);
         return stkNum.pop();
     }
-    public boolean higher(char high, char low) {
+    private boolean higher(char high, char low) {
         // high and low will be operators.
-        if (high == '+' || high == '-') return false;
-        else {
+        if (high == '+' || high == '-') {
+            return false;
+        } else {
             if (low == '*' || low == '/') return false;
             else return true;
         }
     }
-    public void calculate(Stack<Integer> stkNum, Stack<Character> stkOp) {
+    private void calculate(Stack<Integer> stkNum, Stack<Character> stkOp) {
         char op = stkOp.pop();
         int num2 = stkNum.pop();
         int num1 = stkNum.pop();
