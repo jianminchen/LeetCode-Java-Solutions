@@ -3,16 +3,14 @@
  */
 
 class MinStack {
-    Stack<Integer> stk = new Stack<Integer>(); 
-    Stack<Integer> minStk = new Stack<Integer>();
+    private Stack<Integer> stk = new Stack<Integer>(); 
+    private Stack<Integer> minStk = new Stack<Integer>();
     public void push(int x) {
         stk.push(x);
-        if (minStk.isEmpty()) {
+        if (minStk.isEmpty() || x < minStk.peek()) {
             minStk.push(x);
-        }
-        else {
-            if (x < minStk.peek()) minStk.push(x);
-            else minStk.push(minStk.peek());
+        } else {
+            minStk.push(minStk.peek());
         }
     }
 
