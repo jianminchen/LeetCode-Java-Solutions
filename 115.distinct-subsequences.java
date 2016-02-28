@@ -12,11 +12,9 @@ public class Solution {
         for (int j = 1; j < tLen + 1; ++j) {
             int i = 1;            
             while (i < sLen + 1) {
-                if (s.charAt(i - 1) != t.charAt(j - 1)) {
-                    // cannot use this char.
+                if (s.charAt(i - 1) != t.charAt(j - 1)) { // cannot use this char.
                     nums[i][j] = nums[i - 1][j];
-                }
-                else { // equals; we can either use this char, or not.
+                } else { // equals; we can either use this char, or not.
                     nums[i][j] = nums[i - 1][j] + nums[i - 1][j - 1];
                 }
                 ++i;
