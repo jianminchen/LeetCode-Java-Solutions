@@ -18,35 +18,26 @@ public class Solution {
             TreeLinkNode layerCur = layerHead; // traverse in the current layer
             TreeLinkNode nextLayerPrev = null; // modify in the next layer
             while (layerCur != null) {
-                if (layerCur.left == null && layerCur.right == null) ;
+                if (layerCur.left == null && layerCur.right == null) {}
                 else {
-                    // at least one node is not null.
-                    // left not null
-                    if (layerCur.left != null && layerCur.right == null) {
+                    if (layerCur.left != null && layerCur.right == null) { // left not null
                         if (nextLayerHead == null) {
                             nextLayerHead = layerCur.left;
-                        }
-                        else {
+                        } else {
                             nextLayerPrev.next = layerCur.left;
                         }
                         nextLayerPrev = layerCur.left;
-                    }
-                    // right not null
-                    else if (layerCur.left == null && layerCur.right != null)  {
+                    } else if (layerCur.left == null && layerCur.right != null)  { // right not null
                         if (nextLayerHead == null) {
                             nextLayerHead = layerCur.right;
-                        }
-                        else {
+                        } else {
                             nextLayerPrev.next = layerCur.right;
                         }
                         nextLayerPrev = layerCur.right;
-                    }
-                    // both not null
-                    else {// layerCur.left != null and layerCur.right != null
+                    } else {// layerCur.left != null and layerCur.right != null
                         if (nextLayerHead == null) {
                             nextLayerHead = layerCur.left;
-                        }
-                        else {
+                        } else {
                             nextLayerPrev.next = layerCur.left;
                         }
                         layerCur.left.next = layerCur.right;
