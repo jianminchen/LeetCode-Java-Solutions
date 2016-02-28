@@ -4,34 +4,17 @@
 
 public class Solution {
     public int largestRectangleArea(int[] height) {
-        List<Integer> hList = new ArrayList<>();
-        hList.add(0);
-        for (int i = 0; i < height.length; ++i) {
-            hList.add(height[i]);
-        }
-        hList.add(0);
-        Stack<Integer> stkH = new Stack<>();
-        Stack<Integer> stkI = new Stack<>();
-        stkH.push(0);
-        stkI.push(0);
+        Stack<Integer> stk = new Stack<>();
+        stk.push(-1); // stack of indexes. push -1 for consistency.
         int maxArea = 0;
-        for (int i = 1; i < hList.size(); ++i) {
-            if (hList.get(i) >= stkH.peek()) {
-                stkH.push(hList.get(i));
-                stkI.push(i);
+        for (int i = 0; i < height.length; ++i) {
+            while (stk.peek() != -1 && height[stk.peek()] > height[i]) {
+                maxArea = Math.max(maxArea, height[stk.pop()] * (i - (stk.peek() + 1)));
             }
-            else {
-                while (hList.get(i) < stkH.peek()) {
-                    int area = 0;
-                    int high = stkH.pop();
-                    stkI.pop();
-                    int index = stkI.peek() + 1;
-                    area = high * (i - index);
-                    if (area > maxArea) maxArea = area;
-                }
-                stkH.push(hList.get(i));
-                stkI.push(i);
-            }
+            stk.push(i);
+        }
+        while (stk.peek() != -1 && height[stk.peek()] > 0) {
+            maxArea = Math.max(maxArea, height[stk.pop()] * (height.length - (stk.peek() + 1)));
         }
         return maxArea;
     }
