@@ -18,8 +18,7 @@ public class Solution {
                         lists.add(newList); 
                         length.add(0);
                         --i;
-                }
-                else {
+                } else {
                         lists.get(lists.size() - 1).add(words[i]);
                         length.set(length.size() - 1, words[i].length() + length.get(lists.size() - 1));
                 }
@@ -46,8 +45,7 @@ public class Solution {
                     sb.append(" ");
                 }
                 res.add(new String(sb));
-            }
-            else {
+            } else {
                 int num = n - 1;
                 int each = nSpace / num;
                 int remainder = nSpace % num;
