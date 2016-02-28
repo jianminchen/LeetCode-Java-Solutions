@@ -20,8 +20,7 @@ public class Solution {
             if (cur.next == null || cur.next.val != cur.val) {
                 prev = prev.next;
                 cur = cur.next;
-            }
-            else {
+            } else {
                 int dup = cur.val;
                 while (cur.next != null && cur.next.val == dup) {
                     cur = cur.next;
