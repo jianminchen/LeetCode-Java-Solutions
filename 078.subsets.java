@@ -4,17 +4,14 @@
 
 public class Solution {
     public List<List<Integer>> subsets(int[] nums) {
-        int[] newNums = nums.clone();
         Arrays.sort(nums);
         List<List<Integer>> lists = new ArrayList<>();
         if (nums.length == 0) {
             List<Integer> list = new ArrayList<>();
             lists.add(list);
         }
-        
         List<Integer> firstList = new ArrayList<>();
         lists.add(firstList);
-        
         
         for (int i = 0; i < nums.length; ++i) {
             List<List<Integer>> newLists = new ArrayList<>();
@@ -27,7 +24,6 @@ public class Solution {
             }
             lists = newLists;
         }
-      
         return lists;
     }
 }
