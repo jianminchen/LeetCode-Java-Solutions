@@ -4,7 +4,8 @@
 
 public class Solution {
     public int lengthOfLongestSubstringTwoDistinct(String s) {
-        if (s == null || s.length() == 0) return 0;
+        if (s == null) throw new NullPointerException();
+        if (s.length() <= 2) return s.length();
         Map<Character, Integer> hm = new HashMap<>();
         hm.put(s.charAt(0), 1);
         int i = 0;
@@ -17,16 +18,13 @@ public class Solution {
                 if (j >= s.length()) break;
                 if (hm.containsKey(s.charAt(j))) {
                     hm.put(s.charAt(j), hm.get(s.charAt(j)) + 1);
-                }
-                else {
+                } else {
                     hm.put(s.charAt(j), 1);
                 }
-            }
-            else { // hm.size() > 2
+            } else { // hm.size() > 2
                 if (hm.get(s.charAt(i)) == 1) {
                     hm.remove(s.charAt(i));
-                }
-                else {
+                } else {
                     hm.put(s.charAt(i), hm.get(s.charAt(i)) - 1);
                 }
                 ++i;
