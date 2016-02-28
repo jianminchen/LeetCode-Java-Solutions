@@ -19,13 +19,13 @@ public class Solution extends Reader4 {
         while (n > 0) {
             char[] subbuf = new char[4];
             int subcount = read4(subbuf);
-            for (int i = 0; i < Math.min(subcount, n); i ++) {
+            for (int i = 0; i < Math.min(subcount, n); ++i) {
                 al.add(subbuf[i]);
             }
             n -= Math.min(subcount, n);
             if (subcount < 4) break; // already reached end of file.
         }
-        for (int i = 0; i < al.size(); i ++) {
+        for (int i = 0; i < al.size(); ++i) {
             buf[i] = al.get(i);
         }
         return al.size();
