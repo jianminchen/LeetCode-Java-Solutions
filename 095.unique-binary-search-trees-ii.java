@@ -1,8 +1,4 @@
 /**
- * @see <a href="https://leetcode.com/problems/unique-binary-search-trees-ii/">Unique Binary Search Trees II</a>
- */
-
-/**
  * Definition for a binary tree node.
  * public class TreeNode {
  *     int val;
@@ -13,38 +9,18 @@
  */
 public class Solution {
     public List<TreeNode> generateTrees(int n) {
-        List<TreeNode> res = new ArrayList<>();
-        if (n <= 0) {
-            TreeNode root = null;
-            res.add(root);
-            return res;
-        }
+        if (n <= 0) return new ArrayList<TreeNode>();
         return generateTrees(1, n);
     }
-    public List<TreeNode> generateTrees(int i, int j) {
+    
+    private List<TreeNode> generateTrees(int i, int j) {
         List<TreeNode> list = new ArrayList<>();
-        if (i == j) {
-            TreeNode n = new TreeNode(i);
-            list.add(n);
+        if (i > j) {
+            list.add(null);
             return list;
         }
-        // first node as root
-        for(TreeNode n : generateTrees(i + 1, j)) {
-            TreeNode root = new TreeNode(i);
-            root.right = n;
-            list.add(root);
-        }
-        
-        
-        // last node as root
-        for (TreeNode n : generateTrees(i, j - 1)) {
-            TreeNode root = new TreeNode(j);
-            root.left = n;
-            list.add(root);
-        }
-        
-        // middle nodes as root;
-        for (int k = i + 1; k <= j - 1; ++k) {
+        // using k as root;
+        for (int k = i; k <= j; ++k) {
             for (TreeNode left : generateTrees(i, k - 1)) {
                 for (TreeNode right : generateTrees(k + 1, j)) {
                     TreeNode root = new TreeNode(k);
