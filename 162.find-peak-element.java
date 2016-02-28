@@ -4,21 +4,18 @@
 
 public class Solution {
     public int findPeakElement(int[] nums) {
-        if (nums.length == 0) return -1;
-        return findPeakElement(nums, 0, nums.length - 1);
-    }
-    public int findPeakElement(int[] nums, int low, int high) {
-        if (low == high) return low;
-        if (low == high - 1) {
-            return nums[low] > nums[high] ? low : high;
+        if (nums == null) throw new NullPointerException();
+        int low = 0, high = nums.length - 1;
+        int mid = -1;
+        while (low <= high) {
+            if (low == high) break;
+            mid = low + ((high - low) >> 1);
+            if (nums[mid] < nums[mid + 1]) { // should compare nums[mid] and nums[mid + 1]
+                low = mid + 1;
+            } else {
+                high = mid;
+            }
         }
-        int mid = low + ((high - low)>>1);
-        if (nums[mid] > nums[mid - 1] && nums[mid] > nums[mid + 1]) return mid;
-        else if (nums[mid] < nums[mid - 1]) {
-            return findPeakElement(nums, low, mid - 1);
-        }
-        else { // nums[mid] < nums[mid + 1];
-            return findPeakElement(nums, mid + 1, high);
-        }
+        return low;
     }
 }
