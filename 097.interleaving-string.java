@@ -18,8 +18,9 @@ public class Solution {
         for (int i = 1; i < s1.length() + 1; ++i) {
             for (int j = 1; j < s2.length() + 1; ++j) {
                 if ((s2.charAt(j - 1) == s3.charAt(i + j - 1) && isInter[i][j - 1])
-                        || (s1.charAt(i - 1) == s3.charAt(i + j - 1) && isInter[i - 1][j]))
+                        || (s1.charAt(i - 1) == s3.charAt(i + j - 1) && isInter[i - 1][j])) {
                     isInter[i][j] = true;
+                }
             }
         }
         return isInter[s1.length()][s2.length()];
