@@ -10,7 +10,7 @@ public class Solution {
         while (i < nums.length) {
             int start = i;
             while (i + 1 < nums.length && nums[i] == nums[i+1] - 1) {
-                i ++;
+                ++i;
             }
             int end = i;
             String s = (new Integer(nums[start])).toString();
@@ -19,7 +19,7 @@ public class Solution {
                 s = s + (new Integer(nums[end])).toString();
             }
             res.add(s);
-            i ++;
+            ++i;
         }
         return res;
     }
