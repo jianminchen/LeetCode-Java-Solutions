@@ -18,8 +18,6 @@ public class Solution {
         for (int i = 0; i < s.length(); ++i) {
             if (!charSet.contains(s.charAt(i))) return res;
         }
-        
-        
         List<List<List<String>>> table = new ArrayList<>();
         for (int i = 0; i < s.length(); ++i) {
             List<List<String>> strings = new ArrayList<>();
@@ -51,7 +49,6 @@ public class Solution {
             }
             table.set(i, prev);
         }
-
 
         for (List<String> intermediate : table.get(0)) {
             StringBuilder sb = new StringBuilder();
