@@ -21,14 +21,14 @@ public class Solution {
     	    else if (!str.substring(0, w.length()).equals(w)) return false;
     	    else return wordPatternMatch(set, hm, pattern.substring(1), str.substring(w.length()));
     	} else {
-    		for (int i = 1; i <= str.length(); ++i) {
-    		    if (!set.contains(str.substring(0, i))) {
-    			    set.add(str.substring(0, i));
-    			    hm.put(pattern.charAt(0), str.substring(0, i));
-    			    if (wordPatternMatch(set, hm, pattern.substring(1), str.substring(i))) return true;
-    			    set.remove(str.substring(0, i));
-    			    hm.remove(pattern.charAt(0));
-    		    }
+                for (int i = 1; i <= str.length(); ++i) {
+                    if (!set.contains(str.substring(0, i))) {
+                    set.add(str.substring(0, i));
+                    hm.put(pattern.charAt(0), str.substring(0, i));
+                    if (wordPatternMatch(set, hm, pattern.substring(1), str.substring(i))) return true;
+                    set.remove(str.substring(0, i));
+                    hm.remove(pattern.charAt(0));
+                }
             }
             return false;
     	}
