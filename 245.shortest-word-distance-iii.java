@@ -13,19 +13,15 @@ public class Solution {
                 if (fdWord == null) {
                     fdWord = words[i];
                     fdIndex = i;
-                }
-                else {
+                } else {
                     if (newFound.equals(fdWord)) {
                         if (word1.equals(word2)) {
-                            // update the minDist if possible.
                             minDist = Math.min(minDist, i - fdIndex); 
                             fdIndex = i; // update the index;
-                        }
-                        else { // not equal
+                        } else { // not equal
                             fdIndex = i; // only update the index.
                         }
-                    }
-                    else {
+                    } else {
                         minDist = Math.min(minDist, i - fdIndex);
                         fdWord = newFound; // update the found word
                         fdIndex = i; // update the index for the found word.
