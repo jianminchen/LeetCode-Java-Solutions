@@ -26,8 +26,8 @@ public class Solution {
             if (stk.isEmpty()) break;
             cur = stk.pop();
             if (pFound) {
-                    pNext = cur;
-                    break;
+                pNext = cur;
+                break;
             }
             if (p == cur) pFound = true;
             cur = cur.right;
