@@ -3,11 +3,11 @@
  */
 
 public class ZigzagIterator {
-    public int curIndex;
-    public int length;
-    public int shortLength;
-    public List<Integer> list1;
-    public List<Integer> list2;
+    private int curIndex;
+    private int length;
+    private int shortLength;
+    private List<Integer> list1;
+    private List<Integer> list2;
     public ZigzagIterator(List<Integer> v1, List<Integer> v2) {
         curIndex = 0;
         list1 = new ArrayList<Integer>(v1);
@@ -22,15 +22,13 @@ public class ZigzagIterator {
         if (prevIndex <= 2*shortLength - 1) {
             if (prevIndex % 2 == 0) {
                 return list1.get(prevIndex/2);
-            }
-            else {
+            } else {
                 return list2.get(prevIndex/2);
             }
-        }
-        else { // prevIndex > 2 * short length
-            if (list1.size() > list2.size())
+        } else { // prevIndex > 2 * short length
+            if (list1.size() > list2.size()) {
                 return list1.get(prevIndex - shortLength);
-            else {
+            } else {
                 return list2.get(prevIndex - shortLength);
             }
         }
