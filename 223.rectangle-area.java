@@ -11,11 +11,9 @@ public class Solution {
         int right = Math.min(C, G);
         int upper = Math.min(D, H);
         int lower = Math.max(B, F);
-        int length = 0;
-        if (right > left) length = right - left;
-        int width = 0;
-        if (upper > lower) width = upper - lower;
+        int length = right > left ? right - left : 0;
+        int width = upper > lower ? upper - lower : 0;
         
-        return area1 - length*width + area2;
+        return area1 - length * width + area2; // do the minus first, to avoid integer overflow
     }
 }
