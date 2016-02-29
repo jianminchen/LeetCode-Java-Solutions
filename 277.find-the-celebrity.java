@@ -8,16 +8,15 @@
 public class Solution extends Relation {
     public int findCelebrity(int n) {
         ArrayList<Integer> candidate = new ArrayList<Integer>();
-        for (int i = 0; i < n; i ++) {
+        for (int i = 0; i < n; ++i) {
             candidate.add(i);
         }
-        while (candidate.size() >= 2) {
+        while (candidate.size() >= 2) { // at the end, we will have only one candidate
             ArrayList<Integer> newCand = new ArrayList<Integer>();
             for (int i = 0; i < candidate.size() && i + 1 < candidate.size(); i = i + 2) {
                 if (knows(candidate.get(i), candidate.get(i + 1))) {
                     newCand.add(candidate.get(i + 1));
-                }
-                else {
+                } else {
                     newCand.add(candidate.get(i));
                 }
             }
@@ -26,6 +25,7 @@ public class Solution extends Relation {
             }
             candidate = newCand;
         }
+        // verify the candidate
         for (int i = 0; i < n; ++i) {
             if (i != candidate.get(0) && knows(candidate.get(0), i)) return -1;
         }
