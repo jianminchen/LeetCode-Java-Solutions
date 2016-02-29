@@ -1,11 +1,4 @@
 public class Solution {
-    public List<String> findWords(char[][] board, String[] words) {
-        constructTrie(words);
-        
-        List<String> res = new ArrayList<>(findWordsSet(board, words));
-        return res;
-    }
-    
 	class TrieNode {
 		boolean isWord;
 		Map<Character, TrieNode> hm;
@@ -14,6 +7,13 @@ public class Solution {
 			hm = new HashMap<>();
 		}
 	}
+	
+    	public List<String> findWords(char[][] board, String[] words) {
+        	constructTrie(words);
+        	List<String> res = new ArrayList<>(findWordsSet(board, words));
+        	return res;
+    	}
+
 	public TrieNode root;
 	public void constructTrie(String[] words) {
 		root = new TrieNode();
@@ -33,7 +33,6 @@ public class Solution {
 		}
 	}
 	
-	
 	public Set<String> findWordsSet(char[][] board, String[] words) {
 		Set<String> listW = new HashSet<>();
 		for (int i = 0; i < board.length; ++i) {
@@ -43,15 +42,16 @@ public class Solution {
 		}
 		return listW;
 	}
+	
 	public String tw = new String();
 	public void findWords(TrieNode trie, char[][] board, Set<String> listW, int i, int j) {
-	    if (trie.isWord) {
+	    	if (trie.isWord) {
 			listW.add(tw);
 		}
 		if (i < 0 || i >= board.length || j < 0 || j >= board[0].length) return;		
 		
 		tw = tw + board[i][j]; // the word at traversal.
-		if (!trie.hm.containsKey(board[i][j])) ;
+		if (!trie.hm.containsKey(board[i][j])) {}
 		else {
 			char temp = board[i][j];
 			board[i][j] = '#';
