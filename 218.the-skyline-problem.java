@@ -23,7 +23,6 @@ public class Solution {
             }
         }
         int i = 0;
-        // previously written as while (true). wrong !!!!!!!!!!!!!!!!
         while (i < subBuilds.size()) {
             int start = i;
             ++i;
