@@ -24,8 +24,7 @@ public class Solution {
                 }
                 lowerStk.push(cur.val);
                 cur = cur.right;
-            }
-            else {
+            } else {
                 List<Integer> list = inOrder(cur.right);
                 for (int i = list.size() - 1; i >= 0; --i) {
                     upperStk.push(list.get(i));
@@ -38,31 +37,18 @@ public class Solution {
         List<Integer> res = new ArrayList<>();
         int i = 0;
         while (i < k) {
-            if (lowerStk.isEmpty()) {
+            if (lowerStk.isEmpty() || (!upperStk.isEmpty() && upperStk.peek() - target < target - lowerStk.peek())) {
                 res.add(upperStk.pop());
-            }
-            else if (upperStk.isEmpty()) {
+            } else {
                 res.add(lowerStk.pop());
-            }
-            else { // both not empty.
-                int lower = lowerStk.peek();
-                int upper = upperStk.peek();
-                if (target - lower < upper - target) {
-                    res.add(lower);
-                    lowerStk.pop();
-                }
-                else {
-                    res.add(upper);
-                    upperStk.pop();
-                }
             }
             ++i;
         }
         return res;
     }
-    public List<Integer> inOrder(TreeNode root) {
+    
+    private List<Integer> inOrder(TreeNode root) {
         List<Integer> list = new ArrayList<>();
-        if (root == null) return list;
         TreeNode cur = root;
         Stack<TreeNode> stk = new Stack<TreeNode>();
         while (true) {
