@@ -15,14 +15,11 @@ public class Solution {
             int mid = low + ((high - low)>>1);
             if (citations[mid] > citations.length - mid) {
                 high = mid;
-            }
-            else if (citations[mid] == citations.length - mid) {
+            } else if (citations[mid] == citations.length - mid) {
                 return citations.length - mid; 
-            }
-            else { // citations[mid] < citations.length - mid.
+            } else { // citations[mid] < citations.length - mid.
                 low = mid + 1;
             }
-            
         }
     }
 }
