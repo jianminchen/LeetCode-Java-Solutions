@@ -10,17 +10,16 @@ public class Solution {
                 if (nums[i] > nums[i + 1]) {
                     swap(nums, i, i + 1);
                 }
-            }
-            else {
+            } else {
                 if (nums[i] < nums[i + 1]) {
                     swap(nums, i, i + 1);
                 }
             }
-            i ++;
+            ++i;
         }
     }
     
-    public void swap(int[] nums, int i, int j) {
+    private void swap(int[] nums, int i, int j) {
         nums[i] = nums[i]^nums[j];
         nums[j] = nums[i]^nums[j];
         nums[i] = nums[i]^nums[j];
