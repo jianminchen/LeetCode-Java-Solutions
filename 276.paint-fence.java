@@ -11,7 +11,7 @@ public class Solution {
         num[0] = k;
         num[1] = k * k;
         for (int i = 2; i < n; i ++) {
-            num[i] = (k - 1)*(num[i - 1] + num[i - 2]);
+            num[i] = (k - 1) * (num[i - 1] + num[i - 2]);
         }
         return num[n - 1];
 }
