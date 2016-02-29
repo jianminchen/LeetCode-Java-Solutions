@@ -15,17 +15,12 @@ public class Solution {
         if (head == null || head.next == null) return head;
         ListNode dummy  = new ListNode(0);
         dummy.next = head;
-        ListNode prev = dummy;
-        ListNode end = prev.next;
-        ListNode cur = end.next;
-        while (cur != null) {
-            // find the right location.
-
+        ListNode prev = dummy, end = prev.next, cur = end.next;
+        while (cur != null) { // find the right location to insert
             if (cur.val >= end.val) {
                 end = end.next;
                 cur = cur.next;
-            }
-            else {
+            } else {
                 ListNode after = prev;
                 while (cur.val > after.next.val) {
                     after = after.next;
@@ -36,8 +31,6 @@ public class Solution {
                 cur.next = temp;
                 cur = end.next;
             }
-            // insert
-            // consider the next node.
         }
         return dummy.next;
     }
