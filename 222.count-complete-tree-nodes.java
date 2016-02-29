@@ -32,8 +32,7 @@ public class Solution {
             if (left != null) {
                 count += (1 << remainLevel);
                 cur = cur.right; // left full, go to the right child.
-            }
-            else {
+            } else {
                 cur = cur.left; // left not full, righ must be empty, thus, go to left;
             }
             ++curLevel;
