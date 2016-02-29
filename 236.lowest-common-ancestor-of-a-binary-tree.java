@@ -11,16 +11,25 @@
  *     TreeNode(int x) { val = x; }
  * }
  */
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+ 
 public class Solution {
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-        List<TreeNode> stk = new ArrayList<TreeNode>();
+        Stack<TreeNode> stk = new Stack<>();
         TreeNode cur = root;
-
         List<TreeNode> pPath = new ArrayList<>();
         List<TreeNode> qPath = new ArrayList<>();
         while (true) {
             while (cur != null) {
-                stk.add(cur);
+                stk.push(cur);
                 if (cur == p && pPath.isEmpty()) {
                     pPath.addAll(stk);
                 }
@@ -28,26 +37,24 @@ public class Solution {
                     qPath.addAll(stk);
                 }
                 if (!pPath.isEmpty() && !qPath.isEmpty()) {
-                    break;
+                    break; // terminate the traversal when both paths have been found
                 }
                 cur = cur.left;
             }
-            if (stk.size() == 0) break;
-            if (stk.get(stk.size() - 1).right != null) {
-                cur = stk.get(stk.size() - 1).right;
+            while (!stk.isEmpty() && (stk.peek().right == null || stk.peek().right == cur)) {
+                cur = stk.pop();
             }
-            else {
-                do {
-                    cur = stk.remove(stk.size() - 1);
-                } while (stk.size() != 0 && (stk.get(stk.size() - 1).right == null || stk.get(stk.size() - 1).right == cur));
-                if (stk.size() == 0) break;
-                else cur = stk.get(stk.size() - 1).right;
+            if (stk.isEmpty()) {
+                break;
+            } else {
+                cur = stk.peek().right;
             }
         }
         
         int i = 0;
-        while (i < pPath.size() && i < qPath.size() && pPath.get(i) == qPath.get(i)) ++i;
+        while (i < pPath.size() && i < qPath.size() && pPath.get(i) == qPath.get(i)) {
+            ++i;
+        }
         return pPath.get(i - 1);
-        
     }
 }
