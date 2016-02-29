@@ -3,8 +3,8 @@
  */
 
 public class Vector2D {
-    public List<Integer> totalList;
-    public int ci;
+    private List<Integer> totalList;
+    private int ci;
     public Vector2D(List<List<Integer>> vec2d) {
         totalList = new ArrayList<Integer>();
         for (List<Integer> aList : vec2d) {
