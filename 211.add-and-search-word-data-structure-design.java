@@ -15,8 +15,8 @@ public class WordDictionary {
     
     // Adds a word into the data structure.
     private TrieNode root;
-    int minLen;
-    int maxLen;
+    private int minLen;
+    private int maxLen;
     public WordDictionary() {
         root = new TrieNode();
         minLen = Integer.MAX_VALUE;
