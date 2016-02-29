@@ -18,8 +18,7 @@ public class Solution {
             if (pos == 0) {
                 // initialize. such that multed will not be zero.
                 helper(res, path + num.substring(pos, i + 1), num, target, i + 1, cur, cur); 
-            }
-            else {
+            } else {
                 helper(res, path + "+" + cur, num, target, i + 1, eval + cur, cur);
                 helper(res, path + "-" + cur, num, target, i + 1, eval - cur, -cur);
                 helper(res, path + "*" + cur, num, target, i + 1, eval - multed + multed * cur, multed * cur);
