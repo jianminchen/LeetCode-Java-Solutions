@@ -4,6 +4,8 @@
 
 public class Solution {
     public List<Integer> findMinHeightTrees(int n, int[][] edges) {
+        if (edges == null) throw new NullPointerException();
+        if (n <= 0) throw new IllegalArgumentException("n must be positive.")
         List<Integer> res = new ArrayList<>();
         List<List<Integer>> adjLists = new ArrayList<>();
         for (int i = 0; i < n; ++i) {
