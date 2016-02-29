@@ -3,12 +3,11 @@
  */
 
 public class WordDictionary {
-
-    public class TrieNode {
-        public boolean isWord;
-        public char c;
-        public Map<Character, TrieNode> hm;
-        public TrieNode() {
+    private class TrieNode {
+        boolean isWord;
+        char c;
+        Map<Character, TrieNode> hm;
+        TrieNode() {
             isWord = false;
             hm = new HashMap<>();
         }
@@ -44,32 +43,24 @@ public class WordDictionary {
     // Returns if the word is in the data structure. A word could
     // contain the dot character '.' to represent any one letter.
     public boolean search(String word) {
-        if (word.length() == 0) return root.isWord;
-        // use minLen and maxLen to check whether we need to do the recursive search first.
-        // this can reduce time complexity, can avoid time limit exceeded
         if (word.length() < minLen || word.length() > maxLen) return false;
         return search(word, root);
     }
     
     public boolean search(String word, TrieNode node) {        
         if (word.length() == 0) return node.isWord;
-        
         if (node.hm.isEmpty()) return false;
-        
         if (word.charAt(0) == '.') {
-            boolean found = false;
-            Set<Character> set = node.hm.keySet();
-            for(char c : set) {
+            for(char c : node.hm.keySet()) {
                 if (search(word.substring(1), node.hm.get(c))) {
-                    found = true;
-                    break;
+                    return true;
                 }
             }
-            return found;
-        }
-        else {
-            if (!node.hm.containsKey(word.charAt(0))) return false;
-            else {
+            return false;
+        } else {
+            if (!node.hm.containsKey(word.charAt(0))) {
+                return false;
+            } else {
                 return search(word.substring(1), node.hm.get(word.charAt(0)));
             }
         }
