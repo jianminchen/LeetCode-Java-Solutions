@@ -23,13 +23,13 @@ public class Solution {
         return res;
     }
     
-    public int find(int[] parents, int i) {
+    private int find(int[] parents, int i) {
         if (parents[i] == i) return i;
         i = parents[i];
         return find(parents, i);
     }
     
-    public List<int[]> getNeighbors(int m, int n, int i, int j) {
+    private List<int[]> getNeighbors(int m, int n, int i, int j) {
         List<int[]> res = new ArrayList<>();
         if (i - 1 >= 0) res.add(new int[]{i - 1, j});
         if (i + 1 <= m - 1) res.add(new int[]{i + 1, j});
