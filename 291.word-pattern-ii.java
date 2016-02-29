@@ -29,8 +29,8 @@ public class Solution {
     			    set.remove(str.substring(0, i));
     			    hm.remove(pattern.charAt(0));
     		    }
-    		}
-    		return false;
+            }
+            return false;
     	}
     }
 }
