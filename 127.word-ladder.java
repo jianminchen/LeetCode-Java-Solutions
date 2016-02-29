@@ -31,7 +31,7 @@ public class Solution {
         return 0;
     }
     
-    public List<String> wordNeighbor(String word) {
+    private List<String> wordNeighbor(String word) {
         List<String> result = new ArrayList<String>();
         for (int i = 0; i < word.length(); i++) {
             char array[] = word.toCharArray();
