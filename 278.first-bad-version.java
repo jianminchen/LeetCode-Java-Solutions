@@ -11,11 +11,10 @@ public class Solution extends VersionControl {
         int high = n;
         while (true) {
             if (low >= high) return low;
-            int mid = low + (high - low)/2;
+            int mid = low + ((high - low) >> 1);
             if (isBadVersion(mid)) {
                 high = mid;
-            }
-            else {
+            } else {
                 low = mid + 1;
             }
         }
