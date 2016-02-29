@@ -10,7 +10,7 @@ public class Solution {
             pq.add(nums[i]);
         }
         for (int i = k; i < nums.length; ++i) {
-            if (nums[i] < pq.peek()) ;
+            if (nums[i] < pq.peek()) {}
             else {
                 pq.remove();
                 pq.add(nums[i]);
