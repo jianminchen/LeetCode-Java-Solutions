@@ -4,27 +4,20 @@
 
 public class Solution {
     public int ladderLength(String beginWord, String endWord, Set<String> wordList) {
-        
         if (beginWord.equals(endWord)) return 0;
-        
         Set<String> words = new HashSet<>();
         words.addAll(wordList);
-        words.add(beginWord);
         words.add(endWord);
-        
         Queue<String> q = new LinkedList<>();
         Queue<Integer> qLen = new LinkedList<>();
         q.add(beginWord);
         qLen.add(0);
-        
-        words.remove(beginWord);
         
         int length = 1;
         boolean found = false;
         while (!q.isEmpty() && !found) {
             String removed = q.remove();
             length = qLen.remove() + 1;
-    
             List<String> neighbors = wordNeighbor(removed);
             for (String anb : neighbors) {
                 if (words.contains(anb)) { // only considers the remaining words.
@@ -34,7 +27,7 @@ public class Solution {
                     words.remove(anb);
                 }
             }
-            
+        }
         return 0;
     }
     
