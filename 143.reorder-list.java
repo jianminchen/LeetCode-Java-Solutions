@@ -30,28 +30,24 @@ public class Solution {
         
         ListNode dummy = new ListNode(0);
         ListNode prev = dummy;
-        ListNode cur1 = head;
-        ListNode cur2 = latter;
+        ListNode cur1 = head, cur2 = latter;
         boolean useOne = true;
         while (cur1 != null || cur2 != null) {
             if (useOne) {
                 prev.next = cur1;
                 cur1 = cur1.next;
-                useOne = false;
-            }
-            else {
+            } else {
                 prev.next = cur2;
                 cur2 = cur2.next;
-                useOne = true;
             }
+            useOne = !useOne; // alternate
             prev = prev.next;
         }
     }
     
-    public ListNode reverse(ListNode head) {
+    private ListNode reverse(ListNode head) {
         if (head == null || head.next == null) return head;
-        ListNode prev = null;
-        ListNode cur = head;
+        ListNode prev = null, cur = head;
         while (cur != null) {
             ListNode next = cur.next;
             cur.next = prev;
