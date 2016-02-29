@@ -1,4 +1,8 @@
 /**
+ * https://leetcode.com/problems/binary-tree-vertical-order-traversal/
+ */
+
+/**
  * Definition for a binary tree node.
  * public class TreeNode {
  *     int val;
@@ -8,33 +12,27 @@
  * }
  */
 public class Solution {
-    List<List<Integer>> rawRes;
     public List<List<Integer>> verticalOrder(TreeNode root) {
         int nCols = getColumns(root);
-        rawRes = new ArrayList<>();
+        List<List<Integer>> rawRes = new ArrayList<>();
         for (int i = 0; i < nCols; ++i) {
-            List<Integer> al = new ArrayList<>();
-            rawRes.add(al);
+            rawRes.add(new ArrayList<Integer>());
         }
-        System.out.println(nCols);
-        helper(root, nCols >> 1);
+        helper(root, nCols >> 1, rawRes);
         List<List<Integer>> res = new ArrayList<>();
         for (int i = 0; i < nCols; ++i) {
             if (rawRes.get(i).size() != 0) {
-                List<Integer> aCol = new ArrayList<>();
-                aCol.addAll(rawRes.get(i));
+                List<Integer> aCol = new ArrayList<>(rawRes.get(i));
                 res.add(aCol);
             }
         }
         return res;
     }
-    public int getColumns(TreeNode root) {
+    private int getColumns(TreeNode root) {
         if (root == null) return 0;
-        if (root.left == null && root.right == null) return 1;
         Queue<TreeNode> q = new LinkedList<>();
-        int nLevels = 2;
-        if (root.left != null) q.add(root.left);
-        if (root.right != null) q.add(root.right);
+        int nLevels = 1;
+        q.add(root);
         q.add(null);
         while (!q.isEmpty()) {
             TreeNode cur = q.remove();
@@ -44,14 +42,13 @@ public class Solution {
             if (cur != null) {
                 if (cur.left != null) q.add(cur.left);
                 if (cur.right != null) q.add(cur.right);
-            }
-            else { // cur == null
+            } else { // cur == null
                 if (!q.isEmpty()) q.add(null);
             }
         }
         return 2 * nLevels - 1;
     }
-    public void helper(TreeNode root, int c) {
+    private void helper(TreeNode root, int c, List<List<Integer>> rawRes) {
         if (root == null) return;
         Queue<TreeNode> q = new LinkedList<>();
         Queue<Integer> qNCol = new LinkedList<>();
@@ -71,8 +68,7 @@ public class Solution {
                     q.add(cur.right);
                     qNCol.add(col + 1);
                 }
-            }
-            else {
+            } else {
                 if (!q.isEmpty()) {
                     q.add(null);
                 }
