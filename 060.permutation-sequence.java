@@ -13,11 +13,8 @@ public class Solution {
         for (int i = 0; i < n; ++i) {
             digits[i] = (k - 1) / array[n - 1 - i] + 1;
             k = k - (digits[i] - 1) * array[n - 1 - i];
-            System.out.println(digits[i]);
         }
         int[] realDigits = new int[n];
-        
-        
         boolean[] usedDigits = new boolean[n];
         for (int i = 0; i < n; ++i) {
             int dg = 1;
@@ -25,13 +22,10 @@ public class Solution {
                 while (usedDigits[dg - 1] == true) ++dg;
                 ++dg;
             }
-            
             while (usedDigits[dg - 1] == true) ++dg; // if digit 1 is already, also need to increase;
-            
             realDigits[i] = dg;
             usedDigits[dg - 1] = true;
         }
-        
         
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < n; ++i) {
