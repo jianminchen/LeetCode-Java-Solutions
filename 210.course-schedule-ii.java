@@ -4,48 +4,32 @@
 
 public class Solution {
     public int[] findOrder(int numCourses, int[][] prerequisites) {
-        List<Set<Integer>> dependList = getDependList(numCourses, prerequisites);
-        boolean[] courseTaken = new boolean[numCourses];
-        
-        int[] order = new int[numCourses];
-        int index = 0;
-        
-        int taken = 0;
-        while (taken < numCourses) {
-            int toTake = 0;
-            for (int i = 0; i < numCourses; ++i) {
-                if (courseTaken[i] == false && dependList.get(i).size() == 0) {
-                    ++toTake;
-                    courseTaken[i] = true;
-                    
-                    order[index] = i;
-                    ++index;
-                    // update other dependencies;
-                    for (int j = 0; j < numCourses; ++j) {
-                        if (dependList.get(j).contains(i)) {
-                            dependList.get(j).remove(i);
-                        }
-                    }
-                }
-            }
-            if (toTake == 0) {
-                return new int[0];
-            }
-            taken += toTake;
+        List<List<Integer>> dpList = new ArrayList<>();
+        for (int i = 0; i < numCourses; ++i) {
+            dpList.add(new ArrayList<Integer>());
         }
-        return order;
-        
-    }
-    
-    public List<Set<Integer>> getDependList(int numCourses, int[][] prerequisites) {
-        List<Set<Integer>> dependList = new ArrayList<>();
-        for (int i = 0; i <numCourses; ++i) {
-            Set<Integer> set = new HashSet<Integer>();
-            dependList.add(set);
-        }
+        // get dependency list and indegree
+        int[] indegree = new int[numCourses];
         for (int i = 0; i < prerequisites.length; ++i) {
-            dependList.get(prerequisites[i][0]).add(prerequisites[i][1]);
+            dpList.get(prerequisites[i][1]).add(prerequisites[i][0]);
+            ++indegree[prerequisites[i][0]];
         }
-        return dependList;
+        Queue<Integer> q = new LinkedList<>();
+        for (int i = 0; i < numCourses; ++i) {
+            if (indegree[i] == 0) q.add(i);
+        }
+        // take courses
+        int[] result = new int[numCourses];
+        int i = 0;
+        while (!q.isEmpty()) {
+            int toTake = q.remove();
+            result[i++] = toTake;
+            for (int c : dpList.get(toTake)) {
+                --indegree[c];
+                if (indegree[c] == 0) q.add(c);
+            }
+        }
+        if (i != numCourses) return new int[0]; // haven't taken all courses
+        return result;
     }
 }
