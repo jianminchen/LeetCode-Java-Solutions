@@ -10,20 +10,18 @@ public class Solution {
         }
         int i = 0;
         while (true) {
-            if ((xor & 1) == 1) break;
-            else {
+            if ((xor & 1) == 1) { // find the bit location where they differ
+                break;
+            } else {
                 xor = xor >> 1;
                 ++i;
             }
         }
         int res[] = new int[2];
-        res[0] = 0;
-        res[1] = 0;
         for (int j = 0; j < nums.length; ++j) {
             if (((nums[j] >> i) & 1) == 1) {
                 res[0] ^= nums[j];
-            }
-            else {
+            } else {
                 res[1] ^= nums[j];
             }
         }
