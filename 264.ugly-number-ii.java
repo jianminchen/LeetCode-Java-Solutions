@@ -2,6 +2,8 @@
  * @see <a href="https://leetcode.com/problems/ugly-number-ii/">Ugly Number II</a>
  */
 
+// this is the PriorityQueue solution
+// a better solution is to us dp, with O(n)
 public class Solution {
     public int nthUglyNumber(int n) {
         int count = 0;
