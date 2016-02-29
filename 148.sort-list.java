@@ -26,26 +26,21 @@ public class Solution {
         }
         ListNode secondHead = firstEnd.next;
         firstEnd.next = null;
-        
         head = sortList(head); // sort first half.
         secondHead = sortList(secondHead); // sort second half.
+        
+        // merge the two sorted list.
         ListNode dummy = new ListNode(0);
-        // define prev before use it.
-        ListNode prev = dummy;
-        ListNode cur1 = head;
-        ListNode cur2 = secondHead;
+        ListNode prev = dummy, cur1 = head, cur2 = secondHead;
         while (cur1 != null || cur2 != null) {
-            // yes, some cases can be combined to make the code simple.
-            if (cur1 == null || (cur1 != null && cur2 != null && cur1.val > cur2.val)) {
+            if (cur1 == null || (cur2 != null && cur1.val > cur2.val)) {
                 prev.next = cur2;
-                prev = prev.next;
                 cur2 = cur2.next;
-            }
-            else {
+            } else {
                 prev.next = cur1;
-                prev = prev.next;
                 cur1 = cur1.next;
             }
+            prev = prev.next;
         }
         return dummy.next;
     }
