@@ -4,7 +4,8 @@
 
 public class Solution {
     public int maxProfit(int[] prices) {
-        if (prices == null || prices.length == 0) return 0;
+        if (prices == null) throw new NullPointerException();
+        if (prices.length == 0) return 0;
         int[] np = new int[prices.length + 2];
         np[0] = prices[0];
         np[1] = prices[0];
@@ -19,8 +20,7 @@ public class Solution {
             if (np[i] > np[i - 1]) {
                 maxP[i] = Math.max(maxP[prev - 1] + np[i] - np[prev + 1], maxP[prev - 2] + np[i] - np[prev]);
                 maxP[i] = Math.max(maxP[i], maxP[prev - 1] + np[i] - np[prev - 1]);
-            }
-            else {
+            } else {
                 prev = i;
                 maxP[i] = maxP[i - 1];
             }
