@@ -4,7 +4,7 @@
 
 public class Solution {
     public void moveZeroes(int[] nums) {
-        if (nums == null || nums.length == 0) return;
+        if (nums == null) throw new NullPointerException();
         int pZero = 0, j = 0;
         while (j < nums.length) {
             if (nums[j] != 0) {
@@ -12,8 +12,7 @@ public class Solution {
                 if (j != pZero) nums[j] = 0;
                 ++j;
                 ++pZero;
-            }
-            else {
+            } else {
                 ++j;
             }
         }
