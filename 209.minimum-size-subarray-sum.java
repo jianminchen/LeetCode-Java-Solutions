@@ -15,14 +15,12 @@ public class Solution {
                 ++j;
                 if (j == nums.length) break;
                 sum += nums[j];
-            }
-            else { // sum >= s
+            } else { // sum >= s
                 minLen = Math.min(minLen, j - i + 1);
                 sum -= nums[i];
                 ++i;
             }
         }
-        
         if (minLen > nums.length) return 0;
         return minLen;
     }
