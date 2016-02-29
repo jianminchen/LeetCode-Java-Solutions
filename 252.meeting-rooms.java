@@ -12,26 +12,17 @@
  * }
  */
 public class Solution {
-    public class MyInterval extends Interval implements Comparable<MyInterval> {
-        public MyInterval(int s, int e) {
-            start = s;
-            end = e;
-        }
+    private static class IntervalComparator implements Comparator<Interval> {
         @Override
-        public int compareTo(MyInterval mi) {
-            if (start < mi.start) return -1;
-            else if (start == mi.start) return 0;
-            else return 1;
+        public int compare(Interval i1, Interval i2) {
+            return i1.start - i2.start;
         }
     }
+    
     public boolean canAttendMeetings(Interval[] intervals) {
-        MyInterval[] mis = new MyInterval[intervals.length];
-        for (int i = 0; i < intervals.length; i ++) {
-            mis[i] = new MyInterval(intervals[i].start, intervals[i].end);
-        }
-        Arrays.sort(mis);
-        for (int i = 1; i < mis.length; i ++) {
-            if (mis[i].start < mis[i-1].end) return false;
+        Arrays.sort(intervals, new IntervalComparator());
+        for (int i = 1; i < intervals.length; i ++) {
+            if (intervals[i].start < intervals[i-1].end) return false;
         }
         return true;
     }
