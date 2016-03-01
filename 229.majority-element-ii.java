@@ -4,11 +4,12 @@
 
 public class Solution {
     public List<Integer> majorityElement(int[] nums) {
-        if (nums == null) throw NullPointerException();
+        if (nums == null) throw new NullPointerException();
         List<Integer> res = new ArrayList<>();
         if (nums.length == 0) return res;
         int first = 0, second = 0, firstCount = 0, secondCount = 0;
-        for (int i = 0; i < nums.length; ++i) {
+
+        for (int i = 0; i < nums.length; ++i) { // first, find the candidates
             if (firstCount == 0) {
                 if (secondCount != 0 && nums[i] == second) {
                     ++secondCount;
