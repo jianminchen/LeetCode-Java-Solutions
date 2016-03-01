@@ -1,3 +1,7 @@
+/**
+ * https://leetcode.com/problems/maximum-product-of-word-lengths/
+ */
+
 public class Solution {
     public int maxProduct(String[] words) {
         if (words == null) throw new NullPointerException();
