@@ -1,3 +1,7 @@
+/**
+ * https://leetcode.com/problems/remove-duplicate-letters/
+ */
+
 public class Solution {
     private final int CHAR_COUNT = 26;
     public String removeDuplicateLetters(String s) {
@@ -24,6 +28,5 @@ public class Solution {
             visited[c - 'a'] = true;
         }
         return sb.toString();
-        
     }
 }
