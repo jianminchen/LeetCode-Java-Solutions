@@ -3,17 +3,17 @@
  */
 
 public class Solution {
+    // we need to find the median of the x coordinates, and the median of the y coordinates
     public int minTotalDistance(int[][] grid) {
+        if (grid == null) throw new NullPointerException();
+        if (grid.length <= 1 && grid[0].length <= 1) return 0;
         ArrayList<int[]> nodes = new ArrayList<int[]>();
         for (int i = 0; i < grid.length; ++i) {
             for (int j = 0; j < grid[0].length; ++j) {
                 if (grid[i][j] == 1) {
-                    int[] aNode = new int[2];
-                    aNode[0] = i;
-                    aNode[1] = j;
+                    int[] aNode = new int[]{i, j};
                     nodes.add(aNode);
                 }
-                
             }
         }
         int xArray[] = new int[nodes.size()];
