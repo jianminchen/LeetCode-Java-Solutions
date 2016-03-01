@@ -13,11 +13,10 @@ public class Solution {
         hm.put('D', 500);
         hm.put('M', 1000);
         int num = 0;
-        for (int i = 0; i <s.length(); i ++) {
+        for (int i = 0; i <s.length(); ++i) {
             if (i + 1 == s.length() || hm.get(s.charAt(i)) >= hm.get(s.charAt(i+1))) {
                 num += hm.get(s.charAt(i));
-            }
-            else {
+            } else {
                 num -= hm.get(s.charAt(i));
             }
         }
