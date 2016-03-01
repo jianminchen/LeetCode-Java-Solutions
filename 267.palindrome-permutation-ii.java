@@ -4,8 +4,8 @@
 
 public class Solution {
     public List<String> generatePalindromes(String s) {
+        if (s == null) throw new NullPointerException();
         List<String> res = new ArrayList<>();
-        if (s == null) return res;
         
         Map<Character, Integer> hm = getMap(s);
         int oddCount = 0;
@@ -15,54 +15,47 @@ public class Solution {
         }
         
         Set<String> set = generatePalindromesGivenMap(hm);
-        for (String str : set) {
-            res.add(str);
-        }
+        res.addAll(set);
         return res;
     }
     
-    public Map<Character, Integer> getMap(String s) {
+    private Map<Character, Integer> getMap(String s) {
         Map<Character, Integer> hm = new HashMap<>();
+        char c = ' ';
         for (int i = 0; i < s.length(); ++i) {
-            if (hm.containsKey(s.charAt(i))) hm.put(s.charAt(i), hm.get(s.charAt(i)) + 1);
-            else hm.put(s.charAt(i), 1);
+            c = s.charAt(i);
+            hm.put(c, hm.containsKey(c) ? hm.get(c) + 1 : 1);
         }
         return hm;
     }
     
-    public Set<String> generatePalindromesGivenMap(Map<Character, Integer> hm) {
+    private Set<String> generatePalindromesGivenMap(Map<Character, Integer> hm) {
         Set<String> res = new HashSet<>();
         if (hm.size() == 0) {
-            String s = "";
-            res.add(s);
-        }
-        else if (hm.size() == 1) {
+            res.add("");
+        } else if (hm.size() == 1) { // only one element in the HashMap
             char someChar = 'a';
-            for (char c : hm.keySet()) someChar = c;
+            for (char c : hm.keySet()) someChar = c; // to get the only key
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < hm.get(someChar); ++i) {
                 sb.append(someChar);
             }
             res.add(new String(sb));
-        }
-        else {
+        } else {
             char someChar = 'a';
-            for (char c : hm.keySet()) {
+            for (char c : hm.keySet()) { // get a char that appear even number of times
                 if (hm.get(c) % 2 == 0) {
                     someChar = c;
                     break;
                 }
             }
-            // choose a char that appears even number of times.
-            // update the map.
-            if (hm.get(someChar) == 2) hm.remove(someChar);
+            if (hm.get(someChar) == 2) hm.remove(someChar); // update the map.
             else hm.put(someChar, hm.get(someChar) - 2);
 
-            Set<String> subRes = generatePalindromesGivenMap(hm);
+            Set<String> subRes = generatePalindromesGivenMap(hm); // recursive call
             for (String str : subRes) {
                 for (int i = 0; i <= str.length() / 2; ++i) {
-                    StringBuilder sb = new StringBuilder();
-                    sb.append(str.substring(0, i));
+                    StringBuilder sb = new StringBuilder(str.substring(0, i));
                     sb.append(someChar);
                     sb.append(str.substring(i, str.length() - i));
                     sb.append(someChar);
@@ -71,7 +64,6 @@ public class Solution {
                 }
             }
         }
-        
         return res;        
     }
 }
