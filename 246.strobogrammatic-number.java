@@ -4,32 +4,19 @@
 
 public class Solution {
     public boolean isStrobogrammatic(String num) {
-        if (num == null || num.length() == 0) return true;
-        if (num.length() % 2 == 1 && num.charAt(num.length()/2) != '1' 
-            && num.charAt(num.length()/2) != '8' && num.charAt(num.length()/2) != '0') return false;
-        for (int i = 0; i < num.length()/2; i ++) {
-            char c1 = num.charAt(i);
-            char c2 = num.charAt(num.length() - 1 - i);
-            if (c1 != '6' && c1 != '9' && c1 != '1' && c1 != '8' && c1 != '0') {
+        if (num == null) throw new NullPointerException();
+        if (num.length() == 0) return true;
+        // if the length is odd, the middle digit must be 1, 0, or 8 to become a strobogrammatic number
+        if (num.length() % 2 == 1 && num.charAt(num.length() >> 1) != '1'
+                && num.charAt(num.length() >> 1) != '0'
+                && num.charAt(num.length() >> 1) != '8') return false;
+        // I use ' ' to indicate it is not a valid number.
+        char[][] chart = {{'0', '0'}, {'1', '1'}, {'2', ' '}, {'3', ' '}, {'4', ' '}, 
+                {'5', ' '}, {'6', '9'}, {'7', ' '}, {'8', '8'}, {'9', '6'}};
+        for (int i = 0; i < num.length() >> 1; ++i) {
+            if (chart[num.charAt(i) - '0'][1] == ' ' 
+                    || chart[num.charAt(i) - '0'][1] != num.charAt(num.length() - 1 - i)) {
                 return false;
-            }
-            if (c2 != '6' && c2 != '9' && c2 != '1' && c2 != '8' && c2!= '0') {
-                return false;
-            }
-            if (c1 == '6') {
-                if (c2 != '9') return false;
-            }
-            if (c1 == '9') {
-                if (c2 != '6') return false;
-            }
-            if (c1 == '1') {
-                if (c2 != '1') return false;
-            }
-            if (c1 == '8') {
-                if (c2 != '8') return false;
-            }
-            if (c1 == '0') {
-                if (c2 != '0') return false;
             }
         }
         return true;
