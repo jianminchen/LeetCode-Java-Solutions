@@ -1,7 +1,6 @@
 /**
  * https://leetcode.com/problems/strobogrammatic-number-iii/
  */
-
 // dynamic programming solution, generate afterwards solutions based on previous solutions
 // at the end, only count valid results
 public class Solution {
