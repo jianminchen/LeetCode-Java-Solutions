@@ -6,29 +6,22 @@ public class Solution {
     public List<List<Integer>> subsetsWithDup(int[] nums) {
         List<List<Integer>> res = new ArrayList<>();
         if (nums.length == 0) {
-            List<Integer> r = new ArrayList<>();
-            res.add(r);
+            res.add(new ArrayList<>()); // using anonymous object to simplify coding.
             return res;
         }
         Arrays.sort(nums);
         Set<List<Integer>> curSet = new HashSet<>();
-        List<Integer> r = new ArrayList<>();
-        curSet.add(r);
+        curSet.add(new ArrayList<>());
         for (int i = 0; i < nums.length; ++i) {
-            Set<List<Integer>> nextSet = new HashSet<>();
-            nextSet.addAll(curSet);
+            // using helpful constructors to simplify coding.
+            Set<List<Integer>> nextSet = new HashSet<>(curSet);
             for (List<Integer> aRes : curSet) {
-                List<Integer> newRes = new ArrayList<>();
-                newRes.addAll(aRes);
+                List<Integer> newRes = new ArrayList<>(aRes);
                 newRes.add(nums[i]);
-                
                 nextSet.add(newRes);
             }
             curSet = nextSet;
         }
-        for (List<Integer> aRes : curSet) {
-            res.add(aRes);
-        }
-        return res;
+        return new ArrayList<List<Integer>>(curSet);
     }
 }
