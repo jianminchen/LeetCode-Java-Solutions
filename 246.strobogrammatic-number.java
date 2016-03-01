@@ -6,9 +6,9 @@ public class Solution {
     public boolean isStrobogrammatic(String num) {
         if (num == null) throw new NullPointerException();
         if (num.length() == 0) return true;
-        // if the length is odd, the middle digit must be 1, 0, or 8 to become a strobogrammatic number
-        if (num.length() % 2 == 1 && num.charAt(num.length() >> 1) != '1'
-                && num.charAt(num.length() >> 1) != '0'
+        // if the length is odd, the middle digit must be 0, 1, or 8 to become a strobogrammatic number
+        if (num.length() % 2 == 1 && num.charAt(num.length() >> 1) != '0'
+                && num.charAt(num.length() >> 1) != '1'
                 && num.charAt(num.length() >> 1) != '8') return false;
         // I use ' ' to indicate it is not a valid number.
         char[][] chart = {{'0', '0'}, {'1', '1'}, {'2', ' '}, {'3', ' '}, {'4', ' '}, 
