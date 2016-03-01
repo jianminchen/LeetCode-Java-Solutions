@@ -1,11 +1,11 @@
 /**
  * @see <a href="https://leetcode.com/problems/different-ways-to-add-parentheses/">Different Ways to Add Parentheses</a>
  */
-
+ 
+// divide and conquer approach
 public class Solution {
     public List<Integer> diffWaysToCompute(String input) {
-        List<Integer> res = new ArrayList<>();
-        
+        if (input == null) throw new NullPointerException();
         List<Integer> nums = new ArrayList<>();
         List<Character> ops = new ArrayList<>();
         int i = 0;
@@ -18,54 +18,51 @@ public class Solution {
             ops.add(op);
             ++i;
         }
-        
-        res = diffWaysToCompute(nums, ops);
-        return res;
+        return diffWaysToCompute(nums, ops);
     }
     
-    public List<Integer> diffWaysToCompute(List<Integer> nums, List<Character> ops) {
+    private List<Integer> diffWaysToCompute(List<Integer> nums, List<Character> ops) {
         List<Integer> res = new ArrayList<>();
-        if (ops.size() == 0) {
+        if (ops.size() == 0) { // no operators, thus, return the pure number
             res.add(nums.get(0));
+            return res;
         }
-        else {
-            int size = nums.size();
-            for (int k = 1; k < size; ++k) {
-                List<Integer> numsFirst = new ArrayList<>();
-                List<Character> opsFirst = new ArrayList<>();
-                List<Integer> numsSecond = new ArrayList<>();
-                List<Character> opsSecond = new ArrayList<>();
-                
-                for (int i = 0; i < k; ++i) {
-                    numsFirst.add(nums.get(i));
-                }
-                int i = 0;
-                for (; i < k - 1; ++i) {
-                    opsFirst.add(ops.get(i));
-                }
-                char op = ops.get(i);
-                
-                for (int j = k; j < size; ++j) {
-                    numsSecond.add(nums.get(j));
-                }
-                ++i;
-                for (; i < ops.size(); ++i) {
-                    opsSecond.add(ops.get(i));
-                }
-
-                List<Integer> subRes1 = diffWaysToCompute(numsFirst, opsFirst);
-                List<Integer> subRes2 = diffWaysToCompute(numsSecond, opsSecond);
-                for (int num1 : subRes1) {
-                    for (int num2 : subRes2) {
-                        int newNum = calculate(num1, num2, op);
-                        res.add(newNum);
-                    }
+        
+        int size = nums.size();
+        for (int k = 1; k < size; ++k) { // partition the nums, and ops at location k
+            List<Integer> numsFirst = new ArrayList<>(), numsSecond = new ArrayList<>();
+            List<Character> opsFirst = new ArrayList<>(), opsSecond = new ArrayList<>();
+            // the first half
+            for (int i = 0; i < k; ++i) {
+                numsFirst.add(nums.get(i));
+            }
+            int i = 0;
+            for (; i < k - 1; ++i) {
+                opsFirst.add(ops.get(i));
+            }
+            char op = ops.get(i);
+            // the second half
+            for (int j = k; j < size; ++j) {
+                numsSecond.add(nums.get(j));
+            }
+            ++i;
+            for (; i < ops.size(); ++i) {
+                opsSecond.add(ops.get(i));
+            }
+            // calcualte the first half and the second half, then combine them
+            List<Integer> subRes1 = diffWaysToCompute(numsFirst, opsFirst);
+            List<Integer> subRes2 = diffWaysToCompute(numsSecond, opsSecond);
+            for (int num1 : subRes1) {
+                for (int num2 : subRes2) {
+                    int newNum = calculate(num1, num2, op);
+                    res.add(newNum);
                 }
             }
         }
         return res;
     }
-    public int calculate(int num1, int num2, char op) {
+    
+    private int calculate(int num1, int num2, char op) {
         int num = 0;
         switch(op) {
             case '-':
