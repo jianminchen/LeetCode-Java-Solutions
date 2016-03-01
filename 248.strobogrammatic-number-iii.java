@@ -1,3 +1,9 @@
+/**
+ * https://leetcode.com/problems/strobogrammatic-number-iii/
+ */
+
+// dynamic programming solution, generate afterwards solutions based on previous solutions
+// at the end, only count valid results
 public class Solution {
 	public int strobogrammaticInRange(String low, String high) {
 		char[][] chart = {{'0', '0'}, {'1', '1'}, {'8', '8'}, {'6', '9'}, {'9', '6'}};
@@ -7,10 +13,8 @@ public class Solution {
 		rawRes.add(first);
 		List<String> second = new ArrayList<>();
 		for (int i = 0; i < chart.length; ++i) {
-			String s = new String(chart[i]);
-			second.add(s);
+			second.add(new String(chart[i]));
 		}
-
 		rawRes.add(second);
 		
 		for (int i = 2; i < high.length(); ++i) {
@@ -30,17 +34,16 @@ public class Solution {
 		int count = 0;
 		for (int len = low.length(); len <= high.length(); ++len) {
 			for (String s : rawRes.get(len - 1)) {
-				if (s.length() != 1 && s.charAt(0) == '0') continue;
+				if (s.length() != 1 && s.charAt(0) == '0') {}
 				else {
-					if (len > low.length() && len < high.length()) ++count;
-					else {
+					if (len > low.length() && len < high.length()) {
+					    ++count;
+					} else {
 						if (len == low.length() && len == high.length()) {
 							if (s.compareTo(low) >= 0 && s.compareTo(high) <= 0) ++count;
-						}
-						else if (len == low.length()) {
+						} else if (len == low.length()) {
 							if (s.compareTo(low) >= 0) ++count;
-						}
-						else if (len == high.length()) {
+						} else if (len == high.length()) {
 							if (s.compareTo(high) <= 0) ++count;
 						}
 					}
