@@ -6,65 +6,30 @@
       int read4(char[] buf); */
 
 public class Solution extends Reader4 {
+    private char[] buffer = new char[4];
+    // offset is the index from where we should copy contents in buffer
+    // bufsize is the number of bytes that have not been read in the buffer
+    private int offset = 0, bufsize = 0;
     /**
-     * @param buf Destination buffer
-     * @param n   Maximum number of characters to read
-     * @return    The number of characters read
-     */
-    public char[] remain = new char[0];
+    * @param buf Destination buffer
+    * @param n   Maximum number of characters to read
+    * @return The number of characters read
+    */
     public int read(char[] buf, int n) {
-        // notice that, the buf variable is not created within the function,
-        // it is provided by the caller.
-        if (n <= 0) return 0;
-        if (n <=  remain.length) {
-            int i = 0;
-            int j = 0;
-            for (; j < n; ++j, ++i) {
-                buf[i] = remain[j];
+        int readBytes = 0;
+        boolean eof = false; // whether we have reached the end
+        while (!eof && readBytes < n) {
+            if (bufsize == 0) { // if all content in the buffer has been read, we need to read again
+                bufsize = read4(buffer);
+                eof = bufsize < 4; // whether we have reached the end
             }
-            remain = Arrays.copyOfRange(remain, n, remain.length); 
-            return n;
+            int bytes = Math.min(n - readBytes, bufsize);
+            // it's good to know some handy "system calls"
+            System.arraycopy(buffer, offset, buf, readBytes, bytes);
+            offset = (offset + bytes) % 4;
+            bufsize -= bytes;
+            readBytes += bytes;
         }
-        else {// n > remain.length
-            int totalCount = 0;
-            int bufi = 0;
-            if (remain.length != 0) {
-
-                int remaini = 0;
-                // read the remaining.
-                for ( ; remaini < remain.length; ++remaini) {
-                    buf[bufi] = remain[remaini];
-                    ++bufi;
-                }
-		n = n - remain.length;
-                totalCount += remain.length;
-                remain = new char[0];
-            }
-            
-            while (n > 0) {
-                char[] tempBuf = new char[4];
-                int read = read4(tempBuf);
-
-                int count = Math.min(n, read);
-                totalCount += count;
-                for (int i = 0; i < count; ++i) {
-                    buf[bufi] = tempBuf[i];
-                    ++bufi;
-                }
-                if (read > count) {
-                    char[] newRemain = new char[read - count];
-                    int newRemaini = 0;
-                    for (int i = count; i < read; ++i) {
-                        newRemain[newRemaini] = tempBuf[i];
-                        ++newRemaini;
-                    }
-                    remain = newRemain;
-                }
-                n = n - Math.min(n, read);
-                if (read < 4) break; // reached end of file.
-            }
-            
-            return totalCount;
-        }
+        return readBytes;
     }
 }
