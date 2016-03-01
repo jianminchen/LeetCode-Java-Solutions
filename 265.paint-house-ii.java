@@ -4,6 +4,7 @@
 
 public class Solution {
     public int minCostII(int[][] costs) {
+        if (costs == null) throw new NullPointerException();
         if (costs.length == 0 || costs[0].length == 0) return 0;
         int[] minCost = new int[costs[0].length];
         for (int k = 0; k < costs[0].length; ++k) {
