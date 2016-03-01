@@ -13,49 +13,33 @@
  */
 public class Solution {
     public List<String> binaryTreePaths(TreeNode root) {
-        List<String> ls = new ArrayList<String>();
-        Stack<TreeNode> stk = new Stack<TreeNode>();
-        String s = new String();
+        List<String> ls = new ArrayList<>();
+        ArrayList<TreeNode> stk = new ArrayList<>();
         TreeNode cur = root;
         while (true) {
             while (cur != null){
-                stk.push(cur);
-                if (cur.left == null && cur.right == null) {
+                stk.add(cur);
+                if (cur.left == null && cur.right == null) { // at a leaf node, we collect one result
                     ls.add(getString(stk));
                 }
                 cur = cur.left;
             }
+            while (!stk.isEmpty() && (stk.get(stk.size() - 1).right == null || cur == stk.get(stk.size() - 1).right)) {
+                cur = stk.remove(stk.size() - 1);
+            }
             if (stk.isEmpty()) break;
-            cur = stk.peek();
-            
-            if (cur.right != null) {
-                cur = cur.right;
-            }
-            else {
-                do {
-                    cur = stk.pop();
-                } while (!stk.isEmpty() && (stk.peek().right == null || cur == stk.peek().right));
-                if (stk.isEmpty()) break;
-                else cur = stk.peek().right;
-            }
+            else cur = stk.get(stk.size() - 1).right;
         }
         return ls;
     }
     
-    public String getString(Stack<TreeNode> stk) {
-        if (stk.size() == 1) return (new Integer(stk.peek().val)).toString();
-        ArrayList<TreeNode> al = new ArrayList<TreeNode>();
-        while (!stk.isEmpty()) {
-            al.add(stk.pop());
+    private String getString(ArrayList<TreeNode> stk) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(stk.get(0).val);
+        for (int i = 1; i < stk.size(); ++i) {
+            sb.append("->");
+            sb.append(stk.get(i).val);
         }
-        String s = new String();
-        s = s + al.get(al.size() - 1).val;
-        for (int i = al.size() - 2; i >= 0; i --) {
-            s = s + "->" + al.get(i).val;
-        }
-        for (int i = al.size() - 1; i >= 0; i --) {
-            stk.push(al.get(i));
-        }
-        return s;
+        return sb.toString();
     }
 }
