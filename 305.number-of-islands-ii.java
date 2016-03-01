@@ -1,3 +1,7 @@
+/**
+ *  https://leetcode.com/problems/number-of-islands-ii/
+ */
+
 public class Solution {
     public List<Integer> numIslands2(int m, int n, int[][] positions) {
         int[] parents = new int[m * n];
@@ -7,7 +11,7 @@ public class Solution {
         for (int[] pos : positions) {
             int cur = pos[0] * n + pos[1];
             parents[cur] = cur;
-            count ++;
+            ++count;
             for (int[] nb : getNeighbors(m, n, pos[0], pos[1])) {
                 int neighbor = nb[0] * n + nb[1];
                 if (parents[neighbor] != -1) {
