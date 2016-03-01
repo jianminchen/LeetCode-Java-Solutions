@@ -2,40 +2,33 @@
  * @see <a href="https://leetcode.com/problems/implement-queue-using-stacks/">Implement Queue using Stacks</a>
  */
 
+// by using two stacks, we can implement all the operations for the queue in amortized O(1)
 class MyQueue {
+    private Stack<Integer> pushStk = new Stack<>();
+    private Stack<Integer> popStk = new Stack<>();
     // Push element x to the back of queue.
-    public Stack<Integer> stk = new Stack<Integer>();
-    public void push(int x) { // this specifies the content to be stored are integers!!!!!!
-        stk.push(x);
+    public void push(int x) { // this specifies the content to be stored are integers
+        pushStk.push(x);
     }
 
     // Removes the element from in front of queue.
     public void pop() {
-        Stack<Integer> stk2 = new Stack<Integer>();
-        while (!stk.isEmpty()) {
-            stk2.push(stk.pop());
+        if (popStk.isEmpty()) {
+            while (!pushStk.isEmpty()) popStk.push(pushStk.pop());
         }
-        stk2.pop();
-        while(!stk2.isEmpty()) {
-            stk.push(stk2.pop());
-        }
+        popStk.pop();
     }
 
     // Get the front element.
     public int peek() {
-        Stack<Integer> stk2 = new Stack<Integer>();
-        while (!stk.isEmpty()) {
-            stk2.push(stk.pop());
+        if (popStk.isEmpty()) {
+            while (!pushStk.isEmpty()) popStk.push(pushStk.pop());
         }
-        int res = stk2.peek();
-        while(!stk2.isEmpty()) {
-            stk.push(stk2.pop());
-        }
-        return res;
+        return popStk.peek();
     }
 
     // Return whether the queue is empty.
     public boolean empty() {
-        return stk.isEmpty();
+        return pushStk.isEmpty() && popStk.isEmpty();
     }
 }
