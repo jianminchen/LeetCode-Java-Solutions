@@ -3,61 +3,53 @@
  */
 
 public class Solution {
+    // using stack for the operand and operator respectivley.
     public int calculate(String s) {
+        if (s == null) throw new NullPointerException();
+        if (s.length() == 0) return 0;
         int i = 0;
-        Stack<Character> operatorStk = new Stack<>();
-        Stack<Integer> numStk = new Stack<>();
+        Stack<Integer> operandStk = new Stack<Integer>();
+        Stack<Character> operatorStk = new Stack<Character>();
         while (i < s.length()) {
             while (i < s.length() && s.charAt(i) == ' ') ++i;
-            if (i == s.length()) break;
+            if ( i >= s.length() ) break;
+
             if (Character.isDigit(s.charAt(i))) {
                 int start = i;
-                ++i;
                 while (i < s.length() && Character.isDigit(s.charAt(i))) ++i;
-                int end = i;
-                int num = Integer.parseInt(s.substring(start, end));
-                if (numStk.isEmpty()) numStk.push(num);
-                else {
-                    if (operatorStk.peek() == '+' || operatorStk.peek() == '-') {
-                        numStk.push(num);
-                        calculate(operatorStk, numStk);
-                    }
-                    else { // operatorStk.peek() == '('
-                        numStk.push(num);
-                    }
+                int value = Integer.parseInt(s.substring(start, i));
+                operandStk.push(value);
+                --i;
+            } else if ( s.charAt(i) == '(' ) {
+                operatorStk.push(s.charAt(i));
+            } else if (s.charAt(i) == ')' ) {
+                while (operatorStk.peek() != '(') {
+                    calculate(operandStk, operatorStk);
                 }
+                operatorStk.pop(); // remove the openning bracket.
+            } else { // s.charAt(i) == '+' or '-'
+                while (!operatorStk.isEmpty() && operatorStk.peek() != '(') {
+                    calculate(operandStk, operatorStk);                    
+                }
+                operatorStk.push(s.charAt(i));
             }
-            else {
-                if (s.charAt(i) == '+' || s.charAt(i) == '-' || s.charAt(i) == '(') {
-                    operatorStk.push(s.charAt(i));
-                }
-                else {
-                    while (operatorStk.peek() != '(') calculate(operatorStk, numStk);
-                    operatorStk.pop();
-                    while (!operatorStk.isEmpty() && (operatorStk.peek() == '+' || operatorStk.peek() == '-')) {
-                        calculate(operatorStk, numStk);
-                    }
-
-                }
-                ++i;
-            }
+            ++i; // go to next character
         }
-        while (operatorStk.size() != 0) calculate(operatorStk, numStk);
-        return numStk.peek();
+        while (!operatorStk.isEmpty()) calculate(operandStk, operatorStk);
+        return operandStk.pop();
     }
-    public void calculate(Stack<Character> operatorStk, Stack<Integer> numStk) {
-        char c = operatorStk.pop();
-        int num2 = numStk.pop();
-        int num1 = numStk.pop();
-        int res = 0;
-        switch (c) {
+    
+    private void calculate(Stack<Integer> operandStk, Stack<Character> operatorStk) {
+        char operator = operatorStk.pop();
+        int operand1 = operandStk.pop(), operand2 = operandStk.pop(), cal = 0;
+        switch (operator) {
             case '+':
-                res = num1 + num2;
+                cal = operand2 + operand1;
                 break;
             case '-':
-                res = num1 - num2;
+                cal = operand2 - operand1;
                 break;
         }
-        numStk.push(res);
+        operandStk.push(cal);
     }
 }
