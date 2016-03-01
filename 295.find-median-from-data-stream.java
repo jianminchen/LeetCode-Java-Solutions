@@ -3,35 +3,28 @@
  */
 
 class MedianFinder {
+    // using a minHeap and a maxHeap, numbers in the minHeap will be less than numbers in the maxHeap.
+    // each heap will have roughly the same number of elements, and we can easily calculate the median using these two heaps
+    private PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Collections.reverseOrder());
+    private PriorityQueue<Integer> minHeap = new PriorityQueue<>();
 
-    public PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Collections.reverseOrder());
-    public PriorityQueue<Integer> minHeap = new PriorityQueue<>();
-
-    // Adds a number into the data structure.
-    public void addNum(int num) {
-        if (maxHeap.size() == 0) maxHeap.add(num);
-        else if (minHeap.size() == 0) {
-            if (maxHeap.peek() <= num) minHeap.add(num);
-            else { // maxHeap.peek() > num;
-                int larger = maxHeap.remove();
-                maxHeap.add(num);
-                minHeap.add(larger);
-            }
-        }
-        else { // both heaps not empty. 
+    public void addNum(int num) { // Adds a number into the data structure.
+        if (maxHeap.size() == 0) {
+            maxHeap.add(num);
+        } else {
             if (maxHeap.size() == minHeap.size()) {
-                if (num <= minHeap.peek()) maxHeap.add(num);
-                else {
-                    int fromMin = minHeap.remove();
+                if (num <= minHeap.peek()) {
+                    maxHeap.add(num);
+                } else { // we always have maxHeap.size() >= minHeap.size()
+                    maxHeap.add(minHeap.remove());
                     minHeap.add(num);
-                    maxHeap.add(fromMin);
+
                 }
-            }
-            else if (maxHeap.size() == minHeap.size() + 1) {
-                if (num >= maxHeap.peek()) minHeap.add(num);
-                else { // num < maxHeap.peek()
-                    int fromMax = maxHeap.remove();
-                    minHeap.add(fromMax);
+            } else { // maxheap.size() == minHeap.size() + 1
+                if (num >= maxHeap.peek()) {
+                    minHeap.add(num);
+                } else { // num < maxHeap.peek()
+                    minHeap.add(maxHeap.remove());
                     maxHeap.add(num);
                 }
             }
@@ -44,10 +37,11 @@ class MedianFinder {
             double low = (double) maxHeap.peek();
             double high = (double) minHeap.peek();
             return (low + high) / 2.0;
+        } else {
+            return (double) maxHeap.peek();
         }
-        else return (double) maxHeap.peek();
     }
-};
+}
 
 // Your MedianFinder object will be instantiated and called as such:
 // MedianFinder mf = new MedianFinder();
