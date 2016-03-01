@@ -1,3 +1,7 @@
+/**
+ * https://leetcode.com/problems/super-ugly-number/
+ */
+
 public class Solution {
   public int nthSuperUglyNumber(int n, int[] primes) {
     if (primes == null) {
