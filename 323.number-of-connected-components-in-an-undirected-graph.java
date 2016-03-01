@@ -1,3 +1,7 @@
+/**
+ * https://leetcode.com/problems/number-of-connected-components-in-an-undirected-graph/
+ */
+
 public class Solution {
     public int countComponents(int n, int[][] edges) {
         boolean[] visited = new boolean[n];
