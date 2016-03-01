@@ -1,9 +1,8 @@
 /**
  * @see <a href="https://leetcode.com/problems/strobogrammatic-number-ii/">Strobogrammatic Number II</a>
  */
-
+// dynamic programming solution, constructing the ith list from previous lists
 public class Solution {
-
     public List<String> findStrobogrammatic(int n) {
         String[][] chart = new String[][]{{"1", "1"}, {"8", "8"}, {"6", "9"}, {"9", "6"}};
         List<String> list = new ArrayList<String>();
