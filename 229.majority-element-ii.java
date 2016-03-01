@@ -4,42 +4,38 @@
 
 public class Solution {
     public List<Integer> majorityElement(int[] nums) {
+        if (nums == null) throw NullPointerException();
         List<Integer> res = new ArrayList<>();
-        if (nums == null || nums.length == 0) return res;
-        int first = 0;
-        int second = 0;
-        int firstCount = 0;
-        int secondCount = 0;
+        if (nums.length == 0) return res;
+        int first = 0, second = 0, firstCount = 0, secondCount = 0;
         for (int i = 0; i < nums.length; ++i) {
             if (firstCount == 0) {
                 if (secondCount != 0 && nums[i] == second) {
                     ++secondCount;
-                }
-                else {
+                } else {
                     first = nums[i];
                     ++firstCount;                    
                 }
-            }
-            else if (secondCount == 0) {
-                if (first == nums[i]) ++firstCount;
-                else {
+            } else if (secondCount == 0) {
+                if (first == nums[i]) {
+                    ++firstCount;
+                } else {
                     second = nums[i];
                     ++secondCount;
                 }
-            }
-            else {
+            } else {
                 if (first == nums[i]) {
                     ++firstCount;
-                }
-                else if (second == nums[i]) {
+                } else if (second == nums[i]) {
                     ++secondCount;
-                }
-                else {
+                } else {
                     --firstCount;
                     --secondCount;
                 }
             }
         }
+        
+        // to verify that they are indeed the majority number
         firstCount = 0;
         secondCount = 0;
         for (int i = 0; i < nums.length; ++i) {
