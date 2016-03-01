@@ -1,7 +1,11 @@
+/**
+ * https://leetcode.com/problems/range-sum-query-mutable/
+ */
+
 public class NumArray {
     // the binary index tree solution.
-    public int[] array;
-    public int[] BIT;
+    private int[] array;
+    private int[] BIT;
     public NumArray(int[] nums) {
         array = new int[nums.length];
         BIT = new int[nums.length + 1];
@@ -20,7 +24,7 @@ public class NumArray {
         }
         array[i] = val;
     }
-    public int getSum(int i) {
+    private int getSum(int i) {
         int index = i + 1;
         int sum = 0;
         while (index > 0) {
