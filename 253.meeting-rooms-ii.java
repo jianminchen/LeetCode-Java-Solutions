@@ -26,9 +26,11 @@ public class Solution {
         }
         @Override
         public int compareTo(Point p) {
-            if (val - p.val < 0) return -1;
-            else if (val - p.val > 0) return 1;
-            else {
+            if (val - p.val < 0) {
+                return -1;
+            } else if (val - p.val > 0) {
+                return 1;
+            } else {
                 // make sure when points overlap, the end point is sorted before the start point
                 if (isStart == false) return -1;
                 else return 1;
