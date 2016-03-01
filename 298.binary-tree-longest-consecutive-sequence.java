@@ -15,32 +15,28 @@ public class Solution {
     public int longestConsecutive(TreeNode root) {
         int len = 0;
         Stack<TreeNode> stk = new Stack<TreeNode>(); // stores the path from the root to the cur node.
+        // this stack synchronizes with the stk, and record the consecutive length till this node
         Stack<Integer> lenStk = new Stack<Integer>();
         TreeNode cur = root;
         int maxLen = 0;
-        while (true) {
+        while (true) { // preorder traversal
             while (cur != null) {
                 if (stk.isEmpty() || cur.val != stk.peek().val + 1) {
-                    len = 1;
-                }
-                else {
-                    len = lenStk.peek() + 1;
+                    len = 1; // the very beginning, or this node is non-consecutive with its parent
+                } else {
+                    len = lenStk.peek() + 1; // consecutive with its parent
                 }
                 stk.push(cur);
                 lenStk.push(len);
                 maxLen = Math.max(maxLen, len);
                 cur = cur.left;
             }
-            if (stk.isEmpty()) break;
-            if (stk.peek().right != null) cur = stk.peek().right;
-            else {
-                do {
-                    cur = stk.pop();
-                    lenStk.pop();
-                } while (!stk.isEmpty() && (stk.peek().right == null || stk.peek().right == cur));
-                if (stk.isEmpty()) break;
-                else cur = stk.peek().right;
+            while (!stk.isEmpty() && (stk.peek().right == null || stk.peek().right == cur)){
+                cur = stk.pop();
+                lenStk.pop();
             }
+            if (stk.isEmpty()) break;
+            else cur = stk.peek().right;
         }
         return maxLen;
     }
