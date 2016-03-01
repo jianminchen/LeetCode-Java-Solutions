@@ -22,15 +22,15 @@ public class Solution {
             int last = n - sum;
             if (last > 9) {
                 stk.push(stk.pop() + 1);
-                sum += 1;
+                ++sum;
             } else if (last <= stk.peek()) {
-                backtrack(); // backtrack go to next availabe state if possible, and set stk to empty if not possible.
+                backtrack(); // backtrack, and go to next availabe state if possible; set stk to empty if not possible.
             } else { // we have a solution here; thus, we find the solution and go to next state.
                 List<Integer> aRes = new ArrayList<>(stk);
                 aRes.add(n - sum);
                 res.add(aRes);
                 stk.push(stk.pop() + 1);
-                sum = sum + 1;
+                ++sum;
             }
             if (stk.isEmpty()) break;            
         }
@@ -46,7 +46,7 @@ public class Solution {
             if (stk.isEmpty()) return; // cannot backtrack
             
             stk.push(stk.pop() + 1);
-            sum = sum + 1;
+            ++sum;
             minN = sum;
             for (int i = 0; i < k - stk.size(); ++i) {
                 minN += stk.peek() + 1 + i;
