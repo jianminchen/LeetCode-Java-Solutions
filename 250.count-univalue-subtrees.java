@@ -13,7 +13,6 @@
 // iterative postorder solution, using hashmap to record child status
 public class Solution {
     public int countUnivalSubtrees(TreeNode root) {
-        if (root == null) return 0;
         Map<TreeNode, Boolean> uniMap = new HashMap<>();
         TreeNode cur = root;
         Stack<TreeNode> stk = new Stack<>();
