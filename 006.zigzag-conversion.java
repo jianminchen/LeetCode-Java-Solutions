@@ -12,7 +12,7 @@ public class Solution {
             sb.append(s.charAt(i));
         }
         // the second row to the numRows - 2 th row.
-        for (int j = 1; j <= numRows - 2; j ++) {
+        for (int j = 1; j <= numRows - 2; ++j) {
             for (int i = j; i < s.length(); i = i + 2 * numRows - 2) {
                 sb.append(s.charAt(i));
                 if (i + 2 * (numRows - j - 1) < s.length()) {
