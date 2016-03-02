@@ -4,7 +4,8 @@
 
 public class Solution {
     public int trap(int[] height) {
-        if (height == null || height.length == 0) return 0;
+        if (height == null) throw new NullPointerException();
+        if (height.length == 0) return 0;
         int waters[] = new int[height.length];
         waters[0] = 0;
         // max should not be initialized as 0!
