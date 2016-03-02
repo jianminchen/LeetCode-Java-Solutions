@@ -2,6 +2,7 @@ public class Solution {
     public List<Integer> findSubstring(String s, String[] words) {
         // the key: how to utilize original map, instead of constructing map each time?
         // traverse the string, word by word, instead of char by char!!
+        if (s == null || words == null) throw new NullPointerException();
         int wL = words[0].length();
         int dictL = wL * words.length;
         List<Integer> res = new ArrayList<>();
@@ -22,17 +23,18 @@ public class Solution {
                     // check the map
                     if (dictMap.equals(curMap)) res.add(j);
                 }
+            } else {
+                break;
             }
-            else break;
         }
         return res;
     }
-    public Map<String, Integer> getMap(String[] words) {
+    private Map<String, Integer> getMap(String[] words) {
         Map<String, Integer> hm = new HashMap<>();
         for (String s : words) hm.put(s, !hm.containsKey(s) ? 1 : hm.get(s) + 1);
         return hm;
     }
-    public Map<String, Integer> getMapFromString(String s, int wL) {
+    private Map<String, Integer> getMapFromString(String s, int wL) {
         Map<String, Integer> hm = new HashMap<>();
         for (int i = 0; i < s.length(); i = i + wL) {
             String cW = s.substring(i, i + wL); 
