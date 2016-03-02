@@ -4,10 +4,9 @@
 
 public class Solution {
     public int removeDuplicates(int[] nums) {
-        if (nums == null || nums.length == 0) return 0;
-        if (nums.length == 1) return 1;
-        int pFill = 0;
-        int i = 1; // the first element will not change.
+        if (nums == null) throw new NullPointerException();
+        if (nums.length == 0 || nums.length == 1) return nums.length;
+        int pFill = 0, i = 1; // the first element will not change.
         while (i < nums.length) {
             if (nums[i] == nums[pFill]) {}
             else {
