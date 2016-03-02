@@ -13,7 +13,7 @@
 public class Solution {
     public ListNode removeNthFromEnd(ListNode head, int n) {
         ListNode fp = head;
-        for (int i = 0; i < n; i ++) {
+        for (int i = 0; i < n; ++i) {
             fp = fp.next;
         }
         if (fp == null) return head.next;
