@@ -4,7 +4,7 @@
 
 /* The read4 API is defined in the parent class Reader4.
       int read4(char[] buf); */
-
+// TODO: do not use al, copying directly to buf from subbuf using System.copy
 public class Solution extends Reader4 {
     /**
      * @param buf Destination buffer
