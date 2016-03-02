@@ -10,7 +10,7 @@ public class Solution {
         Stack<Character> stk = new Stack<>();
         int i = a.length() - 1, j = b.length() - 1;
         int carryIn = 0;
-        for (; i >= 0; i --, j --) {
+        for (; i >= 0; --i, --j) {
             int iA = a.charAt(i) - '0';
             int iB = 0;
             if (j >= 0) { // we are not done with b yet.
