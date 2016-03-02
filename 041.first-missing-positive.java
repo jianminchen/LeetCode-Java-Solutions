@@ -4,6 +4,7 @@
 
 public class Solution {
     public int firstMissingPositive(int[] nums) {
+        if (nums == null) throw new NullPointerException();
         if (nums.length == 0) return 1;
         for (int i = 0; i < nums.length; ++i) {
             int cur = i;
@@ -13,11 +14,6 @@ public class Solution {
                 toSwap = nums[i] - 1;
             }
         }
-
-        for (int i = 0; i < nums.length; ++i) {
-            System.out.print(nums[i] + " ");
-        }
-        
         int i = 0;
         while (i < nums.length && nums[i] == i + 1) ++i;
         return i + 1;
