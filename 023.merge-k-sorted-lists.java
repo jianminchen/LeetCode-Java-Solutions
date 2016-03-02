@@ -11,7 +11,7 @@
  * }
  */
 public class Solution {
-  private class ListNodeComparator implements Comparator<ListNode> {
+  private static class ListNodeComparator implements Comparator<ListNode> {
     @Override
     public int compare(ListNode n1, ListNode n2) {
       return n1.val - n2.val;
