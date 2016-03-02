@@ -4,15 +4,14 @@
 
 public class Solution {
     public int removeElement(int[] nums, int val) {
+        if (nums == null) throw new NullPointerException();
         int i = 0, j = 0;
-        while ( j < nums.length) {
-            if (nums[j] == val) {
-                ++j;
-            } else {
+        while (j < nums.length) {
+            if (nums[j] != val) {
                 nums[i] = nums[j];
                 ++i;
-                ++j;
             }
+            ++j;
         }
         return i;
     }
