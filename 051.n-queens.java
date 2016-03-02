@@ -42,7 +42,7 @@ public class Solution {
 		return res;
 	}
 	
-	public boolean canPlace(List<Integer> stkC, int cand) {
+	private boolean canPlace(List<Integer> stkC, int cand) {
 		int ti = stkC.size();
 		int tj = cand;
 		for (int i = 0; i < stkC.size(); ++i) {
@@ -54,7 +54,7 @@ public class Solution {
 		return true;
 	}
 	
-	public List<String> getAResult(List<Integer> stkC) {
+	private List<String> getAResult(List<Integer> stkC) {
 		List<String> res = new ArrayList<String>();
 		for (int i = 0; i < stkC.size(); ++i) {
 			char[] charArray = new char[stkC.size()];
