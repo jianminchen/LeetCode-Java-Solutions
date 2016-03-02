@@ -4,6 +4,7 @@
 
 public class Solution {
     public boolean search(int[] nums, int target) {
+        if (nums == null) throw new NullPointerException();
         int low = 0, high = nums.length - 1;
         while (true) {
             if (low > high) return false;
