@@ -4,6 +4,7 @@
 
 public class Solution {
     public List<Integer> spiralOrder(int[][] matrix) {
+        if (matrix == null) throw new NullPointerException();
         List<Integer> list = new ArrayList<Integer>();
         if (matrix.length == 0 || matrix[0].length == 0) return list; 
 
