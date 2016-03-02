@@ -11,7 +11,7 @@ Part of the solutions for the LeetCode problems in Java:
 
 306 out of 317 on Feb. 21st, 2016.
 
-Each file name starts with a three digit number, which is the problem number in LeetCode. 
+Each file name starts with a three digit number, which is the problem number in LeetCode. The solutions are constantly updated for better time complexity, memory complexity, and code cleanness.
 
-You can find a list of all the problems here: https://leetcode.com/problemset/algorithms/
+You can find the list of all the problems here: https://leetcode.com/problemset/algorithms/
 
