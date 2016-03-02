@@ -4,6 +4,7 @@
 
 public class Solution {
     public int searchInsert(int[] nums, int target) {
+        if (nums == null) throw new NullPointerException();
         if (nums.length == 0) return 0;
         int low = 0;
         int high = nums.length - 1;
@@ -12,12 +13,11 @@ public class Solution {
             if (target > nums[high]) return high + 1;
             int mid = low + ((high - low)>>1);
             
-            if (target == nums[mid]) return mid;
-            else if (target > nums[mid]) {
+            if (target == nums[mid]) {
+                return mid;
+            } else if (target > nums[mid]) {
                 low = mid + 1;
-            }
-            else // target < nums[mid]
-            {
+            } else {// target < nums[mid]
                 high = mid - 1;
             }
         }
