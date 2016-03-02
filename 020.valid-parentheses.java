@@ -4,9 +4,9 @@
 
 public class Solution {
     public boolean isValid(String s) {
-        if (null == s) return true;
+        if (null == s) throw new NullPointerException();
         Stack<Character> stk = new Stack<Character>();
-        for(int i = 0; i < s.length(); i ++) {
+        for(int i = 0; i < s.length(); ++i) {
             if (s.charAt(i) == '(' || 
                 s.charAt(i) == '[' || s.charAt(i) == '{')
                 stk.push(s.charAt(i));
@@ -24,6 +24,7 @@ public class Solution {
                     case '}':
                         if (stk.isEmpty() || stk.peek() != '{') return false;
                         else stk.pop();
+                        break;
                 }
             }
         }
