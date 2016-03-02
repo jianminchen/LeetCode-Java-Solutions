@@ -49,8 +49,7 @@ public class Solution {
         String res = new String();
         int carryIn = 0;
         for (int i = 0; i <= s1.length() - 1 || i <= s2.length() - 1; ++i) {
-            int digit1 = 0;
-            int digit2 = 0;
+            int digit1 = 0, digit2 = 0;
             if (i <= s1.length() - 1) digit1 = s1.charAt(s1.length() - 1 - i) - '0';
             if (i <= s2.length() - 1) digit2 = s2.charAt(s2.length() - 1 - i) - '0';
             int sum = digit1 + digit2 + carryIn;
