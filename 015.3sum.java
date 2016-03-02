@@ -4,6 +4,7 @@
 
 public class Solution {
     public List<List<Integer>> threeSum(int[] nums) {
+        if (nums == null) throw new NullPointerException();
         Arrays.sort(nums);
         List<List<Integer>> lists = new ArrayList<>();
         if (nums.length < 3) return lists;
