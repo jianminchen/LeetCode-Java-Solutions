@@ -4,11 +4,11 @@
 
 public class Solution {
     public void sortColors(int[] nums) {
+        if (nums == null) throw new NullPointerException();
         int nextZero = 0, i = 0;
         for (; i < nums.length; ++i) {
             if (nums[i] == 0) {
-                if (i == nextZero) {}
-                else {
+                if (i != nextZero) {
                     swap(nums, i, nextZero);
                 }
                 ++nextZero;
@@ -17,8 +17,7 @@ public class Solution {
         i = nextZero; // the next index for 1 from now on
         for (; i < nums.length; ++i) {
             if (nums[i] == 1) {
-                if (i == nextZero) {}
-                else {
+                if (i != nextZero) {
                     swap(nums, i, nextZero);
                 }
                 ++nextZero;
