@@ -4,6 +4,8 @@
 
 public class Solution {
     public int minPathSum(int[][] grid) {
+        if (grid == null) throw new NullPointerException();
+        if (grid.length == 0 || grid[0].length == 0) return 0;
         int[][] minPSum = new int[grid.length][grid[0].length];
         // initialize the last element
         minPSum[grid.length - 1][grid[0].length - 1] = grid[grid.length - 1][grid[0].length - 1];
