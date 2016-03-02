@@ -5,7 +5,7 @@
 public class Solution {
     public int lengthOfLastWord(String s) {
         // s.length() == 0, can be included into general cases.
-        if (s == null /*|| s.length() == 0 */) return 0;
+        if (s == null ) throw new NullPointerException();
         int iLast = s.length() - 1;
         while (iLast >= 0 && s.charAt(iLast) == ' ') --iLast;
         if (iLast < 0) return 0;
