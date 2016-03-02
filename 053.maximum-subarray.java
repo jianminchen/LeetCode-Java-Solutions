@@ -6,11 +6,12 @@
 // the best solution is the dynamic programming with constant memory consumption.
 public class Solution {
     public int maxSubArray(int[] nums) {
+        if (nums == null) throw new NullPointerException();
         int low = 0;
         int high = nums.length - 1;
         return maxSum(nums, low, high);
     }
-    public int maxSum(int[] nums, int low, int high) {
+    private int maxSum(int[] nums, int low, int high) {
         if (low == high) return nums[low];
         int mid = low + ((high - low) >> 1);
         int max1 = maxSum(nums, low, mid);
