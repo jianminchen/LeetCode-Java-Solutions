@@ -25,8 +25,7 @@ public class Solution {
                     double lowNum = Math.max(lower1, lower2);
                     double highNum = Math.min(upper1, upper2);
                     return (lowNum + highNum)/2;
-                }
-                else { // the right two halves have one more number than the left two halves.
+                } else { // the right two halves have one more number than the left two halves.
                     return (double) Math.min(upper1, upper2);
                 }
             } else if (lower1 > upper2) {
