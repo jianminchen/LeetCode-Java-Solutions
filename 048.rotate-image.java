@@ -4,6 +4,7 @@
 
 public class Solution {
     public void rotate(int[][] matrix) {
+        if (matrix == null) throw new NullPointerException();
         // two flips do the job.
         // flip around the diagonal
         for (int i = 0; i <= matrix.length - 2; ++i) {
@@ -18,7 +19,8 @@ public class Solution {
             }
         }
     }
-    public void swap(int[][] matrix, int i, int j, int ni, int nj) {
+    
+    private void swap(int[][] matrix, int i, int j, int ni, int nj) {
         matrix[i][j] = matrix[i][j] ^ matrix[ni][nj];
         matrix[ni][nj] = matrix[i][j] ^ matrix[ni][nj];
         matrix[i][j] = matrix[i][j] ^ matrix[ni][nj];
