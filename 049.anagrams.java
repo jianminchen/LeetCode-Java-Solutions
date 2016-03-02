@@ -5,7 +5,7 @@
 public class Solution {
     public List<List<String>> groupAnagrams(String[] strs) {
         List<List<String>> res = new ArrayList<>();
-        Map<List<Integer>, List<String>> hm= new HashMap<>();
+        Map<List<Integer>, List<String>> hm = new HashMap<>();
         for (int i = 0; i < strs.length; ++i) {
             List<Integer> ak = getArray(strs[i]);
             if (hm.containsKey(ak)) {
@@ -25,7 +25,7 @@ public class Solution {
         return res;
     }
     
-    public List<Integer> getArray(String s) {
+    private List<Integer> getArray(String s) {
         List<Integer> array = new ArrayList<>();
         for (int i = 0; i < 26; ++i) array.add(0);
         for (int i = 0; i < s.length(); ++i) {
