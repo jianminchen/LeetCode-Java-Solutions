@@ -4,20 +4,20 @@
 
 public class Solution {
     public String multiply(String num1, String num2) {
+        if (num1 == null || num2 == null) throw new NullPointerException();
         if (num1.length() == 0 || num2.length() == 0 ||
             num1.equals("0") || num2.equals("0")) return "0";
         List<String> lists = new ArrayList<>();
         int zeroCount = 0;
         for (int i = num2.length() - 1; i >= 0; --i) {
-            if (num2.charAt(i) == '0') ;
-            else {
+            if (num2.charAt(i) != '0') {
                 StringBuilder sb = multiply(num1, num2.charAt(i));
                 for (int j = 0; j < zeroCount; ++j) {
                     sb.append(0);
                 }
                 lists.add(new String(sb));
             }
-            zeroCount ++;
+            ++zeroCount;
         }
         
         String res = lists.get(0);
