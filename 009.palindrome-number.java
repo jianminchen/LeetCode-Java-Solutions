@@ -9,17 +9,17 @@ public class Solution {
         int numDigit = 0;
         while (tempX > 0) {
             tempX = tempX / 10;
-            numDigit ++;
+            ++numDigit;
         }
         
-        for (int i = 0; i < numDigit/2; i++) {
+        for (int i = 0; i < numDigit/2; ++i) {
             if (getIthDigit(x, i) != getIthDigit(x, numDigit - 1 - i)) return false;
         }
         return true;
         
     }
     public int getIthDigit(int x, int i) {
-        for (int j = 0; j < i; j ++) {
+        for (int j = 0; j < i; ++j) {
             x = x / 10;
         }
         return x % 10;
