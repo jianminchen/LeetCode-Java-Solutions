@@ -4,7 +4,8 @@
 
 public class Solution {
     public void nextPermutation(int[] nums) {
-        if (nums == null || nums.length == 0 || nums.length == 1) return;
+        if (nums == null) throw new NullPointerException();
+        if (nums.length == 0 || nums.length == 1) return;
         int i = nums.length - 1;
         while (i - 1 >= 0 && nums[i - 1] >= nums[i]) {
             --i;
@@ -22,7 +23,7 @@ public class Solution {
             Arrays.sort(nums, i, nums.length);
         }
     }
-    public void swap(int[] nums, int i, int j) {
+    private void swap(int[] nums, int i, int j) {
         nums[i] = nums[i] ^ nums[j];
         nums[j] = nums[i] ^ nums[j];
         nums[i] = nums[i] ^ nums[j];
