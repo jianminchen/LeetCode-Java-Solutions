@@ -4,6 +4,7 @@
 
 public class Solution {
     public List<String> fullJustify(String[] words, int maxWidth) {
+        if (words == null) throw new NullPointerException();
         List<List<String>> lists = new ArrayList<>();
         List<Integer> length = new ArrayList<>();
         
