@@ -13,13 +13,14 @@
  */
 public class Solution {
     // don't forget the class identifier.
-    public class MyComparator implements Comparator<Interval> {
+    private static class MyComparator implements Comparator<Interval> {
         @Override
         public int compare(Interval it1, Interval it2) {
             return it1.start - it2.start;
         }
     }
     public List<Interval> merge(List<Interval> intervals) {
+        if (intervals == null) throw new NullPointerException();
         List<Interval> res = new ArrayList<>();
         Collections.sort(intervals, new MyComparator());
         Iterator<Interval> iter = intervals.iterator();
