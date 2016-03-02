@@ -4,7 +4,8 @@
 
 public class Solution {
     public String longestPalindrome(String s) {
-        if (s == null || s.length() == 0) return "";
+        if (s == null) throw new NullPointerException();
+        if (s.length() == 0) return "";
         int maxLen = 1;
         int start = 0, end = 0; // inclusive.
         boolean[][] isPalindrome = new boolean[s.length()][s.length()];
