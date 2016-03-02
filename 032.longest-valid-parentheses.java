@@ -4,6 +4,7 @@
 
 public class Solution {
     public int longestValidParentheses(String s) {
+        if (s == null) throw new NullPointerException();
         Stack<Integer> stkIndex = new Stack<>();
         stkIndex.push(-1);
         Stack<Character> stk = new Stack<>();
