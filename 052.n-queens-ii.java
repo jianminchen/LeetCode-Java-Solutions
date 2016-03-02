@@ -44,7 +44,7 @@ public class Solution {
 		return res;
 	}
 	
-	public boolean canPlace(List<Integer> stkC, int cand) {
+	private boolean canPlace(List<Integer> stkC, int cand) {
 		// we are placing the stkC.size() th row, and the cand th column.
 		int ti = stkC.size();
 		int tj = cand;
