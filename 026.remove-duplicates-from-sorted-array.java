@@ -8,8 +8,7 @@ public class Solution {
         if (nums.length == 0 || nums.length == 1) return nums.length;
         int pFill = 0, i = 1; // the first element will not change.
         while (i < nums.length) {
-            if (nums[i] == nums[pFill]) {}
-            else {
+            if (nums[i] != nums[pFill]) {
                 ++pFill;
                 nums[pFill] = nums[i]; 
             }
