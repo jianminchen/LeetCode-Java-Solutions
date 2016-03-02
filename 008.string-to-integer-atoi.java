@@ -8,8 +8,9 @@ public class Solution {
         while (i < str.length() && str.charAt(i) == ' ') ++i;
         if (i == str.length()) return 0;
         int sign = 1;
-        if (str.charAt(i) == '+') ++i;
-        else if (str.charAt(i) == '-') {
+        if (str.charAt(i) == '+') {
+            ++i;
+        } else if (str.charAt(i) == '-') {
             sign = -1;
             ++i;
         }
@@ -20,8 +21,7 @@ public class Solution {
             if (res > Integer.MAX_VALUE / 10 ) {
                 if (sign == -1) return Integer.MIN_VALUE;
                 else return Integer.MAX_VALUE;
-            }
-            else if (res == Integer.MAX_VALUE / 10) {
+            } else if (res == Integer.MAX_VALUE / 10) {
                 if (sign == -1 && str.charAt(i) >= '8') return Integer.MIN_VALUE;
                 if (sign == 1 && str.charAt(i) >= '7') return Integer.MAX_VALUE;
             }
