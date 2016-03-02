@@ -4,6 +4,7 @@
 
 public class Solution {
     public int removeDuplicates(int[] nums) {
+        if (nums == null) throw new NullPointerException();
         if (nums.length <= 2) return nums.length;
         int i = 0; // traverse index
         int ri = 0;
