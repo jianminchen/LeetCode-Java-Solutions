@@ -4,9 +4,9 @@
 
 public class Solution {
     public int threeSumClosest(int[] nums, int target) {
+        if (nums == null) throw new NullPointerException();
         int minDistance = Integer.MAX_VALUE;
         int res = 0;
-        int[] newNums = nums.clone();
         Arrays.sort(nums);
         for (int i = 0; i < nums.length - 2; ++i) {
             int j = i + 1;
@@ -25,7 +25,6 @@ public class Solution {
                 }
             }
         }
-        nums = newNums;
         return res;
     }
 }
