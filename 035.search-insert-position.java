@@ -11,7 +11,7 @@ public class Solution {
         while (low <= high) {
             if (target < nums[low]) return low;
             if (target > nums[high]) return high + 1;
-            int mid = low + ((high - low)>>1);
+            int mid = low + ((high - low) >> 1);
             
             if (target == nums[mid]) {
                 return mid;
