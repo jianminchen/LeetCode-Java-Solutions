@@ -4,7 +4,8 @@
 
 public class Solution {
     public void setZeroes(int[][] matrix) {
-        if (matrix == null || matrix.length == 0 || matrix[0].length == 0) return;
+        if (matrix == null) throw new NullPointerException();
+        if (matrix.length == 0 || matrix[0].length == 0) return;
         boolean firstColumnZero = false;
         for (int i = 0; i < matrix.length; ++i) {
             if (matrix[i][0] == 0) {
@@ -37,7 +38,6 @@ public class Solution {
                 }
             }
         }
-        
         // set some column to zeros.
         for (int i = 1; i < matrix.length; ++i) {
             if (matrix[i][0] == 0) {
@@ -54,7 +54,6 @@ public class Solution {
                 }
             }
         }
-        
         if (firstColumnZero) {
             for (int i = 0; i < matrix.length; ++i) {
                 matrix[i][0] = 0;
@@ -65,6 +64,5 @@ public class Solution {
                 matrix[0][j] = 0;
             }
         }
-        
     }
 }
