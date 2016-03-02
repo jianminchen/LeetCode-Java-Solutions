@@ -4,6 +4,7 @@
 
 public class Solution {
     public List<List<Integer>> subsetsWithDup(int[] nums) {
+        if (nums == null) throw new NullPointerException();
         List<List<Integer>> res = new ArrayList<>();
         if (nums.length == 0) {
             res.add(new ArrayList<>()); // using anonymous object to simplify coding.
