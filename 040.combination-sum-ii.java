@@ -4,17 +4,17 @@
 
 public class Solution {
     public List<List<Integer>> combinationSum2(int[] candidates, int target) {
+        if (candidates == null) throw new NullPointerException();
         int[] newCands = candidates.clone();
         Arrays.sort(newCands);
         Set<List<Integer>> set = combinationSum(newCands, target, 0);
-        
         List<List<Integer>> res = new ArrayList<>();
         for (List<Integer> list : set) {
             res.add(list);
         }
         return res;
     }
-    public Set<List<Integer>> combinationSum(int[] candidates, int target, int start) {
+    private Set<List<Integer>> combinationSum(int[] candidates, int target, int start) {
         Set<List<Integer>> set = new HashSet<>();
         // the smallest number is greater than target, no result will be found. 
         if (start >= candidates.length || candidates[start] > target) return set; 
